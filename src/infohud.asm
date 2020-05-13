@@ -759,7 +759,7 @@ ih_game_loop_code:
   .inc_statusdisplay
     LDA !sram_display_mode
     INC A
-    CMP #$0009
+    CMP #$0008
     BNE +
     LDA #$0000
 +   STA !sram_display_mode
@@ -770,7 +770,7 @@ ih_game_loop_code:
     DEC A
     CMP #$FFFF
     BNE +
-    LDA #$0008
+    LDA #$0007
 +   STA !sram_display_mode
     JMP .update_status
 
