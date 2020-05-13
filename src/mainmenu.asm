@@ -110,7 +110,7 @@ MainMenu:
     dw #mm_goto_rngmenu
     dw #mm_goto_ctrlsmenu
     dw #$0000
-    %cm_header("SM PRACTICE HACK 2.0.7")
+    %cm_header("SM PRACTICE HACK 2.0.6")
 
 mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
@@ -779,8 +779,6 @@ ih_display_mode:
     db #$28, " VERT SPEED", #$FF
     db #$28, "    IFRAMES", #$FF
     db #$28, "LAG COUNTER", #$FF
-    db #$28, " X POSITION", #$FF
-    db #$28, " Y POSITION", #$FF
     db #$FF
 
 ih_room_counter:
