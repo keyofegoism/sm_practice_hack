@@ -1,5 +1,15 @@
-!presets_bank = preset_pbs_elevator>>16
-!presets_bank_start = !presets_bank<<16
+!delta_bank = delta_pbs_elevator>>16
+!delta_bank_start = !delta_bank<<16
+
+; Skip intro
+org $82EEDF
+    ; $82:EEDF A9 95 A3    LDA #$A395
+    LDA #$C100
+
+
+; Skips the waiting time after teleporting
+org $90E870
+    JMP $E898
 
 
 org $82FA00
@@ -17,7 +27,7 @@ preset_load:
     JSR $82C5  ; Load initial palette
     JSL $91E00D  ; Initialise Samus
 
-    JSL preset_load_preset
+    JSL preset_load_delta
 
     JSL preset_start_gameplay  ; Start gameplay
     JSL $809A79  ; HUD routine when game is loading
@@ -84,6 +94,7 @@ preset_load:
 
     JSL reset_all_counters
 
+    print pc
     ; Clear enemies (8000 = solid to Samus, 0400 = Ignore Samus projectiles)
     LDA #$0000
     -
@@ -109,10 +120,10 @@ reset_all_counters:
 }
 
 
-preset_load_preset:
+preset_load_delta:
   PHB
-    %a8() : LDA.b #!presets_bank : PHA : PLB : %a16()
-    LDA !ram_load_preset : STA !sram_last_preset : STA $C1
+    %a8() : LDA.b #!delta_bank : PHA : PLB : %a16()
+    LDA !ram_load_preset : STA $C1
     LDA #$0000 : STA !ram_load_preset
     LDX #$0000
   .loop_path
@@ -120,40 +131,38 @@ preset_load_preset:
     INX #2
     LDA ($C1) : STA $C1 : BNE .loop_path
 
-  ; then traverse $7FF000 from the first preset until the last one, and apply them
-  .loop_presets
+  ; then traverse $7FF000 from the first delta until the last one, and apply them
+  .loop_deltas
     DEX #2 : BMI .done
-    JSR preset_to_memory
-    BRA .loop_presets
+    JSR delta_to_memory
+    BRA .loop_deltas
 
   .done
     LDA #$0000
     STA $7E09D2 ; Current selected weapon
     STA $7E0A04 ; Auto-cancel item
-    STA $0795   ; "Currently transitioning"
-    STA $0797   ; "Currently transitioning"
   PLB
     RTL
 
 
-preset_to_memory:
+delta_to_memory:
   PHX
     LDA $7FF000,X
     INC #2 : TAX
 
   .loop
-    LDA !presets_bank_start,X : CMP #$FFFF : BEQ .done : STA $C3
-    LDA !presets_bank_start+2,X : STA $C5
-    LDA !presets_bank_start+3,X : AND #$00FF : CMP #$0001 : BEQ .one
+    LDA !delta_bank_start,X : CMP #$FFFF : BEQ .done : STA $C3
+    LDA !delta_bank_start+2,X : STA $C5
+    LDA !delta_bank_start+3,X : AND #$00FF : CMP #$0001 : BEQ .one
 
   .two
-    LDA !presets_bank_start+4,X : STA [$C3]
+    LDA !delta_bank_start+4,X : STA [$C3]
     INX #6
     BRA .loop
 
   .one
     %a8()
-    LDA !presets_bank_start+5,X : STA [$C3]
+    LDA !delta_bank_start+5,X : STA [$C3]
     %a16()
     INX #5
     BRA .loop

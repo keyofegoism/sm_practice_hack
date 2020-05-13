@@ -99,7 +99,7 @@ hook_botwoon_rng:
     LDA $05E5
     RTL
 
-incsrc presets_data.asm
+incsrc delta_data.asm
 
 print "rng end ", pc
 

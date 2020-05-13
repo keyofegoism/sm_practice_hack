@@ -5,8 +5,10 @@
 org $00FFD8
     db $08      ; set sram size to 256kb
 
+org !SS_HOOK
+    jsl ss_start
 
-org $80D000
+org !SS_CODE
 ; These can be modified to do game-specific things before and after saving and loading
 ; Both A and X/Y are 16-bit here
 
@@ -18,16 +20,16 @@ pre_load_state:
     sta !SRAM_MUSIC_TRACK
 
     ; Rerandomize
-    lda $079B : cmp #$B5D5 : beq +
-    lda !sram_rerandomize : and #$00ff : beq +
-    lda $05e5 : sta $770080
-    lda $05b6 : sta $770082
+    lda !ram_rerandomize : and #$00ff
+    beq +
+    lda $05e5
+    sta $770080
+    lda $05b6
+    sta $770082
     +
     rts
 
 post_load_state:
-    JSL $82BE17         ; Cancel sound effects
-
     lda !SRAM_MUSIC_BANK
     cmp !MUSIC_BANK
     bne music_load_bank
@@ -49,8 +51,8 @@ music_load_track:
 
 music_done:
     ; Rerandomize
-    lda $079B : cmp #$B5D5 : beq +
-    lda !sram_rerandomize : and #$00ff : beq +
+    lda !ram_rerandomize : and #$00ff
+    beq +
     lda $770080
     sta $05e5
     lda $770082
@@ -60,6 +62,11 @@ music_done:
 ; end of post_load_state
 
 
+pre_save_state:
+    rts
+post_save_state:
+    rts
+
 ; These restored registers are game-specific and needs to be updated for different games
 register_restore_return:
     %a8()
@@ -68,9 +75,38 @@ register_restore_return:
     lda #$0F
     sta $13
     sta $2100
-    rtl
+
+; Code to run before returning back to the game
+ss_exit:
+    plp
+    plb
+    jmp $808338 ; run original code that we hijacked
+
+; Code to run just after hijacking
+ss_start:
+    phb
+    php
+    %ai16()
+
+; Savestate code starts here -- no more customization should be needed below here
+save_state_code:
+    lda !SS_INPUT_CUR
+    bit !SS_INPUT_COMPARE
+    beq ss_exit
+
+    and !SS_INPUT_NEW
+    beq ss_exit
+
+    lda !SS_INPUT_CUR
+    cmp !SS_INPUT_SAVE
+    beq save_state
+
+    cmp !SS_INPUT_LOAD
+    bne ss_exit
+    jmp load_state
 
 save_state:
+    jsr pre_save_state
     pea $0000
     plb
     plb
@@ -172,6 +208,7 @@ save_return:
     %ai16()
     tsa
     sta !SRAM_SAVED_SP
+    jsr post_save_state
     jmp register_restore_return
 
 
@@ -257,8 +294,8 @@ load_return:
 
     ; rewrite inputs so that holding load won't keep loading, as well as rewriting saving input to loading input
     lda !SS_INPUT_CUR
-    eor !sram_ctrl_save_state
-    ora !sram_ctrl_load_state
+    eor !SS_INPUT_SAVE
+    ora !SS_INPUT_LOAD
     sta !SS_INPUT_CUR
     sta !SS_INPUT_NEW
     sta !SS_INPUT_PREV
