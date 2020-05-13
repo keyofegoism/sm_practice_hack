@@ -1,7 +1,7 @@
 !ram_tilemap_buffer = $7E5800
 
 org $85B000
-print pc, " menu start"
+print "menu start ", pc
 
 cm_start:
 {
@@ -644,9 +644,6 @@ cm_loop:
 
     JSR $8136  ; Wait for lag frame
 
-    JSL $808F0C ; Music queue
-    JSL $8289EF ; Sound fx queue
-
     LDA !ram_cm_leave : BEQ +
     JMP .done
 
@@ -695,13 +692,11 @@ cm_loop:
   .pressedL
     LDX !ram_cm_stack_index
     LDA #$0000 : STA !ram_cm_cursor_stack,X
-    LDA #!SOUND_MENU_MOVE : JSL $80903F
     BRA .redraw
 
   .pressedR
     LDX !ram_cm_stack_index
     LDA !ram_cm_cursor_max : DEC #2 : STA !ram_cm_cursor_stack,X
-    LDA #!SOUND_MENU_MOVE : JSL $80903F
     BRA .redraw
 
   .pressedA
@@ -737,7 +732,6 @@ cm_ctrl_mode:
     LDA !ram_cm_ctrl_timer : INC : STA !ram_cm_ctrl_timer : CMP.w #0060 : BNE .next_frame
 
     LDA $8B : STA [$C5]
-    LDA #!SOUND_MENU_MOVE : JSL $80903F
     BRA .exit
 
   .clear_and_draw
@@ -760,7 +754,7 @@ cm_ctrl_mode:
     LDA #$0000
     STA !ram_cm_ctrl_last_input
     STA !ram_cm_ctrl_mode
-    STA !ram_cm_ctrl_timer
+    STZ !ram_cm_ctrl_timer
     JSR cm_draw
     RTS
 }
@@ -773,16 +767,12 @@ cm_go_back:
 
     ; make sure we dont set a negative number
     LDA !ram_cm_stack_index : DEC : DEC : BPL .done
-
-    ; leave menu 
-    LDA #$0001 : STA !ram_cm_leave
-
     LDA #$0000
+
   .done
     STA !ram_cm_stack_index
 
   .end
-    LDA #!SOUND_MENU_MOVE : JSL $80903F
     RTS
 }
 
@@ -849,9 +839,6 @@ cm_move:
 
   .inBounds
     STA !ram_cm_cursor_stack,X
-
-    LDA #!SOUND_MENU_MOVE : JSL $80903F
-
     RTS
 }
 
@@ -913,7 +900,6 @@ cm_execute_action_table:
         JSR ($0008,X)
 
       .end
-        LDA #!SOUND_MENU_MOVE : JSL $80903F
         RTS
     }
 
@@ -939,7 +925,6 @@ cm_execute_action_table:
         JSR ($0008,X)
 
       .end
-        LDA #!SOUND_MENU_MOVE : JSL $80903F
         RTS
     }
 
@@ -1006,7 +991,6 @@ cm_execute_action_table:
         JSR ($000C,X)
 
       .end
-        LDA #!SOUND_MENU_MOVE : JSL $80903F
         RTS
     }
 
@@ -1072,7 +1056,6 @@ cm_execute_action_table:
         JSR ($0006,X)
 
       .end
-        LDA #!SOUND_MENU_MOVE : JSL $80903F
         RTS
     }
 
@@ -1092,7 +1075,6 @@ cm_execute_action_table:
 
         .reset_shortcut
         LDA.w #!sram_ctrl_menu : CMP $C5 : BEQ .end
-        LDA #!SOUND_MENU_MOVE : JSL $80903F
 
         LDA #$0000 : STA [$C5]
 
@@ -1155,4 +1137,4 @@ incsrc mainmenu.asm
 cm_hud_table:
     incbin ../resources/cm_gfx.bin
 
-print pc, " menu end"
+print "menu end ", pc

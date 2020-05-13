@@ -18,7 +18,7 @@ pre_load_state:
     sta !SRAM_MUSIC_TRACK
 
     ; Rerandomize
-    lda !sram_save_has_set_rng : bne +
+    lda $079B : cmp #$B5D5 : beq +
     lda !sram_rerandomize : and #$00ff : beq +
     lda $05e5 : sta $770080
     lda $05b6 : sta $770082
@@ -26,7 +26,7 @@ pre_load_state:
     rts
 
 post_load_state:
-    JSL stop_all_sounds
+    JSL $82BE17         ; Cancel sound effects
 
     lda !SRAM_MUSIC_BANK
     cmp !MUSIC_BANK
@@ -49,7 +49,7 @@ music_load_track:
 
 music_done:
     ; Rerandomize
-    lda !sram_save_has_set_rng : bne +
+    lda $079B : cmp #$B5D5 : beq +
     lda !sram_rerandomize : and #$00ff : beq +
     lda $770080
     sta $05e5
@@ -170,9 +170,7 @@ save_return:
     plb
 
     %ai16()
-    LDA !ram_room_has_set_rng : STA !sram_save_has_set_rng
-
-    tsc
+    tsa
     sta !SRAM_SAVED_SP
     jmp register_restore_return
 
@@ -251,7 +249,7 @@ load_write_table:
 load_return:
     %ai16()
     lda !SRAM_SAVED_SP
-    tcs
+    tas
 
     pea $0000
     plb

@@ -5,15 +5,9 @@ x Controller shortcuts
     x Fill equipment
     x Reset Segment
 
-x Rerandomize: Disable on Hopper-rooms
+- Rerandomize: Disable on Hopper-rooms
 
-x Sounds in menu
-
-x Fix/test Phantoon/Botwoon RNG
-
-x Hundo presets
-
-- Dray RNG?
+- Sounds in menu (especially for jsrs)
 
 - Infohud option to toggle speed ?
 

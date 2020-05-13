@@ -73,7 +73,7 @@ incbin ../resources/menugfx.bin
 
 ; Main bank stuff
 org $DFE000
-print pc, " infohud start"
+print "infohud start ", pc
 ih_max_etank_code:
 {
     ; Reset max-etanks value
@@ -216,7 +216,6 @@ ih_before_room_transition:
     ; save and reset timers
     LDA !ram_transition_flag : CMP #$0001 : BEQ .done
     LDA #$0001 : STA !ram_transition_flag
-    LDA #$0000 : STA !ram_room_has_set_rng
 
     ; Lag
     LDA !ram_realtime_room : SEC : SBC !ram_transition_counter : STA !ram_last_room_lag
@@ -600,16 +599,16 @@ Draw3:
     LDA #$0057 : STA $7EC600,X : STA $7EC602,X
 
     ; Third digit
-    LDY $18 : LDA.w NumberGFXTable,Y : STA $7EC604,X
+    LDY $18 : LDA NumberGFXTable,Y : STA $7EC604,X
 
     ; Check if done
     LDA $16 : ORA $14 : BEQ .done
 
     ; Second digit
-    LDY $16 : LDA.w NumberGFXTable,Y : STA $7EC602,X
+    LDY $16 : LDA NumberGFXTable,Y : STA $7EC602,X
 
     ; First digit (if non-zero)
-    LDY $14 : BEQ .done : LDA.w NumberGFXTable,Y : STA $7EC600,X
+    LDY $14 : BEQ .done : LDA NumberGFXTable,Y : STA $7EC600,X
 
   .done
     INX #6
@@ -621,22 +620,22 @@ Draw4:
     LDA #$0057 : STA $7EC600,X : STA $7EC602,X : STA $7EC604,X
 
     ; Forth digit
-    LDY $18 : LDA.w NumberGFXTable,Y : STA $7EC606,X
+    LDY $18 : LDA NumberGFXTable,Y : STA $7EC606,X
 
     ; Check if done
     LDA $16 : ORA $14 : ORA $12 : BEQ .done
 
     ; third digit
-    LDY $16 : LDA.w NumberGFXTable,Y : STA $7EC604,X
+    LDY $16 : LDA NumberGFXTable,Y : STA $7EC604,X
 
     ; Check if done
     LDA $14 : ORA $12 : BEQ .done
 
     ; Second digit
-    LDY $14 : LDA.w NumberGFXTable,Y : STA $7EC602,X
+    LDY $14 : LDA NumberGFXTable,Y : STA $7EC602,X
 
     ; First digit
-    LDY $12 : BEQ .done : LDA.w NumberGFXTable,Y : STA $7EC600,X
+    LDY $12 : BEQ .done : LDA NumberGFXTable,Y : STA $7EC600,X
 
   .done
     INX #8
@@ -850,11 +849,11 @@ ih_shinespark_code:
     RTL
 }
 
-print pc, " infohud end"
+print "infohud end ", pc
 
 ; Stuff that needs to be placed in bank 80
 org $80D300
-print pc, " infohud bank80 start"
+print "infohud bank80 start ", pc
 NumberGFXTable:
     dw #$0C09, #$0C00, #$0C01, #$0C02, #$0C03, #$0C04, #$0C05, #$0C06, #$0C07, #$0C08
     dw #$0C45, #$0C3C, #$0C3D, #$0C3E, #$0C3F, #$0C40, #$0C41, #$0C42, #$0C43, #$0C44
@@ -884,7 +883,7 @@ HexToNumberGFX2:
     dw $0C09, $0C00, $0C01, $0C02, $0C03, $0C04, $0C05, $0C06, $0C07, $0C08
     dw $0C09, $0C00, $0C01, $0C02, $0C03, $0C04, $0C05, $0C06, $0C07, $0C08
 
-print pc, " infohud bank80 end"
+print "infohud bank80 end ", pc
 
 org $8098CB  ; Initial HUD tilemap
     dw $2C0F, $2C0F, $2C0F, $2C0F, $2C0F, $2C0F, $2C0F, $2C0F

@@ -60,31 +60,10 @@ action_submenu:
     TYA : STA !ram_cm_menu_stack,X
     LDA #$0000 : STA !ram_cm_cursor_stack,X
 
-    LDA #!SOUND_MENU_MOVE : JSL $80903F
     JSR cm_calculate_max
     JSR cm_draw
 
     RTS
-}
-
-action_presets_submenu:
-{
-    ; Increment stack pointer by 2, then store current menu
-    LDA !ram_cm_stack_index : INC #2 : STA !ram_cm_stack_index : TAX
-    LDA !sram_preset_category : ASL : TAY : LDA preset_category_submenus,Y : STA !ram_cm_menu_stack,X
-    LDA #$0000 : STA !ram_cm_cursor_stack,X
-
-    LDA #!SOUND_MENU_MOVE : JSL $80903F
-    JSR cm_calculate_max
-    JSR cm_draw
-
-    RTS
-}
-
-preset_category_submenus:
-{
-    dw #PresetsMenuPrkd
-    dw #PresetsMenuHundo
 }
 
 ; -----------
@@ -108,7 +87,7 @@ mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
 
 mm_goto_presets:
-    %cm_jsr("Presets", #action_presets_submenu, #$0000)
+    %cm_submenu("Presets", #PresetsMenu)
 
 mm_goto_teleport:
     %cm_submenu("Teleport", #TeleportMenu)
@@ -129,15 +108,14 @@ mm_goto_rngmenu:
     %cm_submenu("RNG Control", #RngMenu)
 
 mm_goto_ctrlsmenu:
-    %cm_submenu("Controller Shortcuts", #CtrlMenu)
+    %cm_submenu("Ctrl Shortcuts", #CtrlMenu)
 
 
 ; -------------
 ; Presets menu
 ; -------------
 
-incsrc presets/prkd_menu.asm
-incsrc presets/hundo_menu.asm
+incsrc presets_menu.asm
 
 action_load_preset:
 {
@@ -178,7 +156,6 @@ eq_refill:
     LDA $7E09CC : STA $7E09CA ; supers
     LDA $7E09D0 : STA $7E09CE ; pbs
     LDA $7E09D4 : STA $7E09D6 ; reserves
-    LDA #!SOUND_MENU_JSR : JSL $80903F
     RTS
 
 eq_toggle_category:
@@ -288,7 +265,7 @@ action_category:
     LDA .table, X : STA $7E09A4 : STA $7E09A2 : INX #2
 
     ; Beams
-    LDA .table, X : STA $7E09A8 : STA $7E09A6 : INX #2
+    LDA .table, X : STA $7E09A8 : AND #$FFF7 : STA $7E09A6 : INX #2
 
     ; Health
     LDA .table, X : STA $7E09C2 : STA $7E09C4 : INX #2
@@ -305,14 +282,7 @@ action_category:
     ; Reserves
     LDA .table, X : STA $7E09D4 : STA $7E09D6 : INX #2
 
-    CPY #$0000 : BNE +
-
-    LDA $7E09A6 : AND #$000C : CMP #$000C : BNE +
-    LDA $7E09A6 : EOR #$0004 : STA $7E09A6
-
-    +
     JSR cm_set_etanks_and_reserve
-    LDA #!SOUND_MENU_JSR : JSL $80903F
     RTS
 
   .table
@@ -515,9 +485,6 @@ action_teleport:
     LDA #$05 : STA $7ED914
     REP #$20
 
-    JSL reset_all_counters
-    JSL stop_all_sounds
-
     LDA #$0001 : STA !ram_cm_leave
 
     RTS
@@ -532,9 +499,6 @@ MiscMenu:
     dw #misc_flashsuit
     dw #misc_hyperbeam
     dw #misc_babyslowdown
-    dw #misc_fanfare_toggle
-    dw #misc_music_toggle
-    dw #misc_preset_cateory
     dw #$0000
     %cm_header("MISC")
 
@@ -549,42 +513,6 @@ misc_hyperbeam:
 
 misc_babyslowdown:
     %cm_toggle("Baby Slowdown", $7E0A66, #$0002, #0)
-
-misc_fanfare_toggle:
-    %cm_toggle("Fanfare", !sram_fanfare_toggle, #$0001, #0)
-
-misc_music_toggle:
-    %cm_toggle("Music", !sram_music_toggle, #$0001, .routine)
-
-  .routine
-    BIT #$0001 : BEQ .noMusic
-
-    LDA $07F5 : STA $2140
-
-    RTS
-
-  .noMusic
-    LDA #$0000 
-    STA $0629
-    STA $062B
-    STA $062D
-    STA $062F
-    STA $0631
-    STA $0633
-    STA $0635
-    STA $0637
-    STA $063F
-    STA $2140
-    RTS
-
-misc_preset_cateory:
-    dw !ACTION_CHOICE
-    dl #!sram_preset_category
-    dw #$0000
-    db #$28, "Preset Category", #$FF
-    db #$28, "y      PRKD", #$FF ; Note the "y" ;)
-    db #$28, "y     HUNDO", #$FF
-    db #$FF
 
 
 ; -----------
@@ -640,7 +568,6 @@ action_reset_events:
     LDA #$0000
     STA $7ED820
     STA $7ED822
-    LDA #!SOUND_MENU_JSR : JSL $80903F
     RTS
 }
 
@@ -655,7 +582,6 @@ action_reset_doors:
     CPX #$D0
     BNE -
     PLP
-    LDA #!SOUND_MENU_JSR : JSL $80903F
     RTS
 }
 
@@ -670,7 +596,6 @@ action_reset_items:
     CPX #$90
     BNE -
     PLP
-    LDA #!SOUND_MENU_JSR : JSL $80903F
     RTS
 }
 
@@ -783,6 +708,8 @@ GameMenu:
     dw #game_moonwalk
     dw #game_iconcancel
     dw #game_debugmode
+    dw #game_fanfare_toggle
+    dw #game_music_toggle
     dw #$0000
     %cm_header("GAME")
 
@@ -798,14 +725,44 @@ game_iconcancel:
 game_debugmode:
     %cm_toggle("Debug Mode", $7E05D1, #$0001, #0)
 
+game_fanfare_toggle:
+    %cm_toggle("Fanfare", !sram_fanfare_toggle, #$0001, #0)
+
+game_music_toggle:
+    %cm_toggle("Music", !sram_music_toggle, #$0001, .routine)
+
+  .routine
+    BIT #$0001 : BEQ .noMusic
+
+    LDA $07F5 : STA $2140
+
+    RTS
+
+  .noMusic
+    LDA #$0000 
+    STA $0629
+    STA $062B
+    STA $062D
+    STA $062F
+    STA $0631
+    STA $0633
+    STA $0635
+    STA $0637
+    STA $063F
+    STA $2140
+    RTS
+
+
 ; ----------
 ; RNG menu
 ; ----------
 
 RngMenu:
     dw #rng_rerandomize
-    dw #rng_phan_first_phase
-    dw #rng_phan_second_phase
+    dw #rng_phan_first_direction
+    dw #rng_phan_first_pattern
+    dw #rng_phan_second_direction
+    dw #rng_phan_second_pattern
     dw #rng_botwoon_rng
     dw #$0000
     %cm_header("RNG")
@@ -825,32 +782,46 @@ rng_botwoon_rng:
     db #$28, "       LEFT", #$FF
     db #$FF
 
-rng_phan_first_phase:
+rng_phan_first_direction:
     dw !ACTION_CHOICE
-    dl #!ram_phantoon_rng_1
+    dl #$7FFB82
     dw #$0000
-    db #$28, "Phan 1st Phase", #$FF
+    db #$28, "Phan 1st Dir", #$FF
     db #$28, "     RANDOM", #$FF
-    db #$28, "  FAST LEFT", #$FF
-    db #$28, "   MID LEFT", #$FF
-    db #$28, "  SLOW LEFT", #$FF
-    db #$28, " FAST RIGHT", #$FF
-    db #$28, "  MID RIGHT", #$FF
-    db #$28, " SLOW RIGHT", #$FF
+    db #$28, "       LEFT", #$FF
+    db #$28, "      RIGHT", #$FF
     db #$FF
 
-rng_phan_second_phase:
+rng_phan_first_pattern:
     dw !ACTION_CHOICE
-    dl #!ram_phantoon_rng_2
+    dl #$7FFB84
     dw #$0000
-    db #$28, "Phan 2nd Phase", #$FF
+    db #$28, "Phan 1st Pat", #$FF
     db #$28, "     RANDOM", #$FF
-    db #$28, "  FAST LEFT", #$FF
-    db #$28, "   MID LEFT", #$FF
-    db #$28, "  SLOW LEFT", #$FF
-    db #$28, " FAST RIGHT", #$FF
-    db #$28, "  MID RIGHT", #$FF
-    db #$28, " SLOW RIGHT", #$FF
+    db #$28, "       FAST", #$FF
+    db #$28, "        MID", #$FF
+    db #$28, "       SLOW", #$FF
+    db #$FF
+
+rng_phan_second_direction:
+    dw !ACTION_CHOICE
+    dl #$7FFB86
+    dw #$0000
+    db #$28, "Phan 2nd Dir", #$FF
+    db #$28, "     RANDOM", #$FF
+    db #$28, "       LEFT", #$FF
+    db #$28, "      RIGHT", #$FF
+    db #$FF
+
+rng_phan_second_pattern:
+    dw !ACTION_CHOICE
+    dl #$7FFB88
+    dw #$0000
+    db #$28, "Phan 2nd Pat", #$FF
+    db #$28, "     RANDOM", #$FF
+    db #$28, "       FAST", #$FF
+    db #$28, "        MID", #$FF
+    db #$28, "       SLOW", #$FF
     db #$FF
 
 
@@ -864,17 +835,17 @@ CtrlMenu:
     dw #ctrl_save_state
     dw #ctrl_load_state
     dw #ctrl_reset_segment_timer
-    dw #ctrl_full_equipment
+    dw #ctrl_reequip
     dw #ctrl_kill_enemies
     dw #$0000
-    %cm_header("CONTROLLER SHORTCUTS")
+    %cm_header("CTRL SHORTCUTS")
 
 
 ctrl_menu:
     %cm_ctrl_shortcut("Main menu", !sram_ctrl_menu)
 
 ctrl_load_last_preset:
-    %cm_ctrl_shortcut("Reload Preset", !sram_ctrl_load_last_preset)
+    %cm_ctrl_shortcut("Load Last Preset", !sram_ctrl_load_last_preset)
 
 ctrl_save_state:
     %cm_ctrl_shortcut("Save State", !sram_ctrl_save_state)
@@ -885,8 +856,8 @@ ctrl_load_state:
 ctrl_reset_segment_timer:
     %cm_ctrl_shortcut("Reset Seg Timer", !sram_ctrl_reset_segment_timer)
 
-ctrl_full_equipment:
-    %cm_ctrl_shortcut("Full Equipment", !sram_ctrl_full_equipment)
+ctrl_reequip:
+    %cm_ctrl_shortcut("Reequip", !sram_ctrl_reequip)
 
 ctrl_kill_enemies:
     %cm_ctrl_shortcut("Kill Enemies", !sram_ctrl_kill_enemies)
