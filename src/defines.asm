@@ -139,9 +139,6 @@
 !ram_load_preset = $7FFC00
 !ram_cgram_cache = $7FFC02 ; 0x14 bytes
 
-!category_combined = 0
-!category_rbo = 1
-
 ; ----------
 ; Save/load
 ; ----------

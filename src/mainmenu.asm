@@ -83,14 +83,9 @@ action_presets_submenu:
 
 preset_category_submenus:
 {
-    if !CATEGORY == !category_combined
-        dw #PresetsMenuPrkd
-        dw #PresetsMenuHundo
-    elseif !CATEGORY == !category_rbo
-        dw #PresetsMenuRbo
-    else
-        error "Unsupported category"
-    endif
+    dw #PresetsMenuPrkd
+    dw #PresetsMenuHundo
+    dw #PresetsMenuRbo
 }
 
 ; -----------
@@ -141,14 +136,10 @@ mm_goto_ctrlsmenu:
 ; -------------
 ; Presets menu
 ; -------------
-if !CATEGORY == !category_combined
-    incsrc presets/prkd_menu.asm
-    incsrc presets/hundo_menu.asm
-elseif !CATEGORY == !category_rbo
-    incsrc presets/rbo_menu.asm
-else
-    error "Unsupported category"
-endif
+
+incsrc presets/prkd_menu.asm
+incsrc presets/hundo_menu.asm
+incsrc presets/rbo_menu.asm
 
 action_load_preset:
 {
@@ -593,14 +584,9 @@ misc_preset_cateory:
     dl #!sram_preset_category
     dw #$0000
     db #$28, "Preset Category", #$FF
-    if !CATEGORY == !category_combined
-        db #$28, "y      PRKD", #$FF ; Note the "y" ;)
-        db #$28, "y     HUNDO", #$FF
-    elseif !CATEGORY == !category_rbo
-        db #$28, "y       RBO", #$FF
-    else
-        error "Unsupported category"
-    endif
+    db #$28, "y      PRKD", #$FF ; Note the "y" ;)
+    db #$28, "y     HUNDO", #$FF
+    db #$28, "y       RBO", #$FF
     db #$FF
 
 
