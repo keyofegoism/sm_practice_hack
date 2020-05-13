@@ -33,8 +33,7 @@ org $B39943
 
 ; Hooks
 
-org $83B000
-print "rng start ", pc
+org $DFD500
 hook_phantoon_1st_dir_rng:
     JSL $808111 ; Trying to preserve the number of RNG calls being done in the frame
 
@@ -99,7 +98,4 @@ hook_botwoon_rng:
     LDA $05E5
     RTL
 
-incsrc delta_data.asm
-
-print "rng end ", pc
-
+warnpc $DFDA00

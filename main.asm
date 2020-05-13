@@ -14,8 +14,7 @@ incsrc save.asm ; Savestate code
 incsrc infohud_cfg.asm ; InfoHud configuration
 incsrc infohud.asm ; Super Metroid InfoHUD / Practice features
 incsrc newmenu.asm ; Super Metroid Menu
-incsrc rng.asm
-incsrc presets.asm
+incsrc rng.asm ; Phantoon RNG manip
 incsrc misc.asm
 incsrc init.asm
 
