@@ -1,6 +1,8 @@
 # sm_practice_hack
 Super Metroid Practice Hack for PAL
 
+This is an older version of the Practice Hack taken before Pinkus rewrote the bulk of it and dropped support for PAL. Some of the newer features from the rewrite have been ported to this version. The infinite shinespark timer was fixed by removing that option from the HUD's status display.
+
 ## Getting Started:
 
 1. Copy your SM PAL rom into the \resources\ folder.
@@ -17,3 +19,4 @@ The build script will create two versions of the practice hack. The rom that inc
 ## Known Issues:
 
 * The counter for game time in the current room will erroneously pause in some situations where Samus is unable to move. Examples include time spent in the InfoHUD menu and being grabbed by the bowling chozo or Ridley during the death animation. This does not affect overall game time displayed under Grapple and Xray.
+* Room timers still consider 60 frames as 1 second.
