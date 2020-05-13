@@ -7,5 +7,3 @@ build/*
 tools/*.smv
 tools/*.asm
 tools/*.log
-.vscode/launch.json
-.vscode/tasks.json
