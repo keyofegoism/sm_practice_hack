@@ -88,8 +88,6 @@ preset_category_submenus:
         dw #PresetsMenuHundo
     elseif !CATEGORY == !category_rbo
         dw #PresetsMenuRbo
-    elseif !CATEGORY == !category_kpdr25
-        dw #PresetsMenuKpdr25
     else
         error "Unsupported category"
     endif
@@ -110,7 +108,7 @@ MainMenu:
     dw #mm_goto_rngmenu
     dw #mm_goto_ctrlsmenu
     dw #$0000
-    %cm_header("SM PRACTICE HACK 2.0.6")
+    %cm_header("SM PRACTICE HACK 2.0.5")
 
 mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
@@ -148,8 +146,6 @@ if !CATEGORY == !category_combined
     incsrc presets/hundo_menu.asm
 elseif !CATEGORY == !category_rbo
     incsrc presets/rbo_menu.asm
-elseif !CATEGORY == !category_kpdr25
-    incsrc presets/kpdr25_menu.asm
 else
     error "Unsupported category"
 endif
@@ -602,8 +598,6 @@ misc_preset_cateory:
         db #$28, "y     HUNDO", #$FF
     elseif !CATEGORY == !category_rbo
         db #$28, "y       RBO", #$FF
-    elseif !CATEGORY == !category_kpdr25
-        db #$28, "y    KPDR25", #$FF
     else
         error "Unsupported category"
     endif

@@ -141,7 +141,6 @@
 
 !category_combined = 0
 !category_rbo = 1
-!category_kpdr25 = 2
 
 ; ----------
 ; Save/load
