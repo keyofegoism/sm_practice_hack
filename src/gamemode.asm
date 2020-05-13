@@ -35,15 +35,11 @@ gamemode_shortcuts:
 
   + LDA !ram_ctrl1 : CMP !sram_ctrl_save_state : BNE +
     AND !ram_ctrl1_filtered : BEQ +
-    if !FEATURE_SD2SNES
-        JMP .save_state
-    endif
+    JMP .save_state
 
   + LDA !ram_ctrl1 : CMP !sram_ctrl_load_state : BNE +
     AND !ram_ctrl1_filtered : BEQ +
-    if !FEATURE_SD2SNES
-        JMP .load_state
-    endif
+    JMP .load_state
 
   + LDA !ram_ctrl1 : AND !sram_ctrl_kill_enemies : CMP !sram_ctrl_kill_enemies : BNE +
     AND !ram_ctrl1_filtered : BEQ +
@@ -68,8 +64,6 @@ gamemode_shortcuts:
   + CLC : RTS
 
   .save_state
-    ; This if statement is to prevent an assembler error from an unknown method. The one on the call to this
-    ; prevents the button combo from being intercepted by the non-sd2snes rom
     if !FEATURE_SD2SNES
         JSL save_state
     endif
