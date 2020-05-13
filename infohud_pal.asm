@@ -66,9 +66,6 @@ org $82894F      ;hijack, main game loop: runs EVERY frame (used for room transi
 org $84889F      ;hijack, runs every time an item is picked up
 	JSL ih_get_item_code
 	
-org $91DA3E      ;hijack, runs after a shinespark has been charged
-	JSL ih_shinespark_code
-	
 org $8095fc		 ;hijack, end of NMI routine to update realtime frames
 	JML ih_nmi_code
 
@@ -81,7 +78,6 @@ ih_init_code:
 	LDA #$0000
 	STA $7FFB20  ;RAM initialization
 	STA $7FFB16
-	STA $7FFB14
 	STA $7FFB10
 	STA $7FFB12
 	STA $7FFB02
@@ -89,7 +85,6 @@ ih_init_code:
 	STA $7FFB0E
 	STA $7FFB2C
 	STA $7FFB00
-	STA $7FFB30
 	STA $7FFB40
 	STA $7FFB42
 	STA $7FFB44
@@ -520,27 +515,23 @@ status_display:
 	JMP EnemyHP
 +	CMP #$0001
 	BNE +
-	JMP ShineTimer
+	JMP ChargeTimer
 +	CMP #$0002
 	BNE +
-	JMP ChargeTimer
+	JMP Xfactor
 +	CMP #$0003
 	BNE +
-	JMP Xfactor
+	JMP MotherBrainHP
++	CMP #$0004
+	BNE +
+	JMP DashCounter
++	CMP #$0005
+	BNE +
+	JMP VerticalSpeed
++	CMP #$0006
+	BNE +
+	JMP IFrameTimer
 +	JMP EnemyHP
-	
-	;--shine timer--	
-	ShineTimer:
-	LDA $7FFB30 : CMP #$000A : BNE ShineTimerCont : LDA #$0000 : STA $7FFB30
-	ShineTimerCont:
-	LDA $7FFB30 : INC : STA $7FFB30
-	LDA $7FFB14 : CMP $7FFB1A : BEQ shine_done : STA $7FFB1A : CMP #$0000 : BNE ShineCharge : LDA #$00B4
-	ShineCharge:
-	JSR Hex2Dec : LDX #$008A : JSR Draw3
-	LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE shine_done : LDA #$0C09 : STA $7EC68E
-shine_done:
-	JMP Etanks
-	;--/shine timer--
 
 	;--charge timer--
 	ChargeTimer:
@@ -560,6 +551,39 @@ charge_done:
 	LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E	
 +	JMP Etanks	
 	;--/xfactor timer--
+
+	;--dash counter-- ;
+	DashCounter:
+	CLC
+	LDA $0B3F : AND #$00FF : CMP $7FFB38 : BEQ + : STA $7FFB38 : JSR Hex2Dec : LDX #$008A : JSR Draw3
+;	LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
++	JMP Etanks
+	;--/dash counter--
+
+	;--motherbrain hp--
+	MotherBrainHP:
+	LDA $0E58 : STA $12 : LDY #$0014
+	LDA $0FCC : CMP $7FFB3E : BEQ + : STA $7FFB3E
+	JSR Hex2Dec : LDX $12 : LDA NumberGFXTable,X : STA $7EC688 : LDX #$008A : JSR Draw3
+	LDX #$0088 : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
++	JMP Etanks
+	;--/motherbrain hp--
+
+	;--vertical speed-- ;
+	VerticalSpeed:
+	CLC
+	LDA $0B2E : CMP $7FFB3C : BEQ + : STA $7FFB3C : JSR Hex2Dec : LDX #$008A : JSR Draw3
+	LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
++	JMP Etanks
+	;--/vertical speed--
+
+	;--iframe timer-- ;
+	IFrameTimer:
+	CLC
+	LDA $18A8 : CMP $7FFB3A : BEQ + : STA $7FFB3A : JSR Hex2Dec : LDX #$008A : JSR Draw3
+	LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
++	JMP Etanks
+	;--/iframe timer--
 
 	; enemy hp
 	EnemyHP:
@@ -724,7 +748,7 @@ reset_slowdown:
 inc_statusdisplay:
 	LDA $7FFB60
 	INC A
-	CMP #$0004
+	CMP #$0007
 	BNE +
 	LDA #$0000
 +	STA $7FFB60
@@ -742,12 +766,10 @@ dec_statusdisplay:
 	
 update_status:
 	LDA #$0000
-	STA $7FFB30
-	STA $7FFB14
 	STA $7FFB1C
 	STA $7FFB1E
 	INC A
-	STA $7FFB40
+	STA $7FFB40																
 	STA $7FFB1A
 	JMP end_main
 
@@ -818,13 +840,6 @@ ih_get_item_code:
 	
 	PLA
 	JSL $80818E
-	RTL
-
-
-ih_shinespark_code:
-	DEC
-	STA $7FFB14
-	STA $0A68
 	RTL
 
 
