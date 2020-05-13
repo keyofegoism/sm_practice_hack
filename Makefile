@@ -10,9 +10,6 @@ smhackkpdr25:
 smhackgtclassic:
 	cp resources/sm_orig.sfc build/smhack20_gtclassic.sfc && cd src && asar --no-title-check -DFEATURE_SD2SNES=0 -DCATEGORY=3 main.asm ../build/smhack20_gtclassic.sfc && cd -
 
-smhack14ice:
-	cp resources/sm_orig.sfc build/smhack20_14ice.sfc && cd src && asar --no-title-check -DFEATURE_SD2SNES=0 -DCATEGORY=4 main.asm ../build/smhack20_14ice.sfc && cd -
-
 sd2snes:
 	cp resources/sm_orig.sfc build/smhack20_sd2snes.sfc && cd src && asar --no-title-check -DFEATURE_SD2SNES=1 -DCATEGORY=0 main.asm ../build/smhack20_sd2snes.sfc && cd -
 
@@ -25,7 +22,4 @@ sd2sneskpdr25:
 sd2snesgtclassic:
 	cp resources/sm_orig.sfc build/smhack20_sd2snes_gtclassic.sfc && cd src && asar --no-title-check -DFEATURE_SD2SNES=1 -DCATEGORY=3 main.asm ../build/smhack20_sd2snes_gtclassic.sfc && cd -
 
-sd2snes14ice:
-	cp resources/sm_orig.sfc build/smhack20_sd2snes_14ice.sfc && cd src && asar --no-title-check -DFEATURE_SD2SNES=1 -DCATEGORY=4 main.asm ../build/smhack20_sd2snes_14ice.sfc && cd -
-
-all: sd2snes smhack sd2snesrbo smhackrbo sd2sneskpdr25 smhackkpdr25 sd2snesgtclassic smhackgtclassic sd2snes14ice smhack14ice
+all: sd2snes smhack sd2snesrbo smhackrbo sd2sneskpdr25 smhackkpdr25 sd2snesgtclassic smhackgtclassic
