@@ -861,10 +861,8 @@ rng_phan_second_phase:
 CtrlMenu:
     dw #ctrl_menu
     dw #ctrl_load_last_preset
-    if !FEATURE_SD2SNES
-        dw #ctrl_save_state
-        dw #ctrl_load_state
-    endif
+    dw #ctrl_save_state
+    dw #ctrl_load_state
     dw #ctrl_reset_segment_timer
     dw #ctrl_full_equipment
     dw #ctrl_kill_enemies

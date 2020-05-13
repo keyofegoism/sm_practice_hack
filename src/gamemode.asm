@@ -64,15 +64,11 @@ gamemode_shortcuts:
   + CLC : RTS
 
   .save_state
-    if !FEATURE_SD2SNES
-        JSL save_state
-    endif
+    JSL save_state
     SEC : RTS
 
   .load_state
-    if !FEATURE_SD2SNES
-        JSL load_state
-    endif
+    JSL load_state
     SEC : RTS
 
   .kill_enemies

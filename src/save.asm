@@ -2,6 +2,10 @@
 ; by acmlm, total, Myria
 ;
 
+org $00FFD8
+    db $08      ; set sram size to 256kb
+
+
 org $80D000
 ; These can be modified to do game-specific things before and after saving and loading
 ; Both A and X/Y are 16-bit here
