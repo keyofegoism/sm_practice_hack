@@ -31,8 +31,8 @@ org $90A91B      ;minimap drawing routine
     RTL
 
 org $90A8EF      ;minimap update during HUD loading
-    LDA !ram_gametime_room : STA !ram_last_gametime_room
-    LDA #$0000 : STA !ram_gametime_room  ;save archive of last room duration, reset timer
+    LDA $7FFB00 : STA $7FFB02
+    LDA #$0000 : STA $7FFB00  ;save archive of last room duration, reset timer
     RTL
 
 ;org $809AA0     ;saves initial HUD tilemap (located at $80:98CB) to HUD in RAM
@@ -81,21 +81,52 @@ print "InfoHud Main Bank Starting at: ", pc
 ih_init_code:
     REP #$30
     PHA
-
-    print pc
-    ; We mostly use $7FFB00 and upward, so just zero everything
     LDA #$0000
-    LDX #$04FF
-  .loop
-    STA $7FFB00,X
-    DEX : DEX : BPL .loop
+    STA $7FFB20 ; RAM initialization
+    STA $7FFB16
+    STA $7FFB14
+    STA $7FFB10
+    STA $7FFB12
+    STA $7FFB02
+    STA $7FFB0C
+    STA $7FFB0E
+    STA $7FFB2C
+    STA $7FFB00
+    STA $7FFB30
+    STA $7FFB38 ; dash counter
+    STA $7FFB3A ; iframe counter
+    STA $7FFB3C ; vertical speed
+    STA $7FFB3E ; mother brain HP
+    STA $7FFB40 ; enemy HP
+    STA $7FFB42
+    STA $7FFB44
+    STA $7FFB46
+    STA $7FFB48
+    STA $7FFB4A
+    STA $7FFB4C
+    STA $7FFB4E
+    STA $7EFFFC ; slowdown mode
+    STA $7FFB52 ; slowdown frames
+    STA $7FFB60 ; display mode
+    STA $7FFB62 ; test thing
+    STA $7FFB64 ; magic pants
+    STA $7FFB66 ; magic pants
+    STA $7FFB70 ; magic pants
+    STA $7FFB72 ; magic pants
+    STA $7FFB74 ; magic pants
+    STA $7FFB80 ; rerandomize
+    STA $7FFB82 ; phantoon rng
+    STA $7FFB84 ; phantoon rng
+    STA $7FFB86 ; phantoon rng
+    STA $7FFB88 ; phantoon rng
+    STA $7FFB8A ; botwoon rng
 
     PLA
     JSL $8B9146
     JML $808459
 
 ih_max_etank_code:
-    LDA #$0000 : STA !ram_max_etanks ; reset max-etanks value
+    LDA #$0000 : STA $7FFB24 ; reset max-etanks value
     LDA $7EC200,X
     RTL
 
@@ -110,47 +141,49 @@ ih_debug_patch:
 ih_nmi_code:
     %ai16()
 
-    LDA !ram_realtime_room : INC : STA !ram_realtime_room
+    LDA $7FFB44
+    INC
+    STA $7FFB44
 
-    LDA !ram_slowdown_mode : BNE +
-
+    LDA $7EFFFC
+    BNE +
     JMP end_nmi
 
 +   CMP #$FFFF
     BEQ pause_game
 
-    LDA !ram_slowdown_frames
+    LDA $7FFB52
     BNE delay_game
 
-    LDA !ram_slowdown_mode
-    STA !ram_slowdown_frames
+    LDA $7EFFFC
+    STA $7FFB52
 
-    LDA !ram_slowdown_controller_1
+    LDA $7FFB54
     STA !IH_CONTROLLER_PRI_PREV
 
-    LDA !ram_slowdown_controller_2
+    LDA $7FFB56
     STA !IH_CONTROLLER_SEC_PREV
 
     JSL $809459
     JMP end_nmi
 
 delay_game:
-    CMP !ram_slowdown_mode
+    CMP $7EFFFC
     BNE +
 
     LDA !IH_CONTROLLER_PRI
     EOR !IH_CONTROLLER_PRI_NEW
-    STA !ram_slowdown_controller_1
+    STA $7FFB54
 
     LDA !IH_CONTROLLER_SEC
     EOR !IH_CONTROLLER_SEC_NEW
-    STA !ram_slowdown_controller_2
+    STA $7FFB56
 
 
-    LDA !ram_slowdown_frames
+    LDA $7FFB52
 
 +   DEC a
-    STA !ram_slowdown_frames
+    STA $7FFB52
     %a8()
     LDA #$01
     STA $05B4
@@ -158,18 +191,18 @@ delay_game:
     JMP end_delay
 
 pause_game:
-    LDA !ram_slowdown_frames
+    LDA $7FFB52
     BNE +
 
     INC A
-    STA !ram_slowdown_frames
+    STA $7FFB52
     LDA !IH_CONTROLLER_PRI
     EOR !IH_CONTROLLER_PRI_NEW
-    STA !ram_slowdown_controller_1
+    STA $7FFB54
 
     LDA !IH_CONTROLLER_SEC
     EOR !IH_CONTROLLER_SEC_NEW
-    STA !ram_slowdown_controller_2
+    STA $7FFB56
 
 
 +   LDA !IH_CONTROLLER_SEC_NEW
@@ -180,8 +213,8 @@ pause_game:
     BNE +
 
     LDA #$0000
-    STA !ram_slowdown_mode
-    STA !ram_slowdown_frames
+    STA $7EFFFC
+    STA $7FFB52
     JMP end_nmi
 
 +   %a8()
@@ -192,16 +225,16 @@ pause_game:
 
 frame_adv:
     LDA #$0000
-    STA !ram_slowdown_frames
-    LDA !ram_slowdown_controller_1
+    STA $7FFB52
+    LDA $7FFB54
     STA $97
-    LDA !ram_slowdown_controller_2
+    LDA $7FFB56
     STA $99
     JSL $809459
     JMP end_nmi
 
 end_delay:
-    LDA !ram_slowdown_frames
+    LDA $7FFB52
     BNE end_nmi
 
 end_nmi:
@@ -215,11 +248,11 @@ end_nmi:
 ;---RUNS DURING NORMAL GAMEPLAY---
 ih_room_timer_code:
     PHA
-    LDA !ram_gametime_room
+    LDA $7FFB00
     CMP #$EA5F
     BEQ +
     INC
-    STA !ram_gametime_room  ;increment room timer
+    STA $7FFB00  ;increment room timer
 
 +   PLA
     STZ $0A30 ; overwritten code
@@ -231,20 +264,20 @@ ih_door_exit_code:
     PHX
     PHY
 
-    LDA !ram_gametime_room_2 : STA !ram_last_gametime_room_2
-    LDA #$0000 : STA !ram_transition_flag
-    LDA #$0000 : STA !ram_shine_counter_1
+    LDA $7FFB0E : STA $7FFB10
+    LDA #$0000 : STA $7FFB16
+    LDA #$0000 : STA $7FFB30
 
     ; Update HUD
     JSL ih_update_hud_code
 
     ; Reset gametime/transition timer
     LDA #$0000
-    STA !ram_gametime_room_2
+    STA $7FFB0E
 
     ; Reset realtime timer
     LDA #$0000
-    STA !ram_realtime_room
+    STA $7FFB44
 
     PLY
     PLX
@@ -306,22 +339,22 @@ ih_door_trans_code:
 
 
     ; save and reset timers
-    LDA !ram_transition_flag : CMP #$0001 : BEQ FlagTrans
-    LDA #$0001 : STA !ram_transition_flag
+    LDA $7FFB16 : CMP #$0001 : BEQ FlagTrans
+    LDA #$0001 : STA $7FFB16
 
     ; calculate lag frames
-    LDA !ram_realtime_room
+    LDA $7FFB44
     SEC
-    SBC !ram_gametime_room_2
-    STA !ram_last_room_lag
+    SBC $7FFB0E
+    STA $7FFB48
 
-    LDA #$0000 : STA !ram_gametime_room_2
+    LDA #$0000 : STA $7FFB0E
 
-    LDA !ram_gametime_room : STA !ram_last_gametime_room
-    LDA #$0000 : STA !ram_gametime_room
+    LDA $7FFB00 : STA $7FFB02
+    LDA #$0000 : STA $7FFB00
 
-    LDA !ram_realtime_room : STA !ram_last_realtime_room
-    LDA #$0000 : STA !ram_realtime_room
+    LDA $7FFB44 : STA $7FFB46
+    LDA #$0000 : STA $7FFB44
 
 
     ; save temp variables
@@ -336,7 +369,7 @@ ih_door_trans_code:
     PLA : STA $12
 
     FlagTrans:
-    LDA #$0000 : STA !ram_transition_flag_2
+    LDA #$0000 : STA $7FFB2C
 
 
     ; Run standard code and return
@@ -359,18 +392,19 @@ ih_update_hud_code:
     PLB
     PLB
 
+
     STZ $4205
-    LDA !ram_last_gametime_room : STA $4204 : SEP #$20
+    LDA $7FFB02 : STA $4204 : SEP #$20
     LDA #$3C : STA $4206
     PHA : PLA : PHA : PLA : REP #$20
-    LDA $4214 : STA !ram_tmp_3 : LDA $4216 : STA !ram_tmp_4  ;divide frames by 60, save seconds, frames seperately
+    LDA $4214 : STA $7FFB08 : LDA $4216 : STA $7FFB0A  ;divide frames by 60, save seconds, frames seperately
 
     STZ $12 : STZ $14 : STZ $16 : STZ $18  ;clear for later use
 
-    LDA !ram_tmp_3 : JSR Hex2Dec : LDX #$007C : JSR Draw3  ;seconds -> decimal form and drawn on HUD
+    LDA $7FFB08 : JSR Hex2Dec : LDX #$007C : JSR Draw3  ;seconds -> decimal form and drawn on HUD
     LDA #$0CCB : STA $7EC682  ;decimal seperator on HUD
 
-    LDA !ram_tmp_4 : STA $4204 : SEP #$20
+    LDA $7FFB0A : STA $4204 : SEP #$20
     LDA #$0A : STA $4206
     PHA : PLA : PHA : PLA : REP #$20
     LDA $4214 : ASL A : STA $12  ;first digit of frames
@@ -381,17 +415,17 @@ ih_update_hud_code:
 
     ; realtime
     STZ $4205
-    LDA !ram_last_realtime_room : STA $4204 : SEP #$20
+    LDA $7FFB46 : STA $4204 : SEP #$20
     LDA #$3C : STA $4206
     PHA : PLA : PHA : PLA : REP #$20
-    LDA $4214 : STA !ram_tmp_1 : LDA $4216 : STA !ram_tmp_2  ;divide frames by 60, save seconds, frames seperately
+    LDA $4214 : STA $7FFB4C : LDA $4216 : STA $7FFB4E  ;divide frames by 60, save seconds, frames seperately
 
     STZ $12 : STZ $14 : STZ $16 : STZ $18  ;clear for later use
 
-    LDA !ram_tmp_1 : JSR Hex2Dec : LDX #$003C : JSR Draw3  ;seconds -> decimal form and drawn on HUD
+    LDA $7FFB4C : JSR Hex2Dec : LDX #$003C : JSR Draw3  ;seconds -> decimal form and drawn on HUD
     LDA #$0CCB : STA $7EC642  ;decimal seperator on HUD
 
-    LDA !ram_tmp_2 : STA $4204 : SEP #$20
+    LDA $7FFB4E : STA $4204 : SEP #$20
     LDA #$0A : STA $4206
     PHA : PLA : PHA : PLA : REP #$20
     LDA $4214 : ASL A : STA $12  ;first digit of frames
@@ -401,34 +435,35 @@ ih_update_hud_code:
     LDX #$003C : JSR CheckLeadZero
 
 
+
     ;--item percent--
     ItemPercentUpdate:
     LDA #$0000
-    STA !ram_pct_1
+    STA $7FFB20
     CLC
-    LDA !ram_pct_1 : CMP !ram_pct_2 : BEQ EtankMax
+    LDA $7FFB20 : CMP $7FFB26 : BEQ EtankMax
 
-    LDA $09C4 : SBC #$0063 : CLC : INC : JSR Divide100 : LDA $4214 : STA !ram_etanks
+    LDA $09C4 : SBC #$0063 : CLC : INC : JSR Divide100 : LDA $4214 : STA $7FFB12
     LDA $09C8 : JSR CalcItem : LDA $09CC : JSR CalcItem : LDA $09D0 : JSR CalcItem
     LDA $09D4 : JSR Divide100
     LDX #$0001 : JSR CalcLargeItem
-    LDA !ram_pct_1 : STA !ram_pct_1 : STA !ram_pct_2
-    LDA !ram_pct_1 : JSR Hex2Dec : LDX #$0012 : JSR Draw3  ;percent counter -> decimal form and drawn on HUD
+    LDA $7FFB20 : STA $7FFB20 : STA $7FFB26
+    LDA $7FFB20 : JSR Hex2Dec : LDX #$0012 : JSR Draw3  ;percent counter -> decimal form and drawn on HUD
     LDA #$0C0A : STA $7EC618  ;percent symbol on HUD
     LDX #$0012 : JSR CheckLeadZero : LDA $7EC616 : CMP #$0057 : BNE EtankMax : LDA #$0C09 : STA $7EC616
 
     ;--/item percent--
 
     EtankMax:
-    LDA !ram_etanks : CMP !ram_max_etanks : BEQ RoomTrans : STA !ram_max_etanks : JSR Hex2Dec : LDX #$0054 : JSR Draw3
+    LDA $7FFB12 : CMP $7FFB24 : BEQ RoomTrans : STA $7FFB24 : JSR Hex2Dec : LDX #$0054 : JSR Draw3
     LDX #$0054 : JSR CheckLeadZero
 
     RoomTrans:
-    LDA !ram_last_gametime_room_2 : CMP !ram_door_lag_frames : BEQ LagFrames : STA !ram_door_lag_frames : JSR Hex2Dec : LDX #$00C2 : JSR Draw3
+    LDA $7FFB10 : CMP $7FFB28 : BEQ LagFrames : STA $7FFB28 : JSR Hex2Dec : LDX #$00C2 : JSR Draw3
     LDX #$00C2 : JSR CheckLeadZero : LDA $7EC6C6 : CMP #$0057 : BNE LagFrames : LDA #$0C09 : STA $7EC6C6
 
     LagFrames:
-    LDA !ram_last_room_lag : JSR Hex2Dec : LDX #$00BC : JSR Draw3
+    LDA $7FFB48 : JSR Hex2Dec : LDX #$00BC : JSR Draw3
     LDX #$00BC : JSR CheckLeadZero : LDA $7EC6C0 : CMP #$0057 : BNE EndOfHudRoutine : LDA #$0C09 : STA $7EC6C0
 
 
@@ -456,7 +491,7 @@ ih_hud_code:
     ; -- input display--
     ; -- check if we want to update --
     LDA !IH_CONTROLLER_PRI
-    CMP !ram_ih_controller
+    CMP $7FFB42
     BEQ status_display
 
     ; -- read input
@@ -490,10 +525,10 @@ ih_hud_code:
     BNE -
 
     TYA
-    STA !ram_ih_controller
+    STA $7FFB42
 
 status_display:
-    LDA !ram_display_mode
+    LDA $7FFB60
     BNE +
     JMP EnemyHP
 +   CMP #$0001
@@ -521,10 +556,10 @@ status_display:
 
     ;--shine timer--
     ShineTimer:
-    LDA !ram_shine_counter_1 : CMP #$000A : BNE ShineTimerCont : LDA #$0000 : STA !ram_shine_counter_1
+    LDA $7FFB30 : CMP #$000A : BNE ShineTimerCont : LDA #$0000 : STA $7FFB30
     ShineTimerCont:
-    LDA !ram_shine_counter_1 : INC : STA !ram_shine_counter_1
-    LDA !ram_shine_counter_2 : CMP !ram_shine_counter_3 : BEQ shine_done : STA !ram_shine_counter_3 : CMP #$0000 : BNE ShineCharge : LDA #$00B4
+    LDA $7FFB30 : INC : STA $7FFB30
+    LDA $7FFB14 : CMP $7FFB1A : BEQ shine_done : STA $7FFB1A : CMP #$0000 : BNE ShineCharge : LDA #$00B4
     ShineCharge:
     JSR Hex2Dec : LDX #$008A : JSR Draw3
     LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE shine_done : LDA #$0C09 : STA $7EC68E
@@ -535,7 +570,7 @@ shine_done:
     ;--charge timer--
     ChargeTimer:
     CLC
-    LDA #$003D : SBC $0CD0 : CMP !ram_charge_counter : BEQ charge_done : STA !ram_charge_counter : CMP #$0000 : BPL Charging : LDA #$0000
+    LDA #$003D : SBC $0CD0 : CMP $7FFB1C : BEQ charge_done : STA $7FFB1C : CMP #$0000 : BPL Charging : LDA #$0000
     Charging:
     JSR Hex2Dec : LDX #$008A : JSR Draw3
     LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE charge_done : LDA #$0C09 : STA $7EC68E
@@ -546,7 +581,7 @@ charge_done:
     ;--xfactor timer--
     Xfactor:
     CLC
-    LDA #$0079 : SBC $0CD0 : CMP !ram_xfac_counter : BEQ + : STA !ram_xfac_counter : JSR Hex2Dec : LDX #$008A : JSR Draw3
+    LDA #$0079 : SBC $0CD0 : CMP $7FFB1E : BEQ + : STA $7FFB1E : JSR Hex2Dec : LDX #$008A : JSR Draw3
     LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
 +   JMP Etanks
     ;--/xfactor timer--
@@ -554,7 +589,7 @@ charge_done:
     ;--dash counter-- ;
     DashCounter:
     CLC
-    LDA $0B3F : AND #$00FF : CMP !ram_dash_counter : BEQ + : STA !ram_dash_counter : JSR Hex2Dec : LDX #$008A : JSR Draw3
+    LDA $0B3F : AND #$00FF : CMP $7FFB38 : BEQ + : STA $7FFB38 : JSR Hex2Dec : LDX #$008A : JSR Draw3
 ;    LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
 +   JMP Etanks
     ;--/dash counter--
@@ -562,7 +597,7 @@ charge_done:
     ;--motherbrain hp--
     MotherBrainHP:
     LDA $0E58 : STA $12 : LDY #$0014
-    LDA $0FCC : CMP !ram_mb_hp : BEQ + : STA !ram_mb_hp
+    LDA $0FCC : CMP $7FFB3E : BEQ + : STA $7FFB3E
     JSR Hex2Dec : LDX $12 : LDA NumberGFXTable,X : STA $7EC688 : LDX #$008A : JSR Draw3
     LDX #$0088 : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
 +   JMP Etanks
@@ -571,7 +606,7 @@ charge_done:
     ;--vertical speed-- ;
     VerticalSpeed:
     CLC
-    LDA $0B2E : CMP !ram_vertical_speed : BEQ + : STA !ram_vertical_speed : JSR Hex2Dec : LDX #$008A : JSR Draw3
+    LDA $0B2E : CMP $7FFB3C : BEQ + : STA $7FFB3C : JSR Hex2Dec : LDX #$008A : JSR Draw3
     LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
 +   JMP Etanks
     ;--/vertical speed--
@@ -579,7 +614,7 @@ charge_done:
     ;--iframe timer-- ;
     IFrameTimer:
     CLC
-    LDA $18A8 : CMP !ram_iframe_counter : BEQ + : STA !ram_iframe_counter : JSR Hex2Dec : LDX #$008A : JSR Draw3
+    LDA $18A8 : CMP $7FFB3A : BEQ + : STA $7FFB3A : JSR Hex2Dec : LDX #$008A : JSR Draw3
     LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
 +   JMP Etanks
     ;--/iframe timer--
@@ -587,7 +622,7 @@ charge_done:
     ; enemy hp
     EnemyHP:
     LDA $0E58 : STA $12 : LDY #$0014
-    LDA $0F8C : CMP !ram_enemy_hp : BEQ Etanks : STA !ram_enemy_hp
+    LDA $0F8C : CMP $7FFB40 : BEQ Etanks : STA $7FFB40
     JSR Hex2Dec : LDX $12 : LDA NumberGFXTable,X : STA $7EC688 : LDX #$008A : JSR Draw3
     LDX #$0088 : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE Etanks : LDA #$0C09 : STA $7EC68E
 
@@ -642,20 +677,20 @@ charge_done:
     STA $4204 : SEP #$20
     LDA #$64 : STA $4206
     PHA : PLA : PHA : PLA : REP #$20
-    LDA $4214 : ADC !ram_pct_1 : STA !ram_pct_1
+    LDA $4214 : ADC $7FFB20 : STA $7FFB20
     RTS
 
     CalcItem:
     STZ $4214 : STA $4204 : SEP #$20
     LDA #$05 : STA $4206
     PHA : PLA : PHA : PLA : REP #$20
-    LDA $4214 : ADC !ram_pct_1 : STA !ram_pct_1
+    LDA $4214 : ADC $7FFB20 : STA $7FFB20
     RTS
 
     CalcLargeItem:
     LDA $09A4 : STX $12 : AND $12 : CMP $12 : BEQ AddItem : CPX #$8000 : BEQ EndLI : BRA AgainLI
         AddItem:
-        LDA !ram_pct_1 : INC : STA !ram_pct_1
+        LDA $7FFB20 : INC : STA $7FFB20
 
         AgainLI:
         CPX #$8000 : BEQ EndLI : TXA : ASL A : TAX : BRA CalcLargeItem
@@ -669,24 +704,24 @@ charge_done:
         STX $12 : AND $12 : CMP $12 : BEQ AddBeam : TXA : ASL A : TAX : BRA CalcBeam
 
         AddBeam:
-        REP #$20 : LDA !ram_pct_1 : INC : STA !ram_pct_1 : TXA : ASL A : TAX : SEP #$20 : BRA CalcBeam
+        REP #$20 : LDA $7FFB20 : INC : STA $7FFB20 : TXA : ASL A : TAX : SEP #$20 : BRA CalcBeam
 
         ChargeBeamCheck:
         CPX $10 : BEQ ChargeBeam : BRA PostChargeCheck
             ChargeBeam:
             LDA $09A9 : CMP #$10 : BEQ AddCharge : REP #$20 : REP #$10 : RTS
                 AddCharge:
-                REP #$20 : REP #$10 : LDA !ram_pct_1 : INC : STA !ram_pct_1 : RTS
+                REP #$20 : REP #$10 : LDA $7FFB20 : INC : STA $7FFB20 : RTS
 
 
 ih_game_loop_code:
     PHA
 
-    LDA !ram_gametime_room_2
+    LDA $7FFB0E
     INC
-    STA !ram_gametime_room_2
+    STA $7FFB0E
 
-    LDA !ram_magic_pants_1
+    LDA $7FFB64
     BEQ +
     JSR magic_pants
 
@@ -720,78 +755,78 @@ end_main:
 
 toggle_pause:
     LDA #$FFFF
-    STA !ram_slowdown_mode
+    STA $7EFFFC
     LDA #$0000
-    STA !ram_slowdown_frames
+    STA $7FFB52
     JMP end_main
 
 toggle_slowdown:
-    LDA !ram_slowdown_mode
+    LDA $7EFFFC
     INC A
-    STA !ram_slowdown_mode
+    STA $7EFFFC
     JMP end_main
 
 toggle_speedup:
-    LDA !ram_slowdown_mode
+    LDA $7EFFFC
     BEQ +
     DEC A
-    STA !ram_slowdown_mode
+    STA $7EFFFC
 +   JMP end_main
 
 reset_slowdown:
     LDA #$0000
-    STA !ram_slowdown_mode
-    STA !ram_slowdown_frames
+    STA $7EFFFC
+    STA $7FFB52
     JMP end_main
 
 inc_statusdisplay:
-    LDA !ram_display_mode
+    LDA $7FFB60
     INC A
     CMP #$0008
     BNE +
     LDA #$0000
-+   STA !ram_display_mode
++   STA $7FFB60
     JMP update_status
 
 dec_statusdisplay:
-    LDA !ram_display_mode
+    LDA $7FFB60
     DEC A
     CMP #$FFFF
     BNE +
     LDA #$0007
-+   STA !ram_display_mode
++   STA $7FFB60
     JMP update_status
 
 
 update_status:
     LDA #$0000
-    STA !ram_shine_counter_1
-    STA !ram_shine_counter_2
-    STA !ram_charge_counter
-    STA !ram_xfac_counter
+    STA $7FFB30
+    STA $7FFB14
+    STA $7FFB1C
+    STA $7FFB1E
     INC A
-    STA !ram_dash_counter
-    STA !ram_iframe_counter
-    STA !ram_vertical_speed
-    STA !ram_mb_hp
-    STA !ram_enemy_hp
-    STA !ram_shine_counter_3
+    STA $7FFB38
+    STA $7FFB3A
+    STA $7FFB3C
+    STA $7FFB3E
+    STA $7FFB40
+    STA $7FFB1A
     JMP end_main
 
 magic_pants:
     LDA $0A96
     CMP #$0009
     BEQ magic_pants_check
-    LDA !ram_magic_pants_2
+    LDA $7FFB66
     BEQ +
-    LDA !ram_magic_pants_3
+    LDA $7FFB70
     STA $7EC194
-    LDA !ram_magic_pants_4
+    LDA $7FFB72
     STA $7EC196
-    LDA !ram_magic_pants_5
+    LDA $7FFB74
     STA $7EC19E
     LDA #$0000
-    STA !ram_magic_pants_2
+    STA $7FFB66
 +   RTS
 
 magic_pants_check:
@@ -803,34 +838,34 @@ magic_pants_check:
     RTS
 
 magic_pants_flash:
-    LDA !ram_magic_pants_2
+    LDA $7FFB66
     BNE +
     LDA $7EC194
-    STA !ram_magic_pants_3
+    STA $7FFB70
     LDA $7EC196
-    STA !ram_magic_pants_4
+    STA $7FFB72
     LDA $7EC19E
-    STA !ram_magic_pants_5
+    STA $7FFB74
 +   LDA #$FFFF
     STA $7EC194
     STA $7EC196
     STA $7EC19E
-    STA !ram_magic_pants_2
+    STA $7FFB66
     RTS
 
 
 ih_get_item_code:
     PHA
-    LDA !ram_pct_2 : INC : STA !ram_pct_1 : STA !ram_pct_2
+    LDA $7FFB26 : INC : STA $7FFB20 : STA $7FFB26
 
     ; calculate lag frames
-    LDA !ram_realtime_room
+    LDA $7FFB44
     SEC
-    SBC !ram_gametime_room_2
-    STA !ram_last_room_lag
+    SBC $7FFB0E
+    STA $7FFB48
 
-    LDA !ram_gametime_room : STA !ram_last_gametime_room
-    LDA !ram_realtime_room : STA !ram_last_realtime_room
+    LDA $7FFB00 : STA $7FFB02
+    LDA $7FFB44 : STA $7FFB46
 
     ; save temp variables
     LDA $12 : PHA
@@ -850,7 +885,7 @@ ih_get_item_code:
 
 ih_shinespark_code:
     DEC
-    STA !ram_shine_counter_2
+    STA $7FFB14
     STA $0A68
     RTL
 
