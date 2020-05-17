@@ -23,7 +23,7 @@ This is not an official release, but I'm calling it v1.43 anyway because it make
 
 - GT Code and RBO added to Equipment options
 - Baby Slowdown added to Misc options (UNHchabo)
-- Dash Counter, Vertical Speed, and I-Frame Timer added to InfoHUD display options (UNHchabo)
+- Dash Counter, Vertical Speed, I-Frame Timer, Mother Brain HP, X Position, and Y Position added to InfoHUD display options (UNHchabo)
 - Hold Up/Down to scroll through menus (Pinkus)
 - Teleporting from Ceres to Zebes is fixed (Pinkus)
 - Samus can move immediately after teleporting (Pinkus)

@@ -1032,6 +1032,8 @@ InfoHudMenu:
 	DW #$007F, #$FB60, #$0004, #str_dashcounter
 	DW #$007F, #$FB60, #$0005, #str_vspeed
 	DW #$007F, #$FB60, #$0006, #str_iframes
+	DW #$007F, #$FB60, #$0007, #str_xpos
+	DW #$007F, #$FB60, #$0008, #str_ypos
 	DW #$FFFF
 
 str_enemyhp: DB "ENEMY HP", #$00
@@ -1042,6 +1044,8 @@ str_mbhp: DB "MOTHER BRAIN HP", #$00
 str_dashcounter: DB "DASH COUNTER", #$00
 str_vspeed: DB "VERTICAL SPEED", #$00
 str_iframes: DB "IFRAME TIMER", #$00
+str_xpos: DB "X POSITION", #$00
+str_ypos: DB "Y POSITION", #$00
 
 GameMenu:
 	DW #$007E, #$09E2, #$0001, #str_japanesetext

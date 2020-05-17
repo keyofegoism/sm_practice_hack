@@ -534,6 +534,12 @@ status_display:
 +	CMP #$0006
 	BNE +
 	JMP IFrameTimer
++	CMP #$0007
+	BNE +
+	JMP XPosition
++	CMP #$0008
+	BNE +
+	JMP YPosition
 +	JMP EnemyHP
 
 	;--charge timer--
@@ -587,6 +593,21 @@ charge_done:
 	LDX #$008A : JSR CheckLeadZero : LDA $7EC68E : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
 +	JMP Etanks
 	;--/iframe timer--
+
+	;--x-position--;
+	XPosition:
+	CLC
+	LDA $0AF6 : CMP $7FFB34 : BEQ + : STA $7FFB34
+	JSR Hex2Dec : LDX #$0088 : JSR Draw3 : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
++	JMP Etanks
+	;--/x-position--;
+
+	;--y-position--;
+	YPosition:
+	LDA $0AFA : CMP $7FFB36 : BEQ + : STA $7FFB36
+	JSR Hex2Dec : LDX #$0088 : JSR Draw3 : CMP #$0057 : BNE + : LDA #$0C09 : STA $7EC68E
++	JMP Etanks
+	;--/y-position--;
 
 	; enemy hp
 	EnemyHP:
