@@ -19,15 +19,6 @@ pre_load_state:
 	sta !SRAM_MUSIC_BANK
 	lda !MUSIC_TRACK
 	sta !SRAM_MUSIC_TRACK
-
-	; Rerandomize
-	lda $7ffb80 : and #$00ff
-	beq +
-	lda $05e5
-	sta $770080
-	lda $05b6
-	sta $770082
-	+
 	rts
 
 post_load_state:
@@ -51,14 +42,6 @@ music_load_track:
 	jsl !MUSIC_ROUTINE
 
 music_done:
-	; Rerandomize
-	lda $7ffb80 : and #$00ff
-	beq +
-	lda $770080
-	sta $05e5
-	lda $770082
-	sta $05b6
-	+
 	rts
 ; end of post_load_state
 
