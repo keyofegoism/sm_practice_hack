@@ -94,8 +94,8 @@ preset_category_submenus:
     dw #PresetsMenuKpdr25
     dw #PresetsMenu14ice
     dw #PresetsMenu14speed
-    dw #PresetsMenuHundo
     dw #PresetsMenu100early
+    dw #PresetsMenuHundo
     dw #PresetsMenuRbo
     dw #PresetsMenuAllbosskpdr
     dw #PresetsMenuAllbosspkdr
