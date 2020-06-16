@@ -997,7 +997,7 @@ preset_100early_upper_norfair_postcrocomire:
     dl $7E09C2 : db $02 : dw $01F3 ; Health
     dl $7E09C4 : db $02 : dw $01F3 ; Max helath
     dl $7E09C6 : db $02 : dw $0028 ; Missiles
-    dl $7E09CA : db $02 : dw $0001 ; Supers
+    dl $7E09CA : db $02 : dw $0002 ; Supers
     dl $7E09D6 : db $02 : dw $0064 ; Reserves
     dl $7E0A1C : db $02 : dw $0001 ; Samus position/state
     dl $7E0A1E : db $02 : dw $0008 ; More position/state
@@ -1023,7 +1023,7 @@ preset_100early_upper_norfair_leaving_power_bombs:
     dl $7E0911 : db $02 : dw $0000 ; Screen X position in pixels
     dl $7E0913 : db $02 : dw $4400 ; Screen subpixel Y position
     dl $7E09C2 : db $02 : dw $01A2 ; Health
-    dl $7E09CA : db $02 : dw $0000 ; Supers
+    dl $7E09CA : db $02 : dw $0001 ; Supers
     dl $7E09CE : db $02 : dw $0005 ; Pbs
     dl $7E09D0 : db $02 : dw $0005 ; Max pbs
     dl $7E0AF6 : db $02 : dw $00A7 ; Samus X
