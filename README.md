@@ -1,7 +1,7 @@
 # sm_practice_hack
 Super Metroid Practice Hack for PAL
 
-This is an older version of the Practice Hack taken before Pinkus rewrote the bulk of it and dropped support for PAL. Some of the newer (minor) features from the rewrite have been ported to this version. If you're not looking to practice on PAL, check out the main project's source at https://github.com/tewtal/sm_practice_hack or use the website to patch your SM rom automatically: https://smpractice.speedga.me
+This is an older version of the Practice Hack taken before Pinkus rewrote the bulk of it and dropped support for PAL. Some of the newer (minor) features from the rewrite have been ported to this version. If you're not looking to practice on PAL, check out the main project's source at https://github.com/tewtal/sm_practice_hack or use the website to download a patch for your SM rom: https://smpractice.speedga.me
 
 
 ## Getting Started:
@@ -28,9 +28,9 @@ This is not an official release, but I'm calling it v1.43 anyway because it make
 - Teleporting from Ceres to Zebes is fixed (Pinkus)
 - Samus can move immediately after teleporting (Pinkus)
 - Shinespark Timer removed from InfoHUD display options to fix infinite timer bug
+- Fix room timers using 60 frames per second instead of 50
 
 
 ## Known Issues:
 
 * The counter for game time in the current room will erroneously pause in some situations where Samus is unable to move. Examples include time spent in the InfoHUD menu and being grabbed by the bowling chozo or Ridley during the death animation. This does not affect overall game time displayed under Grapple and Xray.
-* Room timers still consider 60 frames as 1 second.

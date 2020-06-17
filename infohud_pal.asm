@@ -380,9 +380,9 @@ ih_update_hud_code:
 	
 	STZ $4205
 	LDA $7FFB02 : STA $4204 : SEP #$20
-	LDA #$3C : STA $4206
+	LDA #$32 : STA $4206
 	PHA : PLA : PHA : PLA : REP #$20
-	LDA $4214 : STA $7FFB08 : LDA $4216 : STA $7FFB0A  ;divide frames by 60, save seconds, frames seperately
+	LDA $4214 : STA $7FFB08 : LDA $4216 : STA $7FFB0A  ;divide frames by 50 for PAL, save seconds, frames seperately
 	
 	STZ $12 : STZ $14 : STZ $16 : STZ $18  ;clear for later use
 	
@@ -401,9 +401,9 @@ ih_update_hud_code:
 	; realtime
 	STZ $4205
 	LDA $7FFB46 : STA $4204 : SEP #$20
-	LDA #$3C : STA $4206
+	LDA #$32 : STA $4206
 	PHA : PLA : PHA : PLA : REP #$20
-	LDA $4214 : STA $7FFB4C : LDA $4216 : STA $7FFB4E  ;divide frames by 60, save seconds, frames seperately
+	LDA $4214 : STA $7FFB4C : LDA $4216 : STA $7FFB4E  ;divide frames by 50 for PAL, save seconds, frames seperately
 	
 	STZ $12 : STZ $14 : STZ $16 : STZ $18  ;clear for later use
 	
