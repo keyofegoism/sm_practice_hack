@@ -90,6 +90,8 @@ preset_category_submenus:
     dw #PresetsMenuSpazer
     dw #PresetsMenuGtclassic
     dw #PresetsMenuKpdr21
+    dw #PresetsMenuNgplasma
+    dw #PresetsMenuNghyper
     dw #PresetsMenuPrkd
     dw #PresetsMenuKpdr25
     dw #PresetsMenu14ice
@@ -108,6 +110,8 @@ preset_category_banks:
     dw #PresetsMenuSpazer>>16
     dw #PresetsMenuGtclassic>>16
     dw #PresetsMenuKpdr21>>16
+    dw #PresetsMenuNgplasma>>16
+    dw #PresetsMenuNghyper>>16
     dw #PresetsMenuPrkd>>16
     dw #PresetsMenuKpdr25>>16
     dw #PresetsMenu14ice>>16
@@ -188,6 +192,8 @@ incsrc presets/allbosskpdr_menu.asm
 incsrc presets/allbosspkdr_menu.asm
 incsrc presets/allbossprkd_menu.asm
 incsrc presets/spazer_menu.asm
+incsrc presets/ngplasma_menu.asm
+incsrc presets/nghyper_menu.asm
 
 pullpc
 
@@ -637,6 +643,8 @@ misc_preset_cateory:
         db #$28, "y    SPAZER", #$FF ; Note the "y" ;)
         db #$28, "y GTCLASSIC", #$FF
         db #$28, "y      KPDR", #$FF
+        db #$28, "y NG PLASMA", #$FF
+        db #$28, "y  NG HYPER", #$FF
         db #$28, "y      PRKD", #$FF
         db #$28, "y  KPDR ICE", #$FF
         db #$28, "y    14 ICE", #$FF

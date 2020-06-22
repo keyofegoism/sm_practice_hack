@@ -168,6 +168,8 @@ preset_banks:
   dw preset_spazer_crateria_ceres_elevator>>16
   dw preset_gtclassic_crateria_ceres_elevator>>16
   dw preset_kpdr21_crateria_ceres_elevator>>16
+  dw preset_ngplasma_ceres_station_ceres_elevator>>16
+  dw preset_nghyper_ceres_station_ceres_elevator>>16
   dw preset_prkd_bombs_elevator>>16
   dw preset_kpdr25_bombs_ceres_elevator>>16
   dw preset_14ice_crateria_ceres_elevator>>16
@@ -312,7 +314,7 @@ org $E38000
   ; 2568 (length in hex)
   print pc, " allbossprkd data start"
   incsrc presets/allbossprkd_data.asm
-  print pc, " allbossprkd data end"    
+  print pc, " allbossprkd data end"
 
 org $E48000
   
@@ -325,3 +327,15 @@ org $E48000
   print pc, " spazer data start"
   incsrc presets/spazer_data.asm
   print pc, " spazer data end"
+
+org $E58000
+  
+  ; 1B5A (length in hex)
+  print pc, " ngplasma data start"
+  incsrc presets/ngplasma_data.asm
+  print pc, " ngplasma data end"
+
+  ; 1B70 (length in hex)
+  print pc, " nghyper data start"
+  incsrc presets/nghyper_data.asm
+  print pc, " nghyper data end"
