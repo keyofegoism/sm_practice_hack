@@ -22,7 +22,7 @@ The build script will create two versions of the practice hack. The rom that inc
 This is not an official release, but I'm calling it v1.43 anyway because it makes it easier to reference. This is my attempt to resurrect PAL support with as many of the new features as I can blindly port with no ASM knowledge (original authors in parenthesis). Here's what's new since the v1.42 found at https://hacks.speedga.me/sm.html
 
 - X-Ice, Iceboots, Speedboots, GT Code and RBO added to Equipment options
-- Baby Slowdown added to Misc options (UNHchabo)
+- Baby Slowdown (UNHchabo) and Fanfare (Pinkus) toggles added to Misc options
 - Dash Counter, Vertical Speed, I-Frame Timer, Mother Brain HP, X Position, and Y Position added to InfoHUD display options (UNHchabo)
 - Hold Up/Down to scroll through menus (Pinkus)
 - Teleporting from Ceres to Zebes is fixed (Pinkus)

@@ -97,6 +97,7 @@ ih_init_code:
 	STA $7FFB4C
 	STA $7FFB4E
 	STA $7EFFFC ; slowdown mode
+	STA $7EFFFE ; slowdown mode
 	STA $7FFB52 ; slowdown frames
 	STA $7FFB60 ; display mode
 	STA $7FFB62 ; test thing

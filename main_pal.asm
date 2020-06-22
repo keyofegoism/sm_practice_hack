@@ -13,3 +13,4 @@ incsrc infohud_pal.asm ; Super Metroid InfoHUD / Practice features
 incsrc menu_cfg.asm ; Super Metroid Menu Configuration
 incsrc menu.asm ; Super Metroid Menu
 incsrc misc.asm
+incsrc fanfare.asm

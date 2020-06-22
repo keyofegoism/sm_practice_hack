@@ -939,12 +939,14 @@ MiscMenu:
 	DW #$007E, #$0A68, #$0001, #str_flashsuit			; and the value of given parameter
 	DW #$007E, #$0A76, #$0001, #str_hyperbeam			; if the #$1000 bit is also set, this instead changes to toggling
 	DW #$007E, #$0A66, #$0002, #str_babyslowdown			; only the bits specified in the parameter as a bitmask
+	DW #$007E, #$FFFE, #$0001, #str_fanfare
 	DW #$FFFF							; 
 
 str_bluesuit: DB "BLUE SUIT", #$00
 str_flashsuit: DB "FLASH SUIT", #$00
 str_hyperbeam: DB "HYPER BEAM", #$00
 str_babyslowdown: DB "BABY SLOWDOWN", #$00
+str_fanfare: DB "FANFARE", #$00
 
 ; Event Menu
 EventMenu:
