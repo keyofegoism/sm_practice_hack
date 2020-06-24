@@ -169,11 +169,11 @@ preset_banks:
   dw preset_gtclassic_crateria_ceres_elevator>>16
   dw preset_kpdr21_crateria_ceres_elevator>>16
   dw preset_ngplasma_ceres_station_ceres_elevator>>16
-  dw preset_nghyper_ceres_station_ceres_elevator>>16
   dw preset_prkd_bombs_elevator>>16
   dw preset_kpdr25_bombs_ceres_elevator>>16
   dw preset_14ice_crateria_ceres_elevator>>16
   dw preset_14speed_crateria_ceres_elevator>>16
+  dw preset_nghyper_ceres_station_ceres_elevator>>16
   dw preset_100early_crateria_ceres_elevator>>16
   dw preset_hundo_bombs_ceres_elevator>>16
   dw preset_rbo_bombs_ceres_elevator>>16

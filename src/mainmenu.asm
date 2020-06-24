@@ -91,11 +91,11 @@ preset_category_submenus:
     dw #PresetsMenuGtclassic
     dw #PresetsMenuKpdr21
     dw #PresetsMenuNgplasma
-    dw #PresetsMenuNghyper
     dw #PresetsMenuPrkd
     dw #PresetsMenuKpdr25
     dw #PresetsMenu14ice
     dw #PresetsMenu14speed
+    dw #PresetsMenuNghyper
     dw #PresetsMenu100early
     dw #PresetsMenuHundo
     dw #PresetsMenuRbo
@@ -111,11 +111,11 @@ preset_category_banks:
     dw #PresetsMenuGtclassic>>16
     dw #PresetsMenuKpdr21>>16
     dw #PresetsMenuNgplasma>>16
-    dw #PresetsMenuNghyper>>16
     dw #PresetsMenuPrkd>>16
     dw #PresetsMenuKpdr25>>16
     dw #PresetsMenu14ice>>16
     dw #PresetsMenu14speed>>16
+    dw #PresetsMenuNghyper>>16
     dw #PresetsMenu100early>>16
     dw #PresetsMenuHundo>>16
     dw #PresetsMenuRbo>>16
@@ -177,23 +177,23 @@ mm_goto_ctrlsmenu:
 pushpc
 
 org $fe8000
-incsrc presets/prkd_menu.asm
-incsrc presets/kpdr21_menu.asm
-incsrc presets/hundo_menu.asm
-incsrc presets/100early_menu.asm
-incsrc presets/rbo_menu.asm
-incsrc presets/kpdr25_menu.asm
-incsrc presets/gtclassic_menu.asm
+incsrc presets/prkd_menu.asm   ; 960 (length in hex)
+incsrc presets/kpdr21_menu.asm   ; 7E2 (length in hex)
+incsrc presets/hundo_menu.asm   ; 1226 (length in hex)
+incsrc presets/100early_menu.asm   ; 1320 (length in hex)
+incsrc presets/rbo_menu.asm   ; D97 (length in hex)
+incsrc presets/kpdr25_menu.asm   ; 69F (length in hex)
+incsrc presets/gtclassic_menu.asm   ; 75E (length in hex)
+incsrc presets/14ice_menu.asm   ; 7C6 (length in hex)
+incsrc presets/14speed_menu.asm   ; 7EB (length in hex)
+incsrc presets/allbosskpdr_menu.asm   ; 942 (length in hex)
+incsrc presets/allbosspkdr_menu.asm   ; 9B0 (length in hex)
+incsrc presets/allbossprkd_menu.asm   ; 9BE (length in hex)
 
 org $ff8000
-incsrc presets/14ice_menu.asm
-incsrc presets/14speed_menu.asm
-incsrc presets/allbosskpdr_menu.asm
-incsrc presets/allbosspkdr_menu.asm
-incsrc presets/allbossprkd_menu.asm
-incsrc presets/spazer_menu.asm
-incsrc presets/ngplasma_menu.asm
-incsrc presets/nghyper_menu.asm
+incsrc presets/spazer_menu.asm   ; 72E (length in hex)
+incsrc presets/ngplasma_menu.asm   ; 85C (length in hex)
+incsrc presets/nghyper_menu.asm   ; 864 (length in hex)
 
 pullpc
 
@@ -642,19 +642,19 @@ misc_preset_cateory:
     db #$28, "Preset Category", #$FF
         db #$28, "y    SPAZER", #$FF ; Note the "y" ;)
         db #$28, "y GTCLASSIC", #$FF
-        db #$28, "y      KPDR", #$FF
+        db #$28, "y  ANY KPDR", #$FF
         db #$28, "y NG PLASMA", #$FF
-        db #$28, "y  NG HYPER", #$FF
-        db #$28, "y      PRKD", #$FF
+        db #$28, "y  ANY PRKD", #$FF
         db #$28, "y  KPDR ICE", #$FF
         db #$28, "y    14 ICE", #$FF
         db #$28, "y  14 SPEED", #$FF
+        db #$28, "y  NG HYPER", #$FF
         db #$28, "y 100 EARLY", #$FF
         db #$28, "y  100 LATE", #$FF
         db #$28, "y       RBO", #$FF
-        db #$28, "y  ALL KPDR", #$FF
-        db #$28, "y  ALL PKDR", #$FF
-        db #$28, "y  ALL PRKD", #$FF
+        db #$28, "y BOSS KPDR", #$FF
+        db #$28, "y BOSS PKDR", #$FF
+        db #$28, "y BOSS PRKD", #$FF
     db #$FF
 
 
