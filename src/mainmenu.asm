@@ -305,6 +305,7 @@ ToggleCategoryMenu:
     dw #cat_gt_code
     dw #cat_rbo
     dw #cat_any_glitched
+    dw #cat_cf_anywhere
     dw #cat_nothing
     dw #$0000
     %cm_header("TOGGLE CATEGORY")
@@ -334,8 +335,11 @@ cat_rbo:
 cat_any_glitched:
     %cm_jsr("Any% glitched", action_category, #$0007)
 
+cat_cf_anywhere:
+    %cm_jsr("Crystal Flash", action_category, #$0008)
+
 cat_nothing:
-    %cm_jsr("Nothing", action_category, #$0008)
+    %cm_jsr("Nothing", action_category, #$0009)
 
 
 action_category:
@@ -346,7 +350,7 @@ action_category:
     LDA.l .table, X : STA $7E09A4 : STA $7E09A2 : INX #2
 
     ; Beams
-    LDA.l .table, X : STA $7E09A8 : STA $7E09A6 : INX #2
+    LDA.l .table, X : STA $7E09A8 : AND #$FFFB : STA $7E09A6 : INX #2
 
     ; Health
     LDA.l .table, X : STA $7E09C2 : STA $7E09C4 : INX #2
@@ -375,14 +379,15 @@ action_category:
 
   .table
     ;  Items,  Beams,  Health, Miss,   Supers, PBs,    Reserv, Dummy
-    dw #$F32F, #$100F, #$05db, #$00E6, #$0032, #$0032, #$0190, #$0000        ;    100%
-    dw #$3125, #$1007, #$018F, #$000F, #$000A, #$0005, #$0000, #$0000        ;    any% new
+    dw #$F32F, #$100F, #$05DB, #$00E6, #$0032, #$0032, #$0190, #$0000        ;   100%
+    dw #$3125, #$1007, #$018F, #$000F, #$000A, #$0005, #$0000, #$0000        ;   any% new
     dw #$3325, #$100B, #$018F, #$000F, #$000A, #$0005, #$0000, #$0000        ;   any% old
-    dw #$1025, #$1002, #$018F, #$000A, #$000A, #$0005, #$0000, #$0000        ;    14% ice
-    dw #$3025, #$1000, #$018F, #$000A, #$000A, #$0005, #$0000, #$0000        ;    14% speed
+    dw #$1025, #$1002, #$018F, #$000A, #$000A, #$0005, #$0000, #$0000        ;   14% ice
+    dw #$3025, #$1000, #$018F, #$000A, #$000A, #$0005, #$0000, #$0000        ;   14% speed
     dw #$F32F, #$100F, #$02BC, #$0064, #$0014, #$0014, #$012C, #$0000        ;   gt code
     dw #$710C, #$1001, #$031F, #$001E, #$0019, #$0014, #$0064, #$0000        ;   rbo
-    dw #$9004, #$0000, #$00C7, #$0005, #$0005, #$0005, #$0000, #$0000        ;    any% glitched
+    dw #$9004, #$0000, #$00C7, #$0005, #$0005, #$0005, #$0000, #$0000        ;   any% glitched
+    dw #$F32F, #$100F, #$0031, #$01A4, #$005A, #$0063, #$0000, #$0000        ;   crystal flash
     dw #$0000, #$0000, #$0063, #$0000, #$0000, #$0000, #$0000, #$0000        ;   nothing
 }
 
