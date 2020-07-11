@@ -141,7 +141,7 @@ MainMenu:
     dw #mm_goto_rngmenu
     dw #mm_goto_ctrlsmenu
     dw #$0000
-    %cm_header("INSANEFIREBAT V2.1")
+    %cm_header("INSANEFIREBAT V2.1.1")
 
 mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
@@ -178,7 +178,7 @@ pushpc
 
 org $fe8000
 incsrc presets/prkd_menu.asm   ; 960 (length in hex)
-incsrc presets/kpdr21_menu.asm   ; 7E2 (length in hex)
+incsrc presets/kpdr21_menu.asm   ; F91 (length in hex)
 incsrc presets/hundo_menu.asm   ; 1226 (length in hex)
 incsrc presets/100early_menu.asm   ; 1320 (length in hex)
 incsrc presets/rbo_menu.asm   ; D97 (length in hex)
@@ -186,12 +186,12 @@ incsrc presets/kpdr25_menu.asm   ; 69F (length in hex)
 incsrc presets/gtclassic_menu.asm   ; 75E (length in hex)
 incsrc presets/14ice_menu.asm   ; 7C6 (length in hex)
 incsrc presets/14speed_menu.asm   ; 7EB (length in hex)
+
+org $ff8000
 incsrc presets/allbosskpdr_menu.asm   ; 942 (length in hex)
 incsrc presets/allbosspkdr_menu.asm   ; 9B0 (length in hex)
 incsrc presets/allbossprkd_menu.asm   ; 9BE (length in hex)
-
-org $ff8000
-incsrc presets/spazer_menu.asm   ; 72E (length in hex)
+incsrc presets/spazer_menu.asm   ; F91 (length in hex)
 incsrc presets/ngplasma_menu.asm   ; 85C (length in hex)
 incsrc presets/nghyper_menu.asm   ; 864 (length in hex)
 

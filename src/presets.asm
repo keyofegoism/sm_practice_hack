@@ -165,9 +165,9 @@ preset_to_memory:
 
 preset_banks:
 {
-  dw preset_spazer_crateria_ceres_elevator>>16
+  dw preset_spazer_crateria_ship>>16
   dw preset_gtclassic_crateria_ceres_elevator>>16
-  dw preset_kpdr21_crateria_ceres_elevator>>16
+  dw preset_kpdr21_crateria_ship>>16
   dw preset_ngplasma_ceres_station_ceres_elevator>>16
   dw preset_prkd_bombs_elevator>>16
   dw preset_kpdr25_bombs_ceres_elevator>>16
@@ -273,11 +273,6 @@ org $E18000
   incsrc presets/kpdr21_data.asm
   print pc, " kpdr21 data end"
 
-  ; 3274 (length in hex)
-  print pc, " rbo data start"
-  incsrc presets/rbo_data.asm
-  print pc, " rbo data end"
-
   ; 1E3A (length in hex)
   print pc, " kpdr25 data start"
   incsrc presets/kpdr25_data.asm
@@ -323,7 +318,7 @@ org $E48000
   incsrc presets/100early_data.asm
   print pc, " 100early data end"
 
-  ; 1F3F (length in hex)
+  ; XXXX (length in hex)
   print pc, " spazer data start"
   incsrc presets/spazer_data.asm
   print pc, " spazer data end"
@@ -339,3 +334,8 @@ org $E58000
   print pc, " nghyper data start"
   incsrc presets/nghyper_data.asm
   print pc, " nghyper data end"
+
+  ; 3274 (length in hex)
+  print pc, " rbo data start"
+  incsrc presets/rbo_data.asm
+  print pc, " rbo data end"
