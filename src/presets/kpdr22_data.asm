@@ -1,5 +1,5 @@
 ; Adds Kraid Etank
-preset_kpdr21_crateria_ship:
+preset_kpdr22_crateria_ship:
     dw #$0000
     dl $7E078B : db $02 : dw $0000 ; Elevator Index
     dl $7E078D : db $02 : dw $88FE ; DDB
@@ -217,8 +217,8 @@ preset_kpdr21_crateria_ship:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_parlor:
-    dw #preset_kpdr21_crateria_ship ; Crateria: Ship
+preset_kpdr22_crateria_parlor:
+    dw #preset_kpdr22_crateria_ship ; Crateria: Ship
     dl $7E090F : db $02 : dw $0000 ; Screen subpixel X position.
     dl $7E0911 : db $02 : dw $0000 ; Screen X position in pixels
     dl $7E0913 : db $02 : dw $1400 ; Screen subpixel Y position
@@ -230,8 +230,8 @@ preset_kpdr21_crateria_parlor:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_parlor_downback:
-    dw #preset_kpdr21_crateria_parlor ; Crateria: Parlor
+preset_kpdr22_crateria_parlor_downback:
+    dw #preset_kpdr22_crateria_parlor ; Crateria: Parlor
     dl $7E078D : db $02 : dw $8916 ; DDB
     dl $7E079B : db $02 : dw $92FD ; MDB
     dl $7E090F : db $02 : dw $F000 ; Screen subpixel X position.
@@ -243,8 +243,8 @@ preset_kpdr21_crateria_parlor_downback:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_climb_down:
-    dw #preset_kpdr21_crateria_parlor_downback ; Crateria: Parlor Downback
+preset_kpdr22_crateria_climb_down:
+    dw #preset_kpdr22_crateria_parlor_downback ; Crateria: Parlor Downback
     dl $7E090F : db $02 : dw $3000 ; Screen subpixel X position.
     dl $7E0913 : db $02 : dw $4000 ; Screen subpixel Y position
     dl $7E0915 : db $02 : dw $041F ; Screen Y position in pixels
@@ -253,8 +253,8 @@ preset_kpdr21_crateria_climb_down:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_pit_room:
-    dw #preset_kpdr21_crateria_climb_down ; Crateria: Climb Down
+preset_kpdr22_crateria_pit_room:
+    dw #preset_kpdr22_crateria_climb_down ; Crateria: Climb Down
     dl $7E078D : db $02 : dw $898E ; DDB
     dl $7E078F : db $02 : dw $0004 ; DoorOut Index
     dl $7E079B : db $02 : dw $96BA ; MDB
@@ -271,8 +271,8 @@ preset_kpdr21_crateria_pit_room:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_morph:
-    dw #preset_kpdr21_crateria_pit_room ; Crateria: Pit Room
+preset_kpdr22_crateria_morph:
+    dw #preset_kpdr22_crateria_pit_room ; Crateria: Pit Room
     dl $7E078D : db $02 : dw $8B9E ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $9E9F ; MDB
@@ -293,8 +293,8 @@ preset_kpdr21_crateria_morph:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_construction_zone:
-    dw #preset_kpdr21_crateria_morph ; Crateria: Morph
+preset_kpdr22_crateria_construction_zone:
+    dw #preset_kpdr22_crateria_morph ; Crateria: Morph
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E090F : db $02 : dw $2000 ; Screen subpixel X position.
     dl $7E0911 : db $02 : dw $0700 ; Screen X position in pixels
@@ -309,8 +309,8 @@ preset_kpdr21_crateria_construction_zone:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_construction_zone_revisit:
-    dw #preset_kpdr21_crateria_construction_zone ; Crateria: Construction Zone
+preset_kpdr22_crateria_construction_zone_revisit:
+    dw #preset_kpdr22_crateria_construction_zone ; Crateria: Construction Zone
     dl $7E078D : db $02 : dw $8EDA ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $A107 ; MDB
@@ -327,8 +327,8 @@ preset_kpdr21_crateria_construction_zone_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_pit_room_revisit:
-    dw #preset_kpdr21_crateria_construction_zone_revisit ; Crateria: Construction Zone Revisit
+preset_kpdr22_crateria_pit_room_revisit:
+    dw #preset_kpdr22_crateria_construction_zone_revisit ; Crateria: Construction Zone Revisit
     dl $7E078D : db $02 : dw $8EB6 ; DDB
     dl $7E079B : db $02 : dw $97B5 ; MDB
     dl $7E079F : db $02 : dw $0000 ; Region
@@ -346,8 +346,8 @@ preset_kpdr21_crateria_pit_room_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_climb_up:
-    dw #preset_kpdr21_crateria_pit_room_revisit ; Crateria: Pit Room Revisit
+preset_kpdr22_crateria_climb_up:
+    dw #preset_kpdr22_crateria_pit_room_revisit ; Crateria: Pit Room Revisit
     dl $7E078D : db $02 : dw $8B92 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $975C ; MDB
@@ -365,8 +365,8 @@ preset_kpdr21_crateria_climb_up:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_parlor_revisit:
-    dw #preset_kpdr21_crateria_climb_up ; Crateria: Climb Up
+preset_kpdr22_crateria_parlor_revisit:
+    dw #preset_kpdr22_crateria_climb_up ; Crateria: Climb Up
     dl $7E078D : db $02 : dw $8B7A ; DDB
     dl $7E079B : db $02 : dw $96BA ; MDB
     dl $7E090F : db $02 : dw $0000 ; Screen subpixel X position.
@@ -377,8 +377,8 @@ preset_kpdr21_crateria_parlor_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_flyway:
-    dw #preset_kpdr21_crateria_parlor_revisit ; Crateria: Parlor Revisit
+preset_kpdr22_crateria_flyway:
+    dw #preset_kpdr22_crateria_parlor_revisit ; Crateria: Parlor Revisit
     dl $7E078D : db $02 : dw $8B3E ; DDB
     dl $7E079B : db $02 : dw $92FD ; MDB
     dl $7E07C3 : db $02 : dw $C629 ; GFX Pointers
@@ -395,8 +395,8 @@ preset_kpdr21_crateria_flyway:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_bomb_torizo:
-    dw #preset_kpdr21_crateria_flyway ; Crateria: Flyway
+preset_kpdr22_crateria_bomb_torizo:
+    dw #preset_kpdr22_crateria_flyway ; Crateria: Flyway
     dl $7E078D : db $02 : dw $8982 ; DDB
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E079B : db $02 : dw $9879 ; MDB
@@ -414,8 +414,8 @@ preset_kpdr21_crateria_bomb_torizo:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_alcatraz:
-    dw #preset_kpdr21_crateria_bomb_torizo ; Crateria: Bomb Torizo
+preset_kpdr22_crateria_alcatraz:
+    dw #preset_kpdr22_crateria_bomb_torizo ; Crateria: Bomb Torizo
     dl $7E078D : db $02 : dw $8BAA ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E090F : db $02 : dw $2001 ; Screen subpixel X position.
@@ -433,8 +433,8 @@ preset_kpdr21_crateria_alcatraz:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_terminator:
-    dw #preset_kpdr21_crateria_alcatraz ; Crateria: Alcatraz
+preset_kpdr22_crateria_terminator:
+    dw #preset_kpdr22_crateria_alcatraz ; Crateria: Alcatraz
     dl $7E078D : db $02 : dw $8BB6 ; DDB
     dl $7E079B : db $02 : dw $92FD ; MDB
     dl $7E07C3 : db $02 : dw $C629 ; GFX Pointers
@@ -447,8 +447,8 @@ preset_kpdr21_crateria_terminator:
     dw #$FFFF
 .after
 
-preset_kpdr21_crateria_green_pirate_shaft:
-    dw #preset_kpdr21_crateria_terminator ; Crateria: Terminator
+preset_kpdr22_crateria_green_pirate_shaft:
+    dw #preset_kpdr22_crateria_terminator ; Crateria: Terminator
     dl $7E078D : db $02 : dw $895E ; DDB
     dl $7E079B : db $02 : dw $990D ; MDB
     dl $7E07C3 : db $02 : dw $F911 ; GFX Pointers
@@ -467,8 +467,8 @@ preset_kpdr21_crateria_green_pirate_shaft:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_green_brinstar_elevator:
-    dw #preset_kpdr21_crateria_green_pirate_shaft ; Crateria: Green Pirate Shaft
+preset_kpdr22_brinstar_green_brinstar_elevator:
+    dw #preset_kpdr22_crateria_green_pirate_shaft ; Crateria: Green Pirate Shaft
     dl $7E078D : db $02 : dw $8C22 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $9938 ; MDB
@@ -483,8 +483,8 @@ preset_kpdr21_brinstar_green_brinstar_elevator:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_early_supers:
-    dw #preset_kpdr21_brinstar_green_brinstar_elevator ; Brinstar: Green Brinstar Elevator
+preset_kpdr22_brinstar_early_supers:
+    dw #preset_kpdr22_brinstar_green_brinstar_elevator ; Brinstar: Green Brinstar Elevator
     dl $7E078D : db $02 : dw $8C0A ; DDB
     dl $7E078F : db $02 : dw $0009 ; DoorOut Index
     dl $7E079B : db $02 : dw $9AD9 ; MDB
@@ -507,8 +507,8 @@ preset_kpdr21_brinstar_early_supers:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_dachora_room:
-    dw #preset_kpdr21_brinstar_early_supers ; Brinstar: Early Supers
+preset_kpdr22_brinstar_dachora_room:
+    dw #preset_kpdr22_brinstar_early_supers ; Brinstar: Early Supers
     dl $7E078D : db $02 : dw $8D4E ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E090F : db $02 : dw $B000 ; Screen subpixel X position.
@@ -524,8 +524,8 @@ preset_kpdr21_brinstar_dachora_room:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_big_pink:
-    dw #preset_kpdr21_brinstar_dachora_room ; Brinstar: Dachora Room
+preset_kpdr22_brinstar_big_pink:
+    dw #preset_kpdr22_brinstar_dachora_room ; Brinstar: Dachora Room
     dl $7E078D : db $02 : dw $8CE2 ; DDB
     dl $7E078F : db $02 : dw $0005 ; DoorOut Index
     dl $7E079B : db $02 : dw $9CB3 ; MDB
@@ -539,8 +539,8 @@ preset_kpdr21_brinstar_big_pink:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_green_hill_zone:
-    dw #preset_kpdr21_brinstar_big_pink ; Brinstar: Big Pink
+preset_kpdr22_brinstar_green_hill_zone:
+    dw #preset_kpdr22_brinstar_big_pink ; Brinstar: Big Pink
     dl $7E078D : db $02 : dw $8DAE ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $9D19 ; MDB
@@ -561,8 +561,8 @@ preset_kpdr21_brinstar_green_hill_zone:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_noob_bridge:
-    dw #preset_kpdr21_brinstar_green_hill_zone ; Brinstar: Green Hill Zone
+preset_kpdr22_brinstar_noob_bridge:
+    dw #preset_kpdr22_brinstar_green_hill_zone ; Brinstar: Green Hill Zone
     dl $7E078D : db $02 : dw $8DEA ; DDB
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E079B : db $02 : dw $9E52 ; MDB
@@ -577,8 +577,8 @@ preset_kpdr21_brinstar_noob_bridge:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_red_tower:
-    dw #preset_kpdr21_brinstar_noob_bridge ; Brinstar: Noob Bridge
+preset_kpdr22_brinstar_red_tower:
+    dw #preset_kpdr22_brinstar_noob_bridge ; Brinstar: Noob Bridge
     dl $7E078D : db $02 : dw $8E92 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $9FBA ; MDB
@@ -592,8 +592,8 @@ preset_kpdr21_brinstar_red_tower:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_skree_boost:
-    dw #preset_kpdr21_brinstar_red_tower ; Brinstar: Red Tower
+preset_kpdr22_brinstar_skree_boost:
+    dw #preset_kpdr22_brinstar_red_tower ; Brinstar: Red Tower
     dl $7E078D : db $02 : dw $8F0A ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $A253 ; MDB
@@ -610,8 +610,8 @@ preset_kpdr21_brinstar_skree_boost:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_below_spazer:
-    dw #preset_kpdr21_brinstar_skree_boost ; Brinstar: Skree Boost
+preset_kpdr22_brinstar_below_spazer:
+    dw #preset_kpdr22_brinstar_skree_boost ; Brinstar: Skree Boost
     dl $7E078D : db $02 : dw $9042 ; DDB
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E079B : db $02 : dw $A3DD ; MDB
@@ -625,8 +625,8 @@ preset_kpdr21_brinstar_below_spazer:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_entering_kraids_lair:
-    dw #preset_kpdr21_brinstar_below_spazer ; Brinstar: Below Spazer
+preset_kpdr22_brinstar_entering_kraids_lair:
+    dw #preset_kpdr22_brinstar_below_spazer ; Brinstar: Below Spazer
     dl $7E078D : db $02 : dw $A348 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $CF80 ; MDB
@@ -645,8 +645,8 @@ preset_kpdr21_brinstar_entering_kraids_lair:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_kraid_kihunters:
-    dw #preset_kpdr21_brinstar_entering_kraids_lair ; Brinstar: Entering Kraids Lair
+preset_kpdr22_brinstar_kraid_kihunters:
+    dw #preset_kpdr22_brinstar_entering_kraids_lair ; Brinstar: Entering Kraids Lair
     dl $7E078D : db $02 : dw $923A ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $A471 ; MDB
@@ -662,8 +662,8 @@ preset_kpdr21_brinstar_kraid_kihunters:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_mini_kraid:
-    dw #preset_kpdr21_brinstar_kraid_kihunters ; Brinstar: Kraid Kihunters
+preset_kpdr22_brinstar_mini_kraid:
+    dw #preset_kpdr22_brinstar_kraid_kihunters ; Brinstar: Kraid Kihunters
     dl $7E078D : db $02 : dw $9156 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $A4DA ; MDB
@@ -675,8 +675,8 @@ preset_kpdr21_brinstar_mini_kraid:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_kraid:
-    dw #preset_kpdr21_brinstar_mini_kraid ; Brinstar: Mini Kraid
+preset_kpdr22_brinstar_kraid:
+    dw #preset_kpdr22_brinstar_mini_kraid ; Brinstar: Mini Kraid
     dl $7E078D : db $02 : dw $919E ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $A56B ; MDB
@@ -691,8 +691,8 @@ preset_kpdr21_brinstar_kraid:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_leaving_varia:
-    dw #preset_kpdr21_brinstar_kraid ; Brinstar: Kraid
+preset_kpdr22_brinstar_leaving_varia:
+    dw #preset_kpdr22_brinstar_kraid ; Brinstar: Kraid
     dl $7E078D : db $02 : dw $91DA ; DDB
     dl $7E079B : db $02 : dw $A6E2 ; MDB
     dl $7E07F5 : db $02 : dw $0003 ; Music Track
@@ -715,8 +715,8 @@ preset_kpdr21_brinstar_leaving_varia:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_mini_kraid_revisit:
-    dw #preset_kpdr21_brinstar_leaving_varia ; Brinstar: Leaving Varia
+preset_kpdr22_brinstar_mini_kraid_revisit:
+    dw #preset_kpdr22_brinstar_leaving_varia ; Brinstar: Leaving Varia
     dl $7E078D : db $02 : dw $91CE ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $A56B ; MDB
@@ -732,8 +732,8 @@ preset_kpdr21_brinstar_mini_kraid_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_kraid_kihunters_revisit:
-    dw #preset_kpdr21_brinstar_mini_kraid_revisit ; Brinstar: Mini Kraid Revisit
+preset_kpdr22_brinstar_kraid_kihunters_revisit:
+    dw #preset_kpdr22_brinstar_mini_kraid_revisit ; Brinstar: Mini Kraid Revisit
     dl $7E078D : db $02 : dw $91AA ; DDB
     dl $7E079B : db $02 : dw $A521 ; MDB
     dl $7E090F : db $02 : dw $9000 ; Screen subpixel X position.
@@ -747,8 +747,8 @@ preset_kpdr21_brinstar_kraid_kihunters_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_brinstar_kraid_etank:
-    dw #preset_kpdr21_brinstar_kraid_kihunters_revisit ; Brinstar: Kraid Kihunters Revisit
+preset_kpdr22_brinstar_kraid_etank:
+    dw #preset_kpdr22_brinstar_kraid_kihunters_revisit ; Brinstar: Kraid Kihunters Revisit
     dl $7E078D : db $02 : dw $916E ; DDB
     dl $7E079B : db $02 : dw $A471 ; MDB
     dl $7E07F3 : db $02 : dw $0012 ; Music Bank
@@ -763,8 +763,8 @@ preset_kpdr21_brinstar_kraid_etank:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_business_center:
-    dw #preset_kpdr21_brinstar_kraid_etank ; Brinstar: Kraid E-tank
+preset_kpdr22_upper_norfair_business_center:
+    dw #preset_kpdr22_brinstar_kraid_etank ; Brinstar: Kraid E-tank
     dl $7E078D : db $02 : dw $9246 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $A7DE ; MDB
@@ -787,8 +787,8 @@ preset_kpdr21_upper_norfair_business_center:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_hi_jump_etank:
-    dw #preset_kpdr21_upper_norfair_business_center ; Upper Norfair: Business Center
+preset_kpdr22_upper_norfair_hi_jump_etank:
+    dw #preset_kpdr22_upper_norfair_business_center ; Upper Norfair: Business Center
     dl $7E078F : db $02 : dw $0005 ; DoorOut Index
     dl $7E090F : db $02 : dw $EFFF ; Screen subpixel X position.
     dl $7E0915 : db $02 : dw $051B ; Screen Y position in pixels
@@ -801,8 +801,8 @@ preset_kpdr21_upper_norfair_hi_jump_etank:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_leaving_hi_jump:
-    dw #preset_kpdr21_upper_norfair_hi_jump_etank ; Upper Norfair: Hi Jump E-tank
+preset_kpdr22_upper_norfair_leaving_hi_jump:
+    dw #preset_kpdr22_upper_norfair_hi_jump_etank ; Upper Norfair: Hi Jump E-tank
     dl $7E078D : db $02 : dw $9426 ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $A9E5 ; MDB
@@ -824,8 +824,8 @@ preset_kpdr21_upper_norfair_leaving_hi_jump:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_business_center_2:
-    dw #preset_kpdr21_upper_norfair_leaving_hi_jump ; Upper Norfair: Leaving Hi Jump
+preset_kpdr22_upper_norfair_business_center_2:
+    dw #preset_kpdr22_upper_norfair_leaving_hi_jump ; Upper Norfair: Leaving Hi Jump
     dl $7E078D : db $02 : dw $93F6 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $AA41 ; MDB
@@ -841,8 +841,8 @@ preset_kpdr21_upper_norfair_business_center_2:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_precathedral:
-    dw #preset_kpdr21_upper_norfair_business_center_2 ; Upper Norfair: Business Center 2
+preset_kpdr22_upper_norfair_precathedral:
+    dw #preset_kpdr22_upper_norfair_business_center_2 ; Upper Norfair: Business Center 2
     dl $7E078D : db $02 : dw $941A ; DDB
     dl $7E079B : db $02 : dw $A7DE ; MDB
     dl $7E090F : db $02 : dw $B000 ; Screen subpixel X position.
@@ -854,8 +854,8 @@ preset_kpdr21_upper_norfair_precathedral:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_cathedral:
-    dw #preset_kpdr21_upper_norfair_precathedral ; Upper Norfair: Pre-Cathedral
+preset_kpdr22_upper_norfair_cathedral:
+    dw #preset_kpdr22_upper_norfair_precathedral ; Upper Norfair: Pre-Cathedral
     dl $7E078D : db $02 : dw $92CA ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $A7B3 ; MDB
@@ -873,8 +873,8 @@ preset_kpdr21_upper_norfair_cathedral:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_rising_tide:
-    dw #preset_kpdr21_upper_norfair_cathedral ; Upper Norfair: Cathedral
+preset_kpdr22_upper_norfair_rising_tide:
+    dw #preset_kpdr22_upper_norfair_cathedral ; Upper Norfair: Cathedral
     dl $7E078D : db $02 : dw $92B2 ; DDB
     dl $7E079B : db $02 : dw $A788 ; MDB
     dl $7E090F : db $02 : dw $7FFF ; Screen subpixel X position.
@@ -888,8 +888,8 @@ preset_kpdr21_upper_norfair_rising_tide:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_bubble_mountain:
-    dw #preset_kpdr21_upper_norfair_rising_tide ; Upper Norfair: Rising Tide
+preset_kpdr22_upper_norfair_bubble_mountain:
+    dw #preset_kpdr22_upper_norfair_rising_tide ; Upper Norfair: Rising Tide
     dl $7E078D : db $02 : dw $929A ; DDB
     dl $7E079B : db $02 : dw $AFA3 ; MDB
     dl $7E090F : db $02 : dw $8000 ; Screen subpixel X position.
@@ -902,8 +902,8 @@ preset_kpdr21_upper_norfair_bubble_mountain:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_bat_cave:
-    dw #preset_kpdr21_upper_norfair_bubble_mountain ; Upper Norfair: Bubble Mountain
+preset_kpdr22_upper_norfair_bat_cave:
+    dw #preset_kpdr22_upper_norfair_bubble_mountain ; Upper Norfair: Bubble Mountain
     dl $7E078D : db $02 : dw $973E ; DDB
     dl $7E079B : db $02 : dw $ACB3 ; MDB
     dl $7E090F : db $02 : dw $C000 ; Screen subpixel X position.
@@ -917,8 +917,8 @@ preset_kpdr21_upper_norfair_bat_cave:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_single_chamber:
-    dw #preset_kpdr21_upper_norfair_bat_cave ; Upper Norfair: Bat Cave
+preset_kpdr22_upper_norfair_single_chamber:
+    dw #preset_kpdr22_upper_norfair_bat_cave ; Upper Norfair: Bat Cave
     dl $7E078D : db $02 : dw $97AA ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E090F : db $02 : dw $BFFF ; Screen subpixel X position.
@@ -938,8 +938,8 @@ preset_kpdr21_upper_norfair_single_chamber:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_double_chamber:
-    dw #preset_kpdr21_upper_norfair_single_chamber ; Upper Norfair: Single Chamber
+preset_kpdr22_upper_norfair_double_chamber:
+    dw #preset_kpdr22_upper_norfair_single_chamber ; Upper Norfair: Single Chamber
     dl $7E078D : db $02 : dw $9582 ; DDB
     dl $7E078F : db $02 : dw $0004 ; DoorOut Index
     dl $7E079B : db $02 : dw $AD5E ; MDB
@@ -953,8 +953,8 @@ preset_kpdr21_upper_norfair_double_chamber:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_double_chamber_revisit:
-    dw #preset_kpdr21_upper_norfair_double_chamber ; Upper Norfair: Double Chamber
+preset_kpdr22_upper_norfair_double_chamber_revisit:
+    dw #preset_kpdr22_upper_norfair_double_chamber ; Upper Norfair: Double Chamber
     dl $7E078D : db $02 : dw $961E ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $ADDE ; MDB
@@ -977,8 +977,8 @@ preset_kpdr21_upper_norfair_double_chamber_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_single_chamber_revisit:
-    dw #preset_kpdr21_upper_norfair_double_chamber_revisit ; Upper Norfair: Double Chamber Revisit
+preset_kpdr22_upper_norfair_single_chamber_revisit:
+    dw #preset_kpdr22_upper_norfair_double_chamber_revisit ; Upper Norfair: Double Chamber Revisit
     dl $7E078D : db $02 : dw $962A ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $ADAD ; MDB
@@ -990,8 +990,8 @@ preset_kpdr21_upper_norfair_single_chamber_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_bubble_mountain_revisit:
-    dw #preset_kpdr21_upper_norfair_single_chamber_revisit ; Upper Norfair: Single Chamber Revisit
+preset_kpdr22_upper_norfair_bubble_mountain_revisit:
+    dw #preset_kpdr22_upper_norfair_single_chamber_revisit ; Upper Norfair: Single Chamber Revisit
     dl $7E078D : db $02 : dw $9606 ; DDB
     dl $7E079B : db $02 : dw $AD5E ; MDB
     dl $7E090F : db $02 : dw $1000 ; Screen subpixel X position.
@@ -1001,8 +1001,8 @@ preset_kpdr21_upper_norfair_bubble_mountain_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_frog_speedway:
-    dw #preset_kpdr21_upper_norfair_bubble_mountain_revisit ; Upper Norfair: Bubble Mountain Revisit
+preset_kpdr22_upper_norfair_frog_speedway:
+    dw #preset_kpdr22_upper_norfair_bubble_mountain_revisit ; Upper Norfair: Bubble Mountain Revisit
     dl $7E078D : db $02 : dw $956A ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $AF72 ; MDB
@@ -1017,8 +1017,8 @@ preset_kpdr21_upper_norfair_frog_speedway:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_business_center_3:
-    dw #preset_kpdr21_upper_norfair_frog_speedway ; Upper Norfair: Frog Speedway
+preset_kpdr22_upper_norfair_business_center_3:
+    dw #preset_kpdr22_upper_norfair_frog_speedway ; Upper Norfair: Frog Speedway
     dl $7E078D : db $02 : dw $97DA ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $B167 ; MDB
@@ -1031,8 +1031,8 @@ preset_kpdr21_upper_norfair_business_center_3:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_alpha_spark:
-    dw #preset_kpdr21_upper_norfair_business_center_3 ; Upper Norfair: Business Center 3
+preset_kpdr22_red_brinstar_alpha_spark:
+    dw #preset_kpdr22_upper_norfair_business_center_3 ; Upper Norfair: Business Center 3
     dl $7E078D : db $02 : dw $92EE ; DDB
     dl $7E078F : db $02 : dw $0004 ; DoorOut Index
     dl $7E079B : db $02 : dw $A6A1 ; MDB
@@ -1052,8 +1052,8 @@ preset_kpdr21_red_brinstar_alpha_spark:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_reverse_skree_boost:
-    dw #preset_kpdr21_red_brinstar_alpha_spark ; Red Brinstar: Alpha Spark
+preset_kpdr22_red_brinstar_reverse_skree_boost:
+    dw #preset_kpdr22_red_brinstar_alpha_spark ; Red Brinstar: Alpha Spark
     dl $7E078D : db $02 : dw $A36C ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $A408 ; MDB
@@ -1069,8 +1069,8 @@ preset_kpdr21_red_brinstar_reverse_skree_boost:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_red_tower_climb:
-    dw #preset_kpdr21_red_brinstar_reverse_skree_boost ; Red Brinstar: Reverse Skree Boost
+preset_kpdr22_red_brinstar_red_tower_climb:
+    dw #preset_kpdr22_red_brinstar_reverse_skree_boost ; Red Brinstar: Reverse Skree Boost
     dl $7E078D : db $02 : dw $910E ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $A3DD ; MDB
@@ -1083,8 +1083,8 @@ preset_kpdr21_red_brinstar_red_tower_climb:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_hellway:
-    dw #preset_kpdr21_red_brinstar_red_tower_climb ; Red Brinstar: Red Tower Climb
+preset_kpdr22_red_brinstar_hellway:
+    dw #preset_kpdr22_red_brinstar_red_tower_climb ; Red Brinstar: Red Tower Climb
     dl $7E078D : db $02 : dw $90F6 ; DDB
     dl $7E079B : db $02 : dw $A253 ; MDB
     dl $7E090F : db $02 : dw $D000 ; Screen subpixel X position.
@@ -1095,8 +1095,8 @@ preset_kpdr21_red_brinstar_hellway:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_caterpillars_down:
-    dw #preset_kpdr21_red_brinstar_hellway ; Red Brinstar: Hellway
+preset_kpdr22_red_brinstar_caterpillars_down:
+    dw #preset_kpdr22_red_brinstar_hellway ; Red Brinstar: Hellway
     dl $7E078D : db $02 : dw $901E ; DDB
     dl $7E079B : db $02 : dw $A2F7 ; MDB
     dl $7E090F : db $02 : dw $0000 ; Screen subpixel X position.
@@ -1107,8 +1107,8 @@ preset_kpdr21_red_brinstar_caterpillars_down:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_alpha_power_bombs:
-    dw #preset_kpdr21_red_brinstar_caterpillars_down ; Red Brinstar: Caterpillars Down
+preset_kpdr22_red_brinstar_alpha_power_bombs:
+    dw #preset_kpdr22_red_brinstar_caterpillars_down ; Red Brinstar: Caterpillars Down
     dl $7E078D : db $02 : dw $908A ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $A322 ; MDB
@@ -1125,8 +1125,8 @@ preset_kpdr21_red_brinstar_alpha_power_bombs:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_caterpillars_up:
-    dw #preset_kpdr21_red_brinstar_alpha_power_bombs ; Red Brinstar: Alpha Power Bombs
+preset_kpdr22_red_brinstar_caterpillars_up:
+    dw #preset_kpdr22_red_brinstar_alpha_power_bombs ; Red Brinstar: Alpha Power Bombs
     dl $7E078D : db $02 : dw $9096 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $A3AE ; MDB
@@ -1147,8 +1147,8 @@ preset_kpdr21_red_brinstar_caterpillars_up:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_crateria_kihunters:
-    dw #preset_kpdr21_red_brinstar_caterpillars_up ; Red Brinstar: Caterpillars Up
+preset_kpdr22_wrecked_ship_crateria_kihunters:
+    dw #preset_kpdr22_red_brinstar_caterpillars_up ; Red Brinstar: Caterpillars Up
     dl $7E078D : db $02 : dw $90BA ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $962A ; MDB
@@ -1171,8 +1171,8 @@ preset_kpdr21_wrecked_ship_crateria_kihunters:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_oceanfly_setup:
-    dw #preset_kpdr21_wrecked_ship_crateria_kihunters ; Wrecked Ship: Crateria Kihunters
+preset_kpdr22_wrecked_ship_oceanfly_setup:
+    dw #preset_kpdr22_wrecked_ship_crateria_kihunters ; Wrecked Ship: Crateria Kihunters
     dl $7E078D : db $02 : dw $8AF6 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $948C ; MDB
@@ -1191,8 +1191,8 @@ preset_kpdr21_wrecked_ship_oceanfly_setup:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_ocean_spark:
-    dw #preset_kpdr21_wrecked_ship_oceanfly_setup ; Wrecked Ship: Oceanfly Setup
+preset_kpdr22_wrecked_ship_ocean_spark:
+    dw #preset_kpdr22_wrecked_ship_oceanfly_setup ; Wrecked Ship: Oceanfly Setup
     dl $7E078D : db $02 : dw $8A36 ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $95FF ; MDB
@@ -1205,8 +1205,8 @@ preset_kpdr21_wrecked_ship_ocean_spark:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_entering_wrecked_ship:
-    dw #preset_kpdr21_wrecked_ship_ocean_spark ; Wrecked Ship: Ocean Spark
+preset_kpdr22_wrecked_ship_entering_wrecked_ship:
+    dw #preset_kpdr22_wrecked_ship_ocean_spark ; Wrecked Ship: Ocean Spark
     dl $7E078D : db $02 : dw $8AEA ; DDB
     dl $7E079B : db $02 : dw $93FE ; MDB
     dl $7E07F3 : db $02 : dw $000C ; Music Bank
@@ -1223,8 +1223,8 @@ preset_kpdr21_wrecked_ship_entering_wrecked_ship:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_basement:
-    dw #preset_kpdr21_wrecked_ship_entering_wrecked_ship ; Wrecked Ship: Entering Wrecked Ship
+preset_kpdr22_wrecked_ship_basement:
+    dw #preset_kpdr22_wrecked_ship_entering_wrecked_ship ; Wrecked Ship: Entering Wrecked Ship
     dl $7E078D : db $02 : dw $A1BC ; DDB
     dl $7E079B : db $02 : dw $CAF6 ; MDB
     dl $7E079F : db $02 : dw $0003 ; Region
@@ -1244,8 +1244,8 @@ preset_kpdr21_wrecked_ship_basement:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_phantoon:
-    dw #preset_kpdr21_wrecked_ship_basement ; Wrecked Ship: Basement
+preset_kpdr22_wrecked_ship_phantoon:
+    dw #preset_kpdr22_wrecked_ship_basement ; Wrecked Ship: Basement
     dl $7E078D : db $02 : dw $A21C ; DDB
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E079B : db $02 : dw $CC6F ; MDB
@@ -1259,8 +1259,8 @@ preset_kpdr21_wrecked_ship_phantoon:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_leaving_phantoon:
-    dw #preset_kpdr21_wrecked_ship_phantoon ; Wrecked Ship: Phantoon
+preset_kpdr22_wrecked_ship_leaving_phantoon:
+    dw #preset_kpdr22_wrecked_ship_phantoon ; Wrecked Ship: Phantoon
     dl $7E078D : db $02 : dw $A2C4 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E07C5 : db $02 : dw $E7BB ; GFX Pointers
@@ -1279,8 +1279,8 @@ preset_kpdr21_wrecked_ship_leaving_phantoon:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_shaft_to_supers:
-    dw #preset_kpdr21_wrecked_ship_leaving_phantoon ; Wrecked Ship: Leaving Phantoon
+preset_kpdr22_wrecked_ship_shaft_to_supers:
+    dw #preset_kpdr22_wrecked_ship_leaving_phantoon ; Wrecked Ship: Leaving Phantoon
     dl $7E090F : db $02 : dw $6000 ; Screen subpixel X position.
     dl $7E0911 : db $02 : dw $0226 ; Screen X position in pixels
     dl $7E0913 : db $02 : dw $FC00 ; Screen subpixel Y position
@@ -1289,8 +1289,8 @@ preset_kpdr21_wrecked_ship_shaft_to_supers:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_wrecked_ship_shaft:
-    dw #preset_kpdr21_wrecked_ship_shaft_to_supers ; Wrecked Ship: Shaft to Supers
+preset_kpdr22_wrecked_ship_wrecked_ship_shaft:
+    dw #preset_kpdr22_wrecked_ship_shaft_to_supers ; Wrecked Ship: Shaft to Supers
     dl $7E078D : db $02 : dw $A210 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $CDA8 ; MDB
@@ -1309,8 +1309,8 @@ preset_kpdr21_wrecked_ship_wrecked_ship_shaft:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_attic:
-    dw #preset_kpdr21_wrecked_ship_wrecked_ship_shaft ; Wrecked Ship: Wrecked Ship Shaft
+preset_kpdr22_wrecked_ship_attic:
+    dw #preset_kpdr22_wrecked_ship_wrecked_ship_shaft ; Wrecked Ship: Wrecked Ship Shaft
     dl $7E078D : db $02 : dw $A2E8 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $CAF6 ; MDB
@@ -1323,8 +1323,8 @@ preset_kpdr21_wrecked_ship_attic:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_upper_west_ocean:
-    dw #preset_kpdr21_wrecked_ship_attic ; Wrecked Ship: Attic
+preset_kpdr22_wrecked_ship_upper_west_ocean:
+    dw #preset_kpdr22_wrecked_ship_attic ; Wrecked Ship: Attic
     dl $7E078D : db $02 : dw $A228 ; DDB
     dl $7E078F : db $02 : dw $0004 ; DoorOut Index
     dl $7E079B : db $02 : dw $CA52 ; MDB
@@ -1342,8 +1342,8 @@ preset_kpdr21_wrecked_ship_upper_west_ocean:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_pancakes_and_wavers:
-    dw #preset_kpdr21_wrecked_ship_upper_west_ocean ; Wrecked Ship: Upper West Ocean
+preset_kpdr22_wrecked_ship_pancakes_and_wavers:
+    dw #preset_kpdr22_wrecked_ship_upper_west_ocean ; Wrecked Ship: Upper West Ocean
     dl $7E078D : db $02 : dw $A1E0 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $93FE ; MDB
@@ -1366,8 +1366,8 @@ preset_kpdr21_wrecked_ship_pancakes_and_wavers:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_bowling_spark:
-    dw #preset_kpdr21_wrecked_ship_pancakes_and_wavers ; Wrecked Ship: Pancakes and Wavers
+preset_kpdr22_wrecked_ship_bowling_spark:
+    dw #preset_kpdr22_wrecked_ship_pancakes_and_wavers ; Wrecked Ship: Pancakes and Wavers
     dl $7E078D : db $02 : dw $89E2 ; DDB
     dl $7E079B : db $02 : dw $9461 ; MDB
     dl $7E090F : db $02 : dw $6800 ; Screen subpixel X position.
@@ -1379,8 +1379,8 @@ preset_kpdr21_wrecked_ship_bowling_spark:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_leaving_gravity:
-    dw #preset_kpdr21_wrecked_ship_bowling_spark ; Wrecked Ship: Bowling Spark
+preset_kpdr22_wrecked_ship_leaving_gravity:
+    dw #preset_kpdr22_wrecked_ship_bowling_spark ; Wrecked Ship: Bowling Spark
     dl $7E078D : db $02 : dw $A1A4 ; DDB
     dl $7E079B : db $02 : dw $CE40 ; MDB
     dl $7E079F : db $02 : dw $0003 ; Region
@@ -1404,8 +1404,8 @@ preset_kpdr21_wrecked_ship_leaving_gravity:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_moat_ball:
-    dw #preset_kpdr21_wrecked_ship_leaving_gravity ; Wrecked Ship: Leaving Gravity
+preset_kpdr22_wrecked_ship_moat_ball:
+    dw #preset_kpdr22_wrecked_ship_leaving_gravity ; Wrecked Ship: Leaving Gravity
     dl $7E078D : db $02 : dw $A300 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $93FE ; MDB
@@ -1427,8 +1427,8 @@ preset_kpdr21_wrecked_ship_moat_ball:
     dw #$FFFF
 .after
 
-preset_kpdr21_wrecked_ship_crateria_kihunters_return:
-    dw #preset_kpdr21_wrecked_ship_moat_ball ; Wrecked Ship: Moat Ball
+preset_kpdr22_wrecked_ship_crateria_kihunters_return:
+    dw #preset_kpdr22_wrecked_ship_moat_ball ; Wrecked Ship: Moat Ball
     dl $7E078D : db $02 : dw $89CA ; DDB
     dl $7E079B : db $02 : dw $95FF ; MDB
     dl $7E090F : db $02 : dw $8400 ; Screen subpixel X position.
@@ -1441,8 +1441,8 @@ preset_kpdr21_wrecked_ship_crateria_kihunters_return:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_final_red_tower_elevator:
-    dw #preset_kpdr21_wrecked_ship_crateria_kihunters_return ; Wrecked Ship: Crateria Kihunters Return
+preset_kpdr22_red_brinstar_final_red_tower_elevator:
+    dw #preset_kpdr22_wrecked_ship_crateria_kihunters_return ; Wrecked Ship: Crateria Kihunters Return
     dl $7E078D : db $02 : dw $8B02 ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $A322 ; MDB
@@ -1463,8 +1463,8 @@ preset_kpdr21_red_brinstar_final_red_tower_elevator:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_final_hellway_revisit:
-    dw #preset_kpdr21_red_brinstar_final_red_tower_elevator ; Red Brinstar Final: Red Tower Elevator
+preset_kpdr22_red_brinstar_final_hellway_revisit:
+    dw #preset_kpdr22_red_brinstar_final_red_tower_elevator ; Red Brinstar Final: Red Tower Elevator
     dl $7E078F : db $02 : dw $0005 ; DoorOut Index
     dl $7E090F : db $02 : dw $C000 ; Screen subpixel X position.
     dl $7E0913 : db $02 : dw $2800 ; Screen subpixel Y position
@@ -1476,8 +1476,8 @@ preset_kpdr21_red_brinstar_final_hellway_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_final_red_tower_down:
-    dw #preset_kpdr21_red_brinstar_final_hellway_revisit ; Red Brinstar Final: Hellway Revisit
+preset_kpdr22_red_brinstar_final_red_tower_down:
+    dw #preset_kpdr22_red_brinstar_final_hellway_revisit ; Red Brinstar Final: Hellway Revisit
     dl $7E078D : db $02 : dw $90AE ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $A2F7 ; MDB
@@ -1489,8 +1489,8 @@ preset_kpdr21_red_brinstar_final_red_tower_down:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_final_skree_boost_final:
-    dw #preset_kpdr21_red_brinstar_final_red_tower_down ; Red Brinstar Final: Red Tower Down
+preset_kpdr22_red_brinstar_final_skree_boost_final:
+    dw #preset_kpdr22_red_brinstar_final_red_tower_down ; Red Brinstar Final: Red Tower Down
     dl $7E078D : db $02 : dw $907E ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $A253 ; MDB
@@ -1504,8 +1504,8 @@ preset_kpdr21_red_brinstar_final_skree_boost_final:
     dw #$FFFF
 .after
 
-preset_kpdr21_red_brinstar_final_below_spazer_final:
-    dw #preset_kpdr21_red_brinstar_final_skree_boost_final ; Red Brinstar Final: Skree Boost Final
+preset_kpdr22_red_brinstar_final_below_spazer_final:
+    dw #preset_kpdr22_red_brinstar_final_skree_boost_final ; Red Brinstar Final: Skree Boost Final
     dl $7E078D : db $02 : dw $9042 ; DDB
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E079B : db $02 : dw $A3DD ; MDB
@@ -1519,8 +1519,8 @@ preset_kpdr21_red_brinstar_final_below_spazer_final:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_breaking_tube:
-    dw #preset_kpdr21_red_brinstar_final_below_spazer_final ; Red Brinstar Final: Below Spazer Final
+preset_kpdr22_maridia_breaking_tube:
+    dw #preset_kpdr22_red_brinstar_final_below_spazer_final ; Red Brinstar Final: Below Spazer Final
     dl $7E078D : db $02 : dw $911A ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $CF54 ; MDB
@@ -1536,8 +1536,8 @@ preset_kpdr21_maridia_breaking_tube:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_fish_tank:
-    dw #preset_kpdr21_maridia_breaking_tube ; Maridia: Breaking Tube
+preset_kpdr22_maridia_fish_tank:
+    dw #preset_kpdr22_maridia_breaking_tube ; Maridia: Breaking Tube
     dl $7E078D : db $02 : dw $A330 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $CFC9 ; MDB
@@ -1555,8 +1555,8 @@ preset_kpdr21_maridia_fish_tank:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_mt_everest:
-    dw #preset_kpdr21_maridia_fish_tank ; Maridia: Fish Tank
+preset_kpdr22_maridia_mt_everest:
+    dw #preset_kpdr22_maridia_fish_tank ; Maridia: Fish Tank
     dl $7E078D : db $02 : dw $A3F0 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $D0B9 ; MDB
@@ -1569,8 +1569,8 @@ preset_kpdr21_maridia_mt_everest:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_crab_shaft:
-    dw #preset_kpdr21_maridia_mt_everest ; Maridia: Mt Everest
+preset_kpdr22_maridia_crab_shaft:
+    dw #preset_kpdr22_maridia_mt_everest ; Maridia: Mt Everest
     dl $7E090F : db $02 : dw $E000 ; Screen subpixel X position.
     dl $7E0911 : db $02 : dw $0500 ; Screen X position in pixels
     dl $7E0913 : db $02 : dw $9C01 ; Screen subpixel Y position
@@ -1581,8 +1581,8 @@ preset_kpdr21_maridia_crab_shaft:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_aqueduct:
-    dw #preset_kpdr21_maridia_crab_shaft ; Maridia: Crab Shaft
+preset_kpdr22_maridia_aqueduct:
+    dw #preset_kpdr22_maridia_crab_shaft ; Maridia: Crab Shaft
     dl $7E078D : db $02 : dw $A468 ; DDB
     dl $7E078F : db $02 : dw $0005 ; DoorOut Index
     dl $7E079B : db $02 : dw $D1A3 ; MDB
@@ -1597,8 +1597,8 @@ preset_kpdr21_maridia_aqueduct:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_botwoon_hallway:
-    dw #preset_kpdr21_maridia_aqueduct ; Maridia: Aqueduct
+preset_kpdr22_maridia_botwoon_hallway:
+    dw #preset_kpdr22_maridia_aqueduct ; Maridia: Aqueduct
     dl $7E078D : db $02 : dw $A4C8 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $D5A7 ; MDB
@@ -1619,8 +1619,8 @@ preset_kpdr21_maridia_botwoon_hallway:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_botwoon:
-    dw #preset_kpdr21_maridia_botwoon_hallway ; Maridia: Botwoon Hallway
+preset_kpdr22_maridia_botwoon:
+    dw #preset_kpdr22_maridia_botwoon_hallway ; Maridia: Botwoon Hallway
     dl $7E078D : db $02 : dw $A72C ; DDB
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E079B : db $02 : dw $D617 ; MDB
@@ -1634,8 +1634,8 @@ preset_kpdr21_maridia_botwoon:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_botwoon_etank:
-    dw #preset_kpdr21_maridia_botwoon ; Maridia: Botwoon
+preset_kpdr22_maridia_botwoon_etank:
+    dw #preset_kpdr22_maridia_botwoon ; Maridia: Botwoon
     dl $7E078D : db $02 : dw $A774 ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $D95E ; MDB
@@ -1653,8 +1653,8 @@ preset_kpdr21_maridia_botwoon_etank:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_halfie_setup:
-    dw #preset_kpdr21_maridia_botwoon_etank ; Maridia: Botwoon E-tank
+preset_kpdr22_maridia_halfie_setup:
+    dw #preset_kpdr22_maridia_botwoon_etank ; Maridia: Botwoon E-tank
     dl $7E078D : db $02 : dw $A918 ; DDB
     dl $7E079B : db $02 : dw $D7E4 ; MDB
     dl $7E07F3 : db $02 : dw $001B ; Music Bank
@@ -1671,8 +1671,8 @@ preset_kpdr21_maridia_halfie_setup:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_draygon:
-    dw #preset_kpdr21_maridia_halfie_setup ; Maridia: Halfie Setup
+preset_kpdr22_maridia_draygon:
+    dw #preset_kpdr22_maridia_halfie_setup ; Maridia: Halfie Setup
     dl $7E078D : db $02 : dw $A7F8 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $D78F ; MDB
@@ -1690,8 +1690,8 @@ preset_kpdr21_maridia_draygon:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_reverse_halfie_spikesuit:
-    dw #preset_kpdr21_maridia_draygon ; Maridia: Draygon
+preset_kpdr22_maridia_reverse_halfie_spikesuit:
+    dw #preset_kpdr22_maridia_draygon ; Maridia: Draygon
     dl $7E078D : db $02 : dw $A96C ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E090F : db $02 : dw $6000 ; Screen subpixel X position.
@@ -1713,14 +1713,14 @@ preset_kpdr21_maridia_reverse_halfie_spikesuit:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_womple_jump:
-    dw #preset_kpdr21_maridia_reverse_halfie_spikesuit ; Maridia: Reverse Halfie (Spikesuit)
+preset_kpdr22_maridia_womple_jump:
+    dw #preset_kpdr22_maridia_reverse_halfie_spikesuit ; Maridia: Reverse Halfie (Spikesuit)
     dl $7E0A68 : db $02 : dw $0000 ; Flash suit
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_cac_alley_east:
-    dw #preset_kpdr21_maridia_womple_jump ; Maridia: Womple Jump
+preset_kpdr22_maridia_cac_alley_east:
+    dw #preset_kpdr22_maridia_womple_jump ; Maridia: Womple Jump
     dl $7E078D : db $02 : dw $A7E0 ; DDB
     dl $7E079B : db $02 : dw $D913 ; MDB
     dl $7E090F : db $02 : dw $8000 ; Screen subpixel X position.
@@ -1734,8 +1734,8 @@ preset_kpdr21_maridia_cac_alley_east:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_cac_alley_west:
-    dw #preset_kpdr21_maridia_cac_alley_east ; Maridia: Cac Alley East
+preset_kpdr22_maridia_cac_alley_west:
+    dw #preset_kpdr22_maridia_cac_alley_east ; Maridia: Cac Alley East
     dl $7E078D : db $02 : dw $A900 ; DDB
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E079B : db $02 : dw $DA2B ; MDB
@@ -1748,8 +1748,8 @@ preset_kpdr21_maridia_cac_alley_west:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_plasma_spark:
-    dw #preset_kpdr21_maridia_cac_alley_west ; Maridia: Cac Alley West
+preset_kpdr22_maridia_plasma_spark:
+    dw #preset_kpdr22_maridia_cac_alley_west ; Maridia: Cac Alley West
     dl $7E078D : db $02 : dw $A93C ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $D5EC ; MDB
@@ -1761,8 +1761,8 @@ preset_kpdr21_maridia_plasma_spark:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_plasma_climb:
-    dw #preset_kpdr21_maridia_plasma_spark ; Maridia: Plasma Spark
+preset_kpdr22_maridia_plasma_climb:
+    dw #preset_kpdr22_maridia_plasma_spark ; Maridia: Plasma Spark
     dl $7E078D : db $02 : dw $A750 ; DDB
     dl $7E079B : db $02 : dw $D340 ; MDB
     dl $7E07C3 : db $02 : dw $B130 ; GFX Pointers
@@ -1779,8 +1779,8 @@ preset_kpdr21_maridia_plasma_climb:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_plasma_beam:
-    dw #preset_kpdr21_maridia_plasma_climb ; Maridia: Plasma Climb
+preset_kpdr22_maridia_plasma_beam:
+    dw #preset_kpdr22_maridia_plasma_climb ; Maridia: Plasma Climb
     dl $7E078D : db $02 : dw $A5DC ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $D27E ; MDB
@@ -1794,8 +1794,8 @@ preset_kpdr21_maridia_plasma_beam:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_plasma_spark_revisit:
-    dw #preset_kpdr21_maridia_plasma_beam ; Maridia: Plasma Beam
+preset_kpdr22_maridia_plasma_spark_revisit:
+    dw #preset_kpdr22_maridia_plasma_beam ; Maridia: Plasma Beam
     dl $7E078D : db $02 : dw $A540 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $D387 ; MDB
@@ -1817,8 +1817,8 @@ preset_kpdr21_maridia_plasma_spark_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_toilet:
-    dw #preset_kpdr21_maridia_plasma_spark_revisit ; Maridia: Plasma Spark Revisit
+preset_kpdr22_maridia_toilet:
+    dw #preset_kpdr22_maridia_plasma_spark_revisit ; Maridia: Plasma Spark Revisit
     dl $7E078D : db $02 : dw $A5D0 ; DDB
     dl $7E079B : db $02 : dw $D340 ; MDB
     dl $7E0911 : db $02 : dw $002E ; Screen X position in pixels
@@ -1832,8 +1832,8 @@ preset_kpdr21_maridia_toilet:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_sewers:
-    dw #preset_kpdr21_maridia_toilet ; Maridia: Toilet
+preset_kpdr22_maridia_sewers:
+    dw #preset_kpdr22_maridia_toilet ; Maridia: Toilet
     dl $7E078D : db $02 : dw $A600 ; DDB
     dl $7E079B : db $02 : dw $D48E ; MDB
     dl $7E07C3 : db $02 : dw $E78D ; GFX Pointers
@@ -1848,8 +1848,8 @@ preset_kpdr21_maridia_sewers:
     dw #$FFFF
 .after
 
-preset_kpdr21_maridia_lower_maridia_gate:
-    dw #preset_kpdr21_maridia_sewers ; Maridia: Sewers
+preset_kpdr22_maridia_lower_maridia_gate:
+    dw #preset_kpdr22_maridia_sewers ; Maridia: Sewers
     dl $7E078D : db $02 : dw $A528 ; DDB
     dl $7E079B : db $02 : dw $D21C ; MDB
     dl $7E07C3 : db $02 : dw $B130 ; GFX Pointers
@@ -1864,8 +1864,8 @@ preset_kpdr21_maridia_lower_maridia_gate:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_revisit_ice_beam_gates:
-    dw #preset_kpdr21_maridia_lower_maridia_gate ; Maridia: Lower Maridia Gate
+preset_kpdr22_upper_norfair_revisit_ice_beam_gates:
+    dw #preset_kpdr22_maridia_lower_maridia_gate ; Maridia: Lower Maridia Gate
     dl $7E078D : db $02 : dw $9246 ; DDB
     dl $7E078F : db $02 : dw $0005 ; DoorOut Index
     dl $7E079B : db $02 : dw $A7DE ; MDB
@@ -1884,8 +1884,8 @@ preset_kpdr21_upper_norfair_revisit_ice_beam_gates:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_revisit_ice_maze_up:
-    dw #preset_kpdr21_upper_norfair_revisit_ice_beam_gates ; Upper Norfair Revisit: Ice Beam Gates
+preset_kpdr22_upper_norfair_revisit_ice_maze_up:
+    dw #preset_kpdr22_upper_norfair_revisit_ice_beam_gates ; Upper Norfair Revisit: Ice Beam Gates
     dl $7E078D : db $02 : dw $931E ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $A75D ; MDB
@@ -1898,8 +1898,8 @@ preset_kpdr21_upper_norfair_revisit_ice_maze_up:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_revisit_ice_maze_down:
-    dw #preset_kpdr21_upper_norfair_revisit_ice_maze_up ; Upper Norfair Revisit: Ice Maze Up
+preset_kpdr22_upper_norfair_revisit_ice_maze_down:
+    dw #preset_kpdr22_upper_norfair_revisit_ice_maze_up ; Upper Norfair Revisit: Ice Maze Up
     dl $7E078D : db $02 : dw $937E ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $A890 ; MDB
@@ -1917,8 +1917,8 @@ preset_kpdr21_upper_norfair_revisit_ice_maze_down:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_revisit_ice_escape:
-    dw #preset_kpdr21_upper_norfair_revisit_ice_maze_down ; Upper Norfair Revisit: Ice Maze Down
+preset_kpdr22_upper_norfair_revisit_ice_escape:
+    dw #preset_kpdr22_upper_norfair_revisit_ice_maze_down ; Upper Norfair Revisit: Ice Maze Down
     dl $7E078D : db $02 : dw $935A ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $A8B9 ; MDB
@@ -1935,8 +1935,8 @@ preset_kpdr21_upper_norfair_revisit_ice_escape:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_revisit_purple_shaft_upper:
-    dw #preset_kpdr21_upper_norfair_revisit_ice_escape ; Upper Norfair Revisit: Ice Escape
+preset_kpdr22_upper_norfair_revisit_purple_shaft_upper:
+    dw #preset_kpdr22_upper_norfair_revisit_ice_escape ; Upper Norfair Revisit: Ice Escape
     dl $7E078D : db $02 : dw $971A ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $ACB3 ; MDB
@@ -1949,8 +1949,8 @@ preset_kpdr21_upper_norfair_revisit_purple_shaft_upper:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_revisit_magdollite_tunnel_upper:
-    dw #preset_kpdr21_upper_norfair_revisit_purple_shaft_upper ; Upper Norfair Revisit: Purple Shaft (Upper)
+preset_kpdr22_upper_norfair_revisit_magdollite_tunnel_upper:
+    dw #preset_kpdr22_upper_norfair_revisit_purple_shaft_upper ; Upper Norfair Revisit: Purple Shaft (Upper)
     dl $7E078D : db $02 : dw $9576 ; DDB
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E079B : db $02 : dw $AEDF ; MDB
@@ -1962,8 +1962,8 @@ preset_kpdr21_upper_norfair_revisit_magdollite_tunnel_upper:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_revisit_kronic_boost_upper:
-    dw #preset_kpdr21_upper_norfair_revisit_magdollite_tunnel_upper ; Upper Norfair Revisit: Magdollite Tunnel (Upper)
+preset_kpdr22_upper_norfair_revisit_kronic_boost_upper:
+    dw #preset_kpdr22_upper_norfair_revisit_magdollite_tunnel_upper ; Upper Norfair Revisit: Magdollite Tunnel (Upper)
     dl $7E078D : db $02 : dw $96BA ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $AEB4 ; MDB
@@ -1976,8 +1976,8 @@ preset_kpdr21_upper_norfair_revisit_kronic_boost_upper:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_revisit_croc_speedway_lower:
-    dw #preset_kpdr21_upper_norfair_revisit_ice_escape ; Upper Norfair Revisit: Ice Escape
+preset_kpdr22_upper_norfair_revisit_croc_speedway_lower:
+    dw #preset_kpdr22_upper_norfair_revisit_ice_escape ; Upper Norfair Revisit: Ice Escape
     dl $7E078D : db $02 : dw $9336 ; DDB
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E079B : db $02 : dw $A8F8 ; MDB
@@ -1990,8 +1990,8 @@ preset_kpdr21_upper_norfair_revisit_croc_speedway_lower:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_revisit_spiky_acid_snakes_lower:
-    dw #preset_kpdr21_upper_norfair_revisit_croc_speedway_lower ; Upper Norfair Revisit: Croc Speedway (Lower)
+preset_kpdr22_upper_norfair_revisit_spiky_acid_snakes_lower:
+    dw #preset_kpdr22_upper_norfair_revisit_croc_speedway_lower ; Upper Norfair Revisit: Croc Speedway (Lower)
     dl $7E078D : db $02 : dw $93C6 ; DDB
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E079B : db $02 : dw $AFCE ; MDB
@@ -2006,8 +2006,8 @@ preset_kpdr21_upper_norfair_revisit_spiky_acid_snakes_lower:
     dw #$FFFF
 .after
 
-preset_kpdr21_upper_norfair_revisit_kronic_boost_lower:
-    dw #preset_kpdr21_upper_norfair_revisit_spiky_acid_snakes_lower ; Upper Norfair Revisit: Spiky Acid Snakes (Lower)
+preset_kpdr22_upper_norfair_revisit_kronic_boost_lower:
+    dw #preset_kpdr22_upper_norfair_revisit_spiky_acid_snakes_lower ; Upper Norfair Revisit: Spiky Acid Snakes (Lower)
     dl $7E078D : db $02 : dw $9792 ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $AFFB ; MDB
@@ -2018,8 +2018,8 @@ preset_kpdr21_upper_norfair_revisit_kronic_boost_lower:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_ln_main_hall:
-    dw #preset_kpdr21_upper_norfair_revisit_kronic_boost_upper ; Upper Norfair Revisit: Kronic Boost (Upper)
+preset_kpdr22_lower_norfair_ln_main_hall:
+    dw #preset_kpdr22_upper_norfair_revisit_kronic_boost_upper ; Upper Norfair Revisit: Kronic Boost (Upper)
     dl $7E078D : db $02 : dw $96F6 ; DDB
     dl $7E079B : db $02 : dw $B236 ; MDB
     dl $7E07F3 : db $02 : dw $0018 ; Music Bank
@@ -2037,8 +2037,8 @@ preset_kpdr21_lower_norfair_ln_main_hall:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_prepillars:
-    dw #preset_kpdr21_lower_norfair_ln_main_hall ; Lower Norfair: LN Main Hall
+preset_kpdr22_lower_norfair_prepillars:
+    dw #preset_kpdr22_lower_norfair_ln_main_hall ; Lower Norfair: LN Main Hall
     dl $7E078F : db $02 : dw $0003 ; DoorOut Index
     dl $7E090F : db $02 : dw $9000 ; Screen subpixel X position.
     dl $7E0911 : db $02 : dw $0700 ; Screen X position in pixels
@@ -2050,8 +2050,8 @@ preset_kpdr21_lower_norfair_prepillars:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_worst_room_in_the_game:
-    dw #preset_kpdr21_lower_norfair_prepillars ; Lower Norfair: Pre-Pillars
+preset_kpdr22_lower_norfair_worst_room_in_the_game:
+    dw #preset_kpdr22_lower_norfair_prepillars ; Lower Norfair: Pre-Pillars
     dl $7E078D : db $02 : dw $9912 ; DDB
     dl $7E078F : db $02 : dw $0004 ; DoorOut Index
     dl $7E079B : db $02 : dw $B457 ; MDB
@@ -2067,8 +2067,8 @@ preset_kpdr21_lower_norfair_worst_room_in_the_game:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_amphitheatre:
-    dw #preset_kpdr21_lower_norfair_worst_room_in_the_game ; Lower Norfair: Worst Room in the Game
+preset_kpdr22_lower_norfair_amphitheatre:
+    dw #preset_kpdr22_lower_norfair_worst_room_in_the_game ; Lower Norfair: Worst Room in the Game
     dl $7E078D : db $02 : dw $994E ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $B4AD ; MDB
@@ -2083,8 +2083,8 @@ preset_kpdr21_lower_norfair_amphitheatre:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_kihunter_stairs_down:
-    dw #preset_kpdr21_lower_norfair_amphitheatre ; Lower Norfair: Amphitheatre
+preset_kpdr22_lower_norfair_kihunter_stairs_down:
+    dw #preset_kpdr22_lower_norfair_amphitheatre ; Lower Norfair: Amphitheatre
     dl $7E078D : db $02 : dw $997E ; DDB
     dl $7E079B : db $02 : dw $B4E5 ; MDB
     dl $7E090F : db $02 : dw $0000 ; Screen subpixel X position.
@@ -2096,8 +2096,8 @@ preset_kpdr21_lower_norfair_kihunter_stairs_down:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_wasteland:
-    dw #preset_kpdr21_lower_norfair_kihunter_stairs_down ; Lower Norfair: Kihunter Stairs Down
+preset_kpdr22_lower_norfair_wasteland:
+    dw #preset_kpdr22_lower_norfair_kihunter_stairs_down ; Lower Norfair: Kihunter Stairs Down
     dl $7E078D : db $02 : dw $99A2 ; DDB
     dl $7E079B : db $02 : dw $B585 ; MDB
     dl $7E090F : db $02 : dw $8000 ; Screen subpixel X position.
@@ -2113,8 +2113,8 @@ preset_kpdr21_lower_norfair_wasteland:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_metal_ninja_pirates:
-    dw #preset_kpdr21_lower_norfair_wasteland ; Lower Norfair: Wasteland
+preset_kpdr22_lower_norfair_metal_ninja_pirates:
+    dw #preset_kpdr22_lower_norfair_wasteland ; Lower Norfair: Wasteland
     dl $7E078D : db $02 : dw $99EA ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $B5D5 ; MDB
@@ -2133,8 +2133,8 @@ preset_kpdr21_lower_norfair_metal_ninja_pirates:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_plowerhouse:
-    dw #preset_kpdr21_lower_norfair_metal_ninja_pirates ; Lower Norfair: Metal Ninja Pirates
+preset_kpdr22_lower_norfair_plowerhouse:
+    dw #preset_kpdr22_lower_norfair_metal_ninja_pirates ; Lower Norfair: Metal Ninja Pirates
     dl $7E078D : db $02 : dw $9A1A ; DDB
     dl $7E079B : db $02 : dw $B62B ; MDB
     dl $7E090F : db $02 : dw $7000 ; Screen subpixel X position.
@@ -2150,8 +2150,8 @@ preset_kpdr21_lower_norfair_plowerhouse:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_ridley:
-    dw #preset_kpdr21_lower_norfair_plowerhouse ; Lower Norfair: Plowerhouse
+preset_kpdr22_lower_norfair_ridley:
+    dw #preset_kpdr22_lower_norfair_plowerhouse ; Lower Norfair: Plowerhouse
     dl $7E078D : db $02 : dw $995A ; DDB
     dl $7E079B : db $02 : dw $B37A ; MDB
     dl $7E090F : db $02 : dw $2000 ; Screen subpixel X position.
@@ -2164,8 +2164,8 @@ preset_kpdr21_lower_norfair_ridley:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_leaving_ridley:
-    dw #preset_kpdr21_lower_norfair_ridley ; Lower Norfair: Ridley
+preset_kpdr22_lower_norfair_leaving_ridley:
+    dw #preset_kpdr22_lower_norfair_ridley ; Lower Norfair: Ridley
     dl $7E078D : db $02 : dw $98CA ; DDB
     dl $7E079B : db $02 : dw $B32E ; MDB
     dl $7E07F3 : db $02 : dw $0024 ; Music Bank
@@ -2184,8 +2184,8 @@ preset_kpdr21_lower_norfair_leaving_ridley:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_reverse_plowerhouse:
-    dw #preset_kpdr21_lower_norfair_leaving_ridley ; Lower Norfair: Leaving Ridley
+preset_kpdr22_lower_norfair_reverse_plowerhouse:
+    dw #preset_kpdr22_lower_norfair_leaving_ridley ; Lower Norfair: Leaving Ridley
     dl $7E078D : db $02 : dw $98BE ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $B37A ; MDB
@@ -2202,8 +2202,8 @@ preset_kpdr21_lower_norfair_reverse_plowerhouse:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_wasteland_revisit:
-    dw #preset_kpdr21_lower_norfair_reverse_plowerhouse ; Lower Norfair: Reverse Plowerhouse
+preset_kpdr22_lower_norfair_wasteland_revisit:
+    dw #preset_kpdr22_lower_norfair_reverse_plowerhouse ; Lower Norfair: Reverse Plowerhouse
     dl $7E078D : db $02 : dw $9966 ; DDB
     dl $7E079B : db $02 : dw $B62B ; MDB
     dl $7E090F : db $02 : dw $9000 ; Screen subpixel X position.
@@ -2213,8 +2213,8 @@ preset_kpdr21_lower_norfair_wasteland_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_kihunter_stairs_up:
-    dw #preset_kpdr21_lower_norfair_wasteland_revisit ; Lower Norfair: Wasteland Revisit
+preset_kpdr22_lower_norfair_kihunter_stairs_up:
+    dw #preset_kpdr22_lower_norfair_wasteland_revisit ; Lower Norfair: Wasteland Revisit
     dl $7E078D : db $02 : dw $9A3E ; DDB
     dl $7E079B : db $02 : dw $B5D5 ; MDB
     dl $7E090F : db $02 : dw $D5FF ; Screen subpixel X position.
@@ -2228,8 +2228,8 @@ preset_kpdr21_lower_norfair_kihunter_stairs_up:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_fire_flea_room:
-    dw #preset_kpdr21_lower_norfair_kihunter_stairs_up ; Lower Norfair: Kihunter Stairs Up
+preset_kpdr22_lower_norfair_fire_flea_room:
+    dw #preset_kpdr22_lower_norfair_kihunter_stairs_up ; Lower Norfair: Kihunter Stairs Up
     dl $7E078D : db $02 : dw $9A26 ; DDB
     dl $7E079B : db $02 : dw $B585 ; MDB
     dl $7E090F : db $02 : dw $D000 ; Screen subpixel X position.
@@ -2241,8 +2241,8 @@ preset_kpdr21_lower_norfair_fire_flea_room:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_springball_maze:
-    dw #preset_kpdr21_lower_norfair_fire_flea_room ; Lower Norfair: Fire Flea Room
+preset_kpdr22_lower_norfair_springball_maze:
+    dw #preset_kpdr22_lower_norfair_fire_flea_room ; Lower Norfair: Fire Flea Room
     dl $7E078D : db $02 : dw $9A02 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $B6EE ; MDB
@@ -2259,8 +2259,8 @@ preset_kpdr21_lower_norfair_springball_maze:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_three_musketeers:
-    dw #preset_kpdr21_lower_norfair_springball_maze ; Lower Norfair: Springball Maze
+preset_kpdr22_lower_norfair_three_musketeers:
+    dw #preset_kpdr22_lower_norfair_springball_maze ; Lower Norfair: Springball Maze
     dl $7E078D : db $02 : dw $9A92 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $B510 ; MDB
@@ -2275,8 +2275,8 @@ preset_kpdr21_lower_norfair_three_musketeers:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_single_chamber_final:
-    dw #preset_kpdr21_lower_norfair_three_musketeers ; Lower Norfair: Three Musketeers
+preset_kpdr22_lower_norfair_single_chamber_final:
+    dw #preset_kpdr22_lower_norfair_three_musketeers ; Lower Norfair: Three Musketeers
     dl $7E078D : db $02 : dw $99AE ; DDB
     dl $7E079B : db $02 : dw $B656 ; MDB
     dl $7E090F : db $02 : dw $9000 ; Screen subpixel X position.
@@ -2288,8 +2288,8 @@ preset_kpdr21_lower_norfair_single_chamber_final:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_bubble_mountain_final:
-    dw #preset_kpdr21_lower_norfair_single_chamber_final ; Lower Norfair: Single Chamber Final
+preset_kpdr22_lower_norfair_bubble_mountain_final:
+    dw #preset_kpdr22_lower_norfair_single_chamber_final ; Lower Norfair: Single Chamber Final
     dl $7E078D : db $02 : dw $9A4A ; DDB
     dl $7E079B : db $02 : dw $AD5E ; MDB
     dl $7E07F3 : db $02 : dw $0015 ; Music Bank
@@ -2302,8 +2302,8 @@ preset_kpdr21_lower_norfair_bubble_mountain_final:
     dw #$FFFF
 .after
 
-preset_kpdr21_lower_norfair_business_center_final:
-    dw #preset_kpdr21_lower_norfair_bubble_mountain_final ; Lower Norfair: Bubble Mountain Final
+preset_kpdr22_lower_norfair_business_center_final:
+    dw #preset_kpdr22_lower_norfair_bubble_mountain_final ; Lower Norfair: Bubble Mountain Final
     dl $7E078D : db $02 : dw $97DA ; DDB
     dl $7E079B : db $02 : dw $B167 ; MDB
     dl $7E07C3 : db $02 : dw $860B ; GFX Pointers
@@ -2320,8 +2320,8 @@ preset_kpdr21_lower_norfair_business_center_final:
     dw #$FFFF
 .after
 
-preset_kpdr21_backtracking_maridia_tube_revisit:
-    dw #preset_kpdr21_lower_norfair_business_center_final ; Lower Norfair: Business Center Final
+preset_kpdr22_backtracking_maridia_tube_revisit:
+    dw #preset_kpdr22_lower_norfair_business_center_final ; Lower Norfair: Business Center Final
     dl $7E078D : db $02 : dw $92EE ; DDB
     dl $7E078F : db $02 : dw $0004 ; DoorOut Index
     dl $7E079B : db $02 : dw $A6A1 ; MDB
@@ -2339,8 +2339,8 @@ preset_kpdr21_backtracking_maridia_tube_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_backtracking_fish_tank_revisit:
-    dw #preset_kpdr21_backtracking_maridia_tube_revisit ; Backtracking: Maridia Tube Revisit
+preset_kpdr22_backtracking_fish_tank_revisit:
+    dw #preset_kpdr22_backtracking_maridia_tube_revisit ; Backtracking: Maridia Tube Revisit
     dl $7E078D : db $02 : dw $A330 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $CFC9 ; MDB
@@ -2361,8 +2361,8 @@ preset_kpdr21_backtracking_fish_tank_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_backtracking_mt_everest_revisit_revisit:
-    dw #preset_kpdr21_backtracking_fish_tank_revisit ; Backtracking: Fish Tank Revisit
+preset_kpdr22_backtracking_mt_everest_revisit_revisit:
+    dw #preset_kpdr22_backtracking_fish_tank_revisit ; Backtracking: Fish Tank Revisit
     dl $7E078D : db $02 : dw $A3B4 ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $D017 ; MDB
@@ -2377,8 +2377,8 @@ preset_kpdr21_backtracking_mt_everest_revisit_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_backtracking_red_brinstar_green_gate:
-    dw #preset_kpdr21_backtracking_mt_everest_revisit_revisit ; Backtracking: Mt Everest Revisit Revisit
+preset_kpdr22_backtracking_red_brinstar_green_gate:
+    dw #preset_kpdr22_backtracking_mt_everest_revisit_revisit ; Backtracking: Mt Everest Revisit Revisit
     dl $7E078D : db $02 : dw $A42C ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $D104 ; MDB
@@ -2390,8 +2390,8 @@ preset_kpdr21_backtracking_red_brinstar_green_gate:
     dw #$FFFF
 .after
 
-preset_kpdr21_backtracking_crateria_kihunters_final:
-    dw #preset_kpdr21_backtracking_red_brinstar_green_gate ; Backtracking: Red Brinstar Green Gate
+preset_kpdr22_backtracking_crateria_kihunters_final:
+    dw #preset_kpdr22_backtracking_red_brinstar_green_gate ; Backtracking: Red Brinstar Green Gate
     dl $7E078D : db $02 : dw $90BA ; DDB
     dl $7E078F : db $02 : dw $0002 ; DoorOut Index
     dl $7E079B : db $02 : dw $962A ; MDB
@@ -2411,8 +2411,8 @@ preset_kpdr21_backtracking_crateria_kihunters_final:
     dw #$FFFF
 .after
 
-preset_kpdr21_backtracking_parlor_spacejump:
-    dw #preset_kpdr21_backtracking_crateria_kihunters_final ; Backtracking: Crateria Kihunters Final
+preset_kpdr22_backtracking_parlor_spacejump:
+    dw #preset_kpdr22_backtracking_crateria_kihunters_final ; Backtracking: Crateria Kihunters Final
     dl $7E078D : db $02 : dw $8AC6 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $91F8 ; MDB
@@ -2433,8 +2433,8 @@ preset_kpdr21_backtracking_parlor_spacejump:
     dw #$FFFF
 .after
 
-preset_kpdr21_backtracking_terminator_revisit:
-    dw #preset_kpdr21_backtracking_parlor_spacejump ; Backtracking: Parlor Spacejump
+preset_kpdr22_backtracking_terminator_revisit:
+    dw #preset_kpdr22_backtracking_parlor_spacejump ; Backtracking: Parlor Spacejump
     dl $7E078D : db $02 : dw $8916 ; DDB
     dl $7E079B : db $02 : dw $92FD ; MDB
     dl $7E07F3 : db $02 : dw $0009 ; Music Bank
@@ -2450,8 +2450,8 @@ preset_kpdr21_backtracking_terminator_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_backtracking_green_pirate_shaft_revisit:
-    dw #preset_kpdr21_backtracking_terminator_revisit ; Backtracking: Terminator Revisit
+preset_kpdr22_backtracking_green_pirate_shaft_revisit:
+    dw #preset_kpdr22_backtracking_terminator_revisit ; Backtracking: Terminator Revisit
     dl $7E078D : db $02 : dw $895E ; DDB
     dl $7E079B : db $02 : dw $990D ; MDB
     dl $7E07C3 : db $02 : dw $F911 ; GFX Pointers
@@ -2470,8 +2470,8 @@ preset_kpdr21_backtracking_green_pirate_shaft_revisit:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_metroids_1:
-    dw #preset_kpdr21_backtracking_green_pirate_shaft_revisit ; Backtracking: Green Pirate Shaft Revisit
+preset_kpdr22_tourian_metroids_1:
+    dw #preset_kpdr22_backtracking_green_pirate_shaft_revisit ; Backtracking: Green Pirate Shaft Revisit
     dl $7E078D : db $02 : dw $9222 ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $DAAE ; MDB
@@ -2497,8 +2497,8 @@ preset_kpdr21_tourian_metroids_1:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_metroids_2:
-    dw #preset_kpdr21_tourian_metroids_1 ; Tourian: Metroids 1
+preset_kpdr22_tourian_metroids_2:
+    dw #preset_kpdr22_tourian_metroids_1 ; Tourian: Metroids 1
     dl $7E078D : db $02 : dw $A984 ; DDB
     dl $7E078F : db $02 : dw $0000 ; DoorOut Index
     dl $7E079B : db $02 : dw $DAE1 ; MDB
@@ -2518,8 +2518,8 @@ preset_kpdr21_tourian_metroids_2:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_metroids_3:
-    dw #preset_kpdr21_tourian_metroids_2 ; Tourian: Metroids 2
+preset_kpdr22_tourian_metroids_3:
+    dw #preset_kpdr22_tourian_metroids_2 ; Tourian: Metroids 2
     dl $7E078D : db $02 : dw $A9B4 ; DDB
     dl $7E078F : db $02 : dw $0001 ; DoorOut Index
     dl $7E079B : db $02 : dw $DB31 ; MDB
@@ -2537,8 +2537,8 @@ preset_kpdr21_tourian_metroids_3:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_metroids_4:
-    dw #preset_kpdr21_tourian_metroids_3 ; Tourian: Metroids 3
+preset_kpdr22_tourian_metroids_4:
+    dw #preset_kpdr22_tourian_metroids_3 ; Tourian: Metroids 3
     dl $7E078D : db $02 : dw $A9CC ; DDB
     dl $7E079B : db $02 : dw $DB7D ; MDB
     dl $7E090F : db $02 : dw $C000 ; Screen subpixel X position.
@@ -2553,8 +2553,8 @@ preset_kpdr21_tourian_metroids_4:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_giant_hoppers:
-    dw #preset_kpdr21_tourian_metroids_4 ; Tourian: Metroids 4
+preset_kpdr22_tourian_giant_hoppers:
+    dw #preset_kpdr22_tourian_metroids_4 ; Tourian: Metroids 4
     dl $7E078D : db $02 : dw $A9E4 ; DDB
     dl $7E079B : db $02 : dw $DBCD ; MDB
     dl $7E090F : db $02 : dw $1000 ; Screen subpixel X position.
@@ -2570,8 +2570,8 @@ preset_kpdr21_tourian_giant_hoppers:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_baby_skip:
-    dw #preset_kpdr21_tourian_giant_hoppers ; Tourian: Giant Hoppers
+preset_kpdr22_tourian_baby_skip:
+    dw #preset_kpdr22_tourian_giant_hoppers ; Tourian: Giant Hoppers
     dl $7E078D : db $02 : dw $AA14 ; DDB
     dl $7E079B : db $02 : dw $DC65 ; MDB
     dl $7E07F3 : db $02 : dw $0045 ; Music Bank
@@ -2588,8 +2588,8 @@ preset_kpdr21_tourian_baby_skip:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_gedora_room:
-    dw #preset_kpdr21_tourian_baby_skip ; Tourian: Baby Skip
+preset_kpdr22_tourian_gedora_room:
+    dw #preset_kpdr22_tourian_baby_skip ; Tourian: Baby Skip
     dl $7E078D : db $02 : dw $AA44 ; DDB
     dl $7E079B : db $02 : dw $DCFF ; MDB
     dl $7E07F3 : db $02 : dw $001E ; Music Bank
@@ -2607,8 +2607,8 @@ preset_kpdr21_tourian_gedora_room:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_zeb_skip:
-    dw #preset_kpdr21_tourian_gedora_room ; Tourian: Gedora Room
+preset_kpdr22_tourian_zeb_skip:
+    dw #preset_kpdr22_tourian_gedora_room ; Tourian: Gedora Room
     dl $7E078D : db $02 : dw $AAA4 ; DDB
     dl $7E079B : db $02 : dw $DDF3 ; MDB
     dl $7E090F : db $02 : dw $E000 ; Screen subpixel X position.
@@ -2623,8 +2623,8 @@ preset_kpdr21_tourian_zeb_skip:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_escape_room_3:
-    dw #preset_kpdr21_tourian_zeb_skip ; Tourian: Zeb Skip
+preset_kpdr22_tourian_escape_room_3:
+    dw #preset_kpdr22_tourian_zeb_skip ; Tourian: Zeb Skip
     dl $7E078D : db $02 : dw $AAEC ; DDB
     dl $7E079B : db $02 : dw $DE7A ; MDB
     dl $7E07F3 : db $02 : dw $0024 ; Music Bank
@@ -2647,8 +2647,8 @@ preset_kpdr21_tourian_escape_room_3:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_climb_spark:
-    dw #preset_kpdr21_tourian_escape_room_3 ; Tourian: Escape Room 3
+preset_kpdr22_tourian_climb_spark:
+    dw #preset_kpdr22_tourian_escape_room_3 ; Tourian: Escape Room 3
     dl $7E078D : db $02 : dw $AB1C ; DDB
     dl $7E079B : db $02 : dw $DEDE ; MDB
     dl $7E0911 : db $02 : dw $00F6 ; Screen X position in pixels
@@ -2659,8 +2659,8 @@ preset_kpdr21_tourian_climb_spark:
     dw #$FFFF
 .after
 
-preset_kpdr21_tourian_escape_parlor:
-    dw #preset_kpdr21_tourian_climb_spark ; Tourian: Climb Spark
+preset_kpdr22_tourian_escape_parlor:
+    dw #preset_kpdr22_tourian_climb_spark ; Tourian: Climb Spark
     dl $7E078D : db $02 : dw $AB34 ; DDB
     dl $7E079B : db $02 : dw $96BA ; MDB
     dl $7E079F : db $02 : dw $0000 ; Region

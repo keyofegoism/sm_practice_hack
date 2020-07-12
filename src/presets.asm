@@ -268,7 +268,7 @@ org $E08000
   print pc, " prkd data end"
 
 org $E18000
-  ; 20B0 (length in hex)
+  ; 3024 (length in hex)
   print pc, " kpdr21 data start"
   incsrc presets/kpdr21_data.asm
   print pc, " kpdr21 data end"
@@ -318,7 +318,7 @@ org $E48000
   incsrc presets/100early_data.asm
   print pc, " 100early data end"
 
-  ; XXXX (length in hex)
+  ; 3024 (length in hex)
   print pc, " spazer data start"
   incsrc presets/spazer_data.asm
   print pc, " spazer data end"
