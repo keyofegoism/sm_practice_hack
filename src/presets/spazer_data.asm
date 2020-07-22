@@ -970,8 +970,8 @@ preset_spazer_upper_norfair_double_chamber_revisit:
     dl $7E090F : db $02 : dw $1000 ; Screen subpixel X position.
     dl $7E0913 : db $02 : dw $7800 ; Screen subpixel Y position
     dl $7E0915 : db $02 : dw $0000 ; Screen Y position in pixels
-    dl $7E09A6 : db $02 : dw $1001 ; Beams
-    dl $7E09A8 : db $02 : dw $1001 ; Beams
+    dl $7E09A6 : db $02 : dw $1005 ; Beams
+    dl $7E09A8 : db $02 : dw $1005 ; Beams
     dl $7E09C6 : db $02 : dw $000D ; Missiles
     dl $7E09C8 : db $02 : dw $0014 ; Max missiles
     dl $7E09CA : db $02 : dw $0003 ; Supers
@@ -1810,8 +1810,8 @@ preset_spazer_maridia_plasma_spark_revisit:
     dl $7E090F : db $02 : dw $8000 ; Screen subpixel X position.
     dl $7E0913 : db $02 : dw $0000 ; Screen subpixel Y position
     dl $7E0915 : db $02 : dw $031A ; Screen Y position in pixels
-    dl $7E09A6 : db $02 : dw $1009 ; Beams
-    dl $7E09A8 : db $02 : dw $1009 ; Beams
+    dl $7E09A6 : db $02 : dw $100D ; Beams
+    dl $7E09A8 : db $02 : dw $100D ; Beams
     dl $7E09C2 : db $02 : dw $0108 ; Health
     dl $7E09C6 : db $02 : dw $0011 ; Missiles
     dl $7E09CE : db $02 : dw $0002 ; Pbs
@@ -1916,8 +1916,8 @@ preset_spazer_upper_norfair_revisit_ice_maze_down:
     dl $7E07F5 : db $02 : dw $0003 ; Music Track
     dl $7E090F : db $02 : dw $5000 ; Screen subpixel X position.
     dl $7E0913 : db $02 : dw $7000 ; Screen subpixel Y position
-    dl $7E09A6 : db $02 : dw $100B ; Beams
-    dl $7E09A8 : db $02 : dw $100B ; Beams
+    dl $7E09A6 : db $02 : dw $100F ; Beams
+    dl $7E09A8 : db $02 : dw $100F ; Beams
     dl $7E09C2 : db $02 : dw $0121 ; Health
     dl $7E0AF6 : db $02 : dw $00BA ; Samus X
     dl $7ED876 : db $02 : dw $01A5 ; Events, Items, Doors

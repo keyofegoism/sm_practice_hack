@@ -166,10 +166,10 @@ preset_to_memory:
 preset_banks:
 {
   dw preset_spazer_crateria_ship>>16
-  dw preset_gtclassic_crateria_ceres_elevator>>16
+  dw preset_gtclassic_crateria_ship>>16
   dw preset_kpdr21_crateria_ship>>16
   dw preset_ngplasma_ceres_station_ceres_elevator>>16
-  dw preset_prkd_bombs_elevator>>16
+  dw preset_prkd_crateria_ship>>16
   dw preset_kpdr25_bombs_ceres_elevator>>16
   dw preset_14ice_crateria_ceres_elevator>>16
   dw preset_14speed_crateria_ceres_elevator>>16
