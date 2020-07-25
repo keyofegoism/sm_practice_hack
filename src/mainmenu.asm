@@ -141,28 +141,28 @@ MainMenu:
     dw #mm_goto_rngmenu
     dw #mm_goto_ctrlsmenu
     dw #$0000
-    %cm_header("SM PRACTICE HACK 2.1.1")
+    %cm_header("INSANEFIREBAT V2.1.2")
 
 mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
 
 mm_goto_presets:
-    %cm_jsr("Presets", #action_presets_submenu, #$0000)
+    %cm_jsr("Category Presets", #action_presets_submenu, #$0000)
 
 mm_goto_teleport:
-    %cm_submenu("Teleport", #TeleportMenu)
+    %cm_submenu("Save Stations", #TeleportMenu)
 
 mm_goto_events:
-    %cm_submenu("Events", #EventsMenu)
+    %cm_submenu("Event Flags", #EventsMenu)
 
 mm_goto_misc:
-    %cm_submenu("Misc", #MiscMenu)
+    %cm_submenu("Misc Options", #MiscMenu)
 
 mm_goto_infohud:
-    %cm_submenu("Infohud", #InfoHudMenu)
+    %cm_submenu("InfoHUD", #InfoHudMenu)
 
 mm_goto_gamemenu:
-    %cm_submenu("Game", #GameMenu)
+    %cm_submenu("Game Options", #GameMenu)
 
 mm_goto_rngmenu:
     %cm_submenu("RNG Control", #RngMenu)
@@ -240,7 +240,7 @@ eq_refill:
     RTS
 
 eq_toggle_category:
-    %cm_submenu("Toggle Category", #ToggleCategoryMenu)
+    %cm_submenu("Category Presets", #ToggleCategoryMenu)
 
 eq_goto_toggleitems:
     %cm_submenu("Toggle Items", #ToggleItemsMenu)
@@ -308,7 +308,7 @@ ToggleCategoryMenu:
     dw #cat_cf_anywhere
     dw #cat_nothing
     dw #$0000
-    %cm_header("TOGGLE CATEGORY")
+    %cm_header("CATEGORY PRESETS")
 
 
 cat_100:
@@ -501,7 +501,7 @@ TeleportMenu:
     dw #tel_tourianbbyskip
     dw #tel_tourianmb
     dw #$0000
-    %cm_header("TELEPORT")
+    %cm_header("SAVE STATIONS")
 
 tel_crateriaship:
     %cm_jsr("Crateria Ship", #action_teleport, #$0000)
@@ -835,6 +835,8 @@ ih_display_mode:
     db #$28, " X POSITION", #$FF
     db #$28, " Y POSITION", #$FF
     db #$28, "   COOLDOWN", #$FF
+    db #$28, " SHINE TUNE", #$FF
+    db #$28, " SHOT TIMER", #$FF
     db #$FF
 
 ih_room_counter:

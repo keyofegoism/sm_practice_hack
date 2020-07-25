@@ -49,7 +49,6 @@ presets_goto_spazer_tourian:
 presets_submenu_spazer_crateria:
     dw #presets_spazer_crateria_ship
     dw #presets_spazer_crateria_parlor
-    dw #presets_spazer_crateria_parlor_downback
     dw #presets_spazer_crateria_climb_down
     dw #presets_spazer_crateria_pit_room
     dw #presets_spazer_crateria_morph
@@ -242,9 +241,6 @@ presets_spazer_crateria_ship:
 
 presets_spazer_crateria_parlor:
     %cm_preset("Parlor", #preset_spazer_crateria_parlor)
-
-presets_spazer_crateria_parlor_downback:
-    %cm_preset("Parlor Downback", #preset_spazer_crateria_parlor_downback)
 
 presets_spazer_crateria_climb_down:
     %cm_preset("Climb Down", #preset_spazer_crateria_climb_down)

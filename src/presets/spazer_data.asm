@@ -230,22 +230,12 @@ preset_spazer_crateria_parlor:
     dw #$FFFF
 .after
 
-preset_spazer_crateria_parlor_downback:
+preset_spazer_crateria_climb_down:
     dw #preset_spazer_crateria_parlor ; Crateria: Parlor
     dl $7E078D : db $02 : dw $8916 ; DDB
     dl $7E079B : db $02 : dw $92FD ; MDB
-    dl $7E090F : db $02 : dw $F000 ; Screen subpixel X position.
-    dl $7E0911 : db $02 : dw $0100 ; Screen X position in pixels
-    dl $7E0913 : db $02 : dw $9C00 ; Screen subpixel Y position
-    dl $7E0915 : db $02 : dw $032A ; Screen Y position in pixels
-    dl $7E0AF6 : db $02 : dw $01B5 ; Samus X
-    dl $7E0AFA : db $02 : dw $039B ; Samus Y
-    dw #$FFFF
-.after
-
-preset_spazer_crateria_climb_down:
-    dw #preset_spazer_crateria_parlor_downback ; Crateria: Parlor Downback
     dl $7E090F : db $02 : dw $3000 ; Screen subpixel X position.
+    dl $7E0911 : db $02 : dw $0100 ; Screen X position in pixels
     dl $7E0913 : db $02 : dw $4000 ; Screen subpixel Y position
     dl $7E0915 : db $02 : dw $041F ; Screen Y position in pixels
     dl $7E0AF6 : db $02 : dw $01A8 ; Samus X
@@ -1810,7 +1800,7 @@ preset_spazer_maridia_plasma_spark_revisit:
     dl $7E090F : db $02 : dw $8000 ; Screen subpixel X position.
     dl $7E0913 : db $02 : dw $0000 ; Screen subpixel Y position
     dl $7E0915 : db $02 : dw $031A ; Screen Y position in pixels
-    dl $7E09A6 : db $02 : dw $100D ; Beams
+    dl $7E09A6 : db $02 : dw $1009 ; Beams
     dl $7E09A8 : db $02 : dw $100D ; Beams
     dl $7E09C2 : db $02 : dw $0108 ; Health
     dl $7E09C6 : db $02 : dw $0011 ; Missiles
@@ -1916,7 +1906,7 @@ preset_spazer_upper_norfair_revisit_ice_maze_down:
     dl $7E07F5 : db $02 : dw $0003 ; Music Track
     dl $7E090F : db $02 : dw $5000 ; Screen subpixel X position.
     dl $7E0913 : db $02 : dw $7000 ; Screen subpixel Y position
-    dl $7E09A6 : db $02 : dw $100F ; Beams
+    dl $7E09A6 : db $02 : dw $100B ; Beams
     dl $7E09A8 : db $02 : dw $100F ; Beams
     dl $7E09C2 : db $02 : dw $0121 ; Health
     dl $7E0AF6 : db $02 : dw $00BA ; Samus X

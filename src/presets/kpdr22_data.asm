@@ -234,12 +234,14 @@ preset_kpdr22_crateria_parlor_downback:
     dw #preset_kpdr22_crateria_parlor ; Crateria: Parlor
     dl $7E078D : db $02 : dw $8916 ; DDB
     dl $7E079B : db $02 : dw $92FD ; MDB
-    dl $7E090F : db $02 : dw $F000 ; Screen subpixel X position.
+    dl $7E090F : db $02 : dw $C000 ; Screen subpixel X position.
     dl $7E0911 : db $02 : dw $0100 ; Screen X position in pixels
-    dl $7E0913 : db $02 : dw $9C00 ; Screen subpixel Y position
-    dl $7E0915 : db $02 : dw $032A ; Screen Y position in pixels
-    dl $7E0AF6 : db $02 : dw $01B5 ; Samus X
-    dl $7E0AFA : db $02 : dw $039B ; Samus Y
+    dl $7E0913 : db $02 : dw $0000 ; Screen subpixel Y position
+    dl $7E0915 : db $02 : dw $02E9 ; Screen Y position in pixels
+    dl $7E0A1C : db $02 : dw $0001 ; Samus position/state
+    dl $7E0A1E : db $02 : dw $0008 ; More position/state
+    dl $7E0AF6 : db $02 : dw $01A7 ; Samus X
+    dl $7E0AFA : db $02 : dw $035B ; Samus Y
     dw #$FFFF
 .after
 
@@ -248,6 +250,8 @@ preset_kpdr22_crateria_climb_down:
     dl $7E090F : db $02 : dw $3000 ; Screen subpixel X position.
     dl $7E0913 : db $02 : dw $4000 ; Screen subpixel Y position
     dl $7E0915 : db $02 : dw $041F ; Screen Y position in pixels
+    dl $7E0A1C : db $02 : dw $0002 ; Samus position/state
+    dl $7E0A1E : db $02 : dw $0004 ; More position/state
     dl $7E0AF6 : db $02 : dw $01A8 ; Samus X
     dl $7E0AFA : db $02 : dw $04BB ; Samus Y
     dw #$FFFF
