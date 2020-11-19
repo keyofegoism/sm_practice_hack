@@ -1,6 +1,8 @@
 # Super Metroid Practice Hack
 
-This page hosts the source material for the Super Metroid Practice Hack. It is intended for users that wish to contribute to the project, customize their own Practice Hacks, adapt it for SM romhacks, or just to see how it works. Visit https://smpractice.speedga.me for details on patching your SM rom with the latest version of InfoHUD.
+This branch restores the minimap to the HUD for practicing the 100% Map Completion category.
+
+This project is in need of contributors. I would like to replace the segment timer with a room timer, preferrably with the real/game time option functional. Another idea is to add an option for the map tile counter. Please make a pull request or message me directly if you'd like to help.
 
 ## Getting Started:
 
@@ -15,5 +17,5 @@ The build script will create two IPS patch files for the practice hack. The patc
 
 ## Known Issues:
 
-* PAL region roms are no longer supported in the main branch. See https://github.com/InsaneFirebat/sm_practice_hack/tree/PAL-v1.43 for the latest working PAL revision.
+* The "frames" digits of the segment timer are overwritten by the minimap.
 * A crash will occur upon completing the game and leaving Zebes.
