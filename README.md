@@ -2,7 +2,7 @@
 
 This branch restores the minimap to the HUD for practicing the 100% Map Completion category.
 
-This project is in need of contributors. I would like to replace the segment timer with a room timer, preferrably with the real/game time option functional. Another idea is to add an option for the map tile counter. Please make a pull request or message me directly if you'd like to help.
+This project is in need of contributors. I would like to replace the segment timer with a room timer, preferably with the real/game time option functional. Another idea is to add an option for the map tile counter. Please make a pull request or message me directly if you'd like to help.
 
 ## Getting Started:
 
