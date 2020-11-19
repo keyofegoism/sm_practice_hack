@@ -24,15 +24,15 @@ org $82AEAF      ;routine to remove auto reserve icon on HUD from equip screen
 org $828115
     JSL ih_max_etank_code
 
-org $90A91B      ;minimap drawing routine
-    RTL
+;org $90A91B      ;minimap drawing routine
+;    RTL
 
-org $90A8EF      ;minimap update during HUD loading
+;org $90A8EF      ;minimap update during HUD loading
     ; Make sure it only runs when you start a new game
-    LDA $0998 : AND #$00FF : CMP #$0006 : BNE +
-    JSL reset_all_counters
-    +
-    RTL
+;    LDA $0998 : AND #$00FF : CMP #$0006 : BNE +
+;    JSL reset_all_counters
+;    +
+;    RTL
 
 org $90E6AA      ;hijack, runs on gamestate = 08 (main gameplay), handles most updating HUD information
     JSL ih_gamemode_frame : NOP : NOP
@@ -46,12 +46,12 @@ org $9493B8      ;hijack, runs when Samus hits a door BTS
 org $82E764      ;hijack, runs when Samus is coming out of a room transition
     JSL ih_after_room_transition : RTS
 
-org $90A7F7      ;skip drawing minimap grid when entering boss rooms
-    BRA FinishDrawMinimap
+;org $90A7F7      ;skip drawing minimap grid when entering boss rooms
+;    BRA FinishDrawMinimap
 
-org $90A80A      ;normally runs after minimap grid has been drawn
-    FinishDrawMinimap:
-    LDA $179C
+;org $90A80A      ;normally runs after minimap grid has been drawn
+;    FinishDrawMinimap:
+;    LDA $179C
 
 org $809B4C      ;hijack, HUD routine (game timer by Quote58)
     JSL ih_hud_code : NOP
@@ -262,98 +262,98 @@ ih_update_hud_code:
 
     LDA #$FFFF : STA !ram_last_hp : STA !ram_enemy_hp
 
-    LDA !sram_frame_counter_mode : BNE .ingameRoom
+    LDA !sram_frame_counter_mode : BNE .drawSeg		; .ingameRoom -> .drawSeg
 
-    ; Real time
-    {
-        ; Divide real time by 60, save seconds, frame seperately
-        {
-            STZ $4205
-            LDA !ram_last_realtime_room : STA $4204
-            %a8()
-            LDA #$3C : STA $4206
-            PHA : PLA : PHA : PLA
-            %a16()
-            LDA $4214 : STA !ram_tmp_1
-            LDA $4216 : STA !ram_tmp_2
-        }
+;    ; Real time     minimap removes all of this
+;    {
+;        ; Divide real time by 60, save seconds, frame seperately
+;        {
+;            STZ $4205
+;            LDA !ram_last_realtime_room : STA $4204
+;            %a8()
+;            LDA #$3C : STA $4206
+;            PHA : PLA : PHA : PLA
+;            %a16()
+;            LDA $4214 : STA !ram_tmp_1
+;            LDA $4216 : STA !ram_tmp_2
+;        }
 
         ; Draw seconds
-        LDA !ram_tmp_1 : JSR Hex2Dec : LDX #$003C : JSR Draw3
+;        LDA !ram_tmp_1 : JSR Hex2Dec : LDX #$003C : JSR Draw3
 
         ; Draw decimal seperator
-        LDA #$0CCB : STA $7EC642
+;        LDA #$0CCB : STA $7EC642
 
         ; Draw frames
-        LDA !ram_tmp_2 : ASL : TAX
-        LDA HexToNumberGFX1, X : STA $7EC644
-        LDA HexToNumberGFX2, X : STA $7EC646
+;        LDA !ram_tmp_2 : ASL : TAX
+;        LDA HexToNumberGFX1, X : STA $7EC644
+;        LDA HexToNumberGFX2, X : STA $7EC646
 
-        BRA .pct
+;        BRA .pct
     }
 
-    ; Room time
-    .ingameRoom
-    {
+    ; Room time			I'm killing this for minimap but old version doesn't
+;    .ingameRoom
+;    {
         ; Divide game time by 60, save seconds, frames seperately
-        {
-            STZ $4205
-            LDA !ram_last_gametime_room : STA $4204
-            %a8()
-            LDA #$3C : STA $4206
-            PHA : PLA : PHA : PLA
-            %a16()
-            LDA $4214 : STA !ram_tmp_3
-            LDA $4216 : STA !ram_tmp_4
-        }
+;        {
+;            STZ $4205
+;            LDA !ram_last_gametime_room : STA $4204
+;            %a8()
+;            LDA #$3C : STA $4206
+;            PHA : PLA : PHA : PLA
+;            %a16()
+;            LDA $4214 : STA !ram_tmp_3
+;            LDA $4216 : STA !ram_tmp_4
+;        }
 
         ; Draw seconds
-        LDA !ram_tmp_3 : JSR Hex2Dec : LDX #$003C : JSR Draw3
+;        LDA !ram_tmp_3 : JSR Hex2Dec : LDX #$00B0 : JSR Draw3    ; 003C -> 00B0  for minimap
 
         ; Draw decimal seperator
-        LDA #$0CCB : STA $7EC642
+;        LDA #$0CCB : STA $7EC6B6		; 7EC644 -> 7EC6B8  for minimap
 
         ; Draw frames
-        LDA !ram_tmp_4 : ASL : TAX
-        LDA HexToNumberGFX1, X : STA $7EC644
-        LDA HexToNumberGFX2, X : STA $7EC646
-    }
+;        LDA !ram_tmp_4 : ASL : TAX
+;        LDA HexToNumberGFX1, X : STA $7EC644
+;        LDA HexToNumberGFX2, X : STA $7EC646
+;    }
 
-    ; Draw Item percent
-    .pct
-    {
-        LDA #$0000 : STA !ram_pct_1
+    ; Draw Item percent 		minimap removes all of this
+;    .pct
+;    {
+;        LDA #$0000 : STA !ram_pct_1
 
         ; Max HP (E tanks)
-        LDA $09C4 : SEC : SBC #$0063 : CLC : INC : JSR CalcEtank : LDA $4214 : STA !ram_etanks
+;        LDA $09C4 : SEC : SBC #$0063 : CLC : INC : JSR CalcEtank : LDA $4214 : STA !ram_etanks
 
         ; Max Reserve Tanks
-        LDA $09D4 : JSR CalcEtank
+;        LDA $09D4 : JSR CalcEtank
 
         ; Max Missiles, Supers & Power Bombs
-        LDA $09C8 : CLC : ADC $09CC : CLC : ADC $09D0 : JSR CalcItem
+;        LDA $09C8 : CLC : ADC $09CC : CLC : ADC $09D0 : JSR CalcItem
 
         ; Collected items
-        JSR CalcLargeItem
+;        JSR CalcLargeItem
 
         ; Collected beams & charge
-        JSR CalcBeams
+;        JSR CalcBeams
 
         ; Percent counter -> decimal form and drawn on HUD
-        LDA !ram_pct_1 : JSR Hex2Dec : LDX #$0012 : JSR Draw3
+;        LDA !ram_pct_1 : JSR Hex2Dec : LDX #$0012 : JSR Draw3
 
         ; Percent symbol on HUD
-        LDA #$0C0A : STA $7EC618
-    }
+;        LDA #$0C0A : STA $7EC618
+;    }
 
     ; E-tanks
-    LDA !ram_etanks : JSR Hex2Dec : LDX #$0054 : JSR Draw3
+;    LDA !ram_etanks : JSR Hex2Dec : LDX #$0054 : JSR Draw3
 
     ; Door lag
-    LDA !ram_last_door_lag_frames : JSR Hex2Dec : LDX #$00C2 : JSR Draw3
+;    LDA !ram_last_door_lag_frames : JSR Hex2Dec : LDX #$00C2 : JSR Draw3
 
     ; Lag
-    LDA !ram_last_room_lag : JSR Hex2Dec : LDX #$0082 : JSR Draw3
+;    LDA !ram_last_room_lag : JSR Hex2Dec : LDX #$0082 : JSR Draw3
 
     ; Segment timer
     {

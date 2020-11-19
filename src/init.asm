@@ -66,7 +66,7 @@ init_sram:
     ; $01 = Right
 
     ; Features
-    LDA #$0016 : STA !sram_artificial_lag
+    LDA #$0000 : STA !sram_artificial_lag		; default to 0 because minimap is enabled
     LDA #$0001 : STA !sram_rerandomize
     LDA #$0000 : STA !sram_fanfare_toggle
     LDA #$0001 : STA !sram_music_toggle
