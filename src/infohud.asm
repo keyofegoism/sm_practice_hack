@@ -262,64 +262,68 @@ ih_update_hud_code:
 
     LDA #$FFFF : STA !ram_last_hp : STA !ram_enemy_hp
 
-    LDA !sram_frame_counter_mode : BNE .drawSeg		; .ingameRoom -> .drawSeg
+    LDA !sram_frame_counter_mode : BNE .ingameRoom
 
-;    ; Real time     minimap removes all of this
-;    {
-;        ; Divide real time by 60, save seconds, frame seperately
-;        {
-;            STZ $4205
-;            LDA !ram_last_realtime_room : STA $4204
-;            %a8()
-;            LDA #$3C : STA $4206
-;            PHA : PLA : PHA : PLA
-;            %a16()
-;            LDA $4214 : STA !ram_tmp_1
-;            LDA $4216 : STA !ram_tmp_2
-;        }
+    ; Real time
+    {
+        ; Divide real time by 60, save seconds, frame seperately
+        {
+            STZ $4205
+            LDA !ram_last_realtime_room : STA $4204
+            %a8()
+            LDA #$3C : STA $4206
+            PHA : PLA : PHA : PLA
+            %a16()
+            LDA $4214 : STA !ram_tmp_1
+            LDA $4216 : STA !ram_tmp_2
+        }
 
         ; Draw seconds
-;        LDA !ram_tmp_1 : JSR Hex2Dec : LDX #$003C : JSR Draw3
+        LDA !ram_tmp_1 : ASL : TAX
+        LDA HexToNumberGFX1, X : STA $7EC6B0
+        LDA HexToNumberGFX2, X : STA $7EC6B2
 
         ; Draw decimal seperator
-;        LDA #$0CCB : STA $7EC642
+        LDA #$0CCB : STA $7EC6B4
 
         ; Draw frames
-;        LDA !ram_tmp_2 : ASL : TAX
-;        LDA HexToNumberGFX1, X : STA $7EC644
-;        LDA HexToNumberGFX2, X : STA $7EC646
+        LDA !ram_tmp_2 : ASL : TAX
+        LDA HexToNumberGFX1, X : STA $7EC6B6
+        LDA HexToNumberGFX2, X : STA $7EC6B8
 
-;        BRA .pct
+        BRA .end   ; skip .pct and old seg timer
     }
 
-    ; Room time			I'm killing this for minimap but old version doesn't
-;    .ingameRoom
-;    {
+    ; Room time
+    .ingameRoom
+    {
         ; Divide game time by 60, save seconds, frames seperately
-;        {
-;            STZ $4205
-;            LDA !ram_last_gametime_room : STA $4204
-;            %a8()
-;            LDA #$3C : STA $4206
-;            PHA : PLA : PHA : PLA
-;            %a16()
-;            LDA $4214 : STA !ram_tmp_3
-;            LDA $4216 : STA !ram_tmp_4
-;        }
+        {
+            STZ $4205
+            LDA !ram_last_gametime_room : STA $4204
+            %a8()
+            LDA #$3C : STA $4206
+            PHA : PLA : PHA : PLA
+            %a16()
+            LDA $4214 : STA !ram_tmp_3
+            LDA $4216 : STA !ram_tmp_4
+        }
 
         ; Draw seconds
-;        LDA !ram_tmp_3 : JSR Hex2Dec : LDX #$00B0 : JSR Draw3    ; 003C -> 00B0  for minimap
+        LDA !ram_tmp_3 : ASL : TAX
+        LDA HexToNumberGFX1, X : STA $7EC6B0
+        LDA HexToNumberGFX2, X : STA $7EC6B2
 
         ; Draw decimal seperator
-;        LDA #$0CCB : STA $7EC6B6		; 7EC644 -> 7EC6B8  for minimap
+        LDA #$0CCB : STA $7EC6B4
 
         ; Draw frames
-;        LDA !ram_tmp_4 : ASL : TAX
-;        LDA HexToNumberGFX1, X : STA $7EC644
-;        LDA HexToNumberGFX2, X : STA $7EC646
-;    }
+        LDA !ram_tmp_4 : ASL : TAX
+        LDA HexToNumberGFX1, X : STA $7EC6B6
+        LDA HexToNumberGFX2, X : STA $7EC6B8
+    }
 
-    ; Draw Item percent 		minimap removes all of this
+    ; Draw Item percent 		old minimap build removes all of this
 ;    .pct
 ;    {
 ;        LDA #$0000 : STA !ram_pct_1
@@ -355,36 +359,36 @@ ih_update_hud_code:
     ; Lag
 ;    LDA !ram_last_room_lag : JSR Hex2Dec : LDX #$0082 : JSR Draw3
 
-    ; Segment timer
-    {
-        LDA !sram_frame_counter_mode : BNE .ingameSeg
-        LDA.w #!ram_seg_rt_frames : STA $00
-        LDA #$007F : STA $02
-        BRA .drawSeg
+    ; Segment timer      Room timer took over this part of the tilemap
+;    {
+;        LDA !sram_frame_counter_mode : BNE .ingameSeg
+;        LDA.w #!ram_seg_rt_frames : STA $00
+;        LDA #$007F : STA $02
+;        BRA .drawSeg
 
-      .ingameSeg
-        LDA #$09DA : STA $00
-        LDA #$007E : STA $02
+;      .ingameSeg
+;        LDA #$09DA : STA $00
+;        LDA #$007E : STA $02
 
-      .drawSeg
+;      .drawSeg
         ; Frames
-        LDA [$00] : INC $00 : INC $00 : ASL : TAX
-        LDA HexToNumberGFX1, X : STA $7EC6BC
-        LDA HexToNumberGFX2, X : STA $7EC6BE
+;        LDA [$00] : INC $00 : INC $00 : ASL : TAX
+;        LDA HexToNumberGFX1, X : STA $7EC6BC
+;        LDA HexToNumberGFX2, X : STA $7EC6BE
 
         ; Seconds
-        LDA [$00] : INC $00 : INC $00 : ASL : TAX
-        LDA HexToNumberGFX1, X : STA $7EC6B6
-        LDA HexToNumberGFX2, X : STA $7EC6B8
+;        LDA [$00] : INC $00 : INC $00 : ASL : TAX
+;        LDA HexToNumberGFX1, X : STA $7EC6B6
+;        LDA HexToNumberGFX2, X : STA $7EC6B8
 
         ; Minutes
-        LDA [$00] : ASL : TAX
-        LDA HexToNumberGFX1, X : STA $7EC6B0
-        LDA HexToNumberGFX2, X : STA $7EC6B2
+;        LDA [$00] : ASL : TAX
+;        LDA HexToNumberGFX1, X : STA $7EC6B0
+;        LDA HexToNumberGFX2, X : STA $7EC6B2
 
         ; Draw decimal seperators
-        LDA #$0CCB : STA $7EC6B4 : STA $7EC6BA
-    }
+;        LDA #$0CCB : STA $7EC6B4 : STA $7EC6BA
+;    }
 
     .end
     PLB

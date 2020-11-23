@@ -3,6 +3,7 @@
 resources/sm_orig.s[mf]c
 resources/smpal_orig.s[mf]c
 build/*
+!InfoHUD_*.ips
 *.sw[op]
 tools/*.smv
 tools/*.asm
