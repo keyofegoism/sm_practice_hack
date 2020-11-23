@@ -46,7 +46,7 @@ init_sram:
     LDA #$06F0 : STA !sram_ctrl_load_last_preset  ; Down + Left + L + R + A + X
     LDA #$0000 : STA !sram_ctrl_full_equipment
     LDA #$0000 : STA !sram_ctrl_kill_enemies
-    LDA #$0000 : STA !sram_ctrl_reset_segment_timer
+    LDA #$C930 : STA !sram_ctrl_reset_segment_timer    ; Up + Right + L + R + B + Y
 
     ; Input Cheat Sheet  (#$XXYY)
     ; $4218  (YY)
