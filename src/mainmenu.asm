@@ -141,7 +141,7 @@ MainMenu:
     dw #mm_goto_rngmenu
     dw #mm_goto_ctrlsmenu
     dw #$0000
-    %cm_header("INSANEFIREBAT V2.1.2")
+    %cm_header("INSANEFIREBAT V2.1.4")
 
 mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
@@ -812,6 +812,7 @@ ConfigMenu:
 
 InfoHudMenu:
     dw #ih_display_mode
+    dw #ih_room_strat
     dw #ih_room_counter
     dw #ih_lag
     dw #ih_magicpants
@@ -824,19 +825,32 @@ ih_display_mode:
     dw #$0000
     db #$28, "Infohud Mode", #$FF
     db #$28, "   ENEMY HP", #$FF
-    db #$28, " SHINESPARK", #$FF
+    db #$28, " ROOM STRAT", #$FF
     db #$28, "     CHARGE", #$FF
     db #$28, "   X FACTOR", #$FF
-    db #$28, "      MB HP", #$FF
+    db #$28, "   COOLDOWN", #$FF
+    db #$28, " SHINESPARK", #$FF
     db #$28, "       DASH", #$FF
-    db #$28, " VERT SPEED", #$FF
+    db #$28, " SHINE TUNE", #$FF
     db #$28, "    IFRAMES", #$FF
+    db #$28, "  SPIKESUIT", #$FF
     db #$28, "LAG COUNTER", #$FF
     db #$28, " X POSITION", #$FF
     db #$28, " Y POSITION", #$FF
-    db #$28, "   COOLDOWN", #$FF
-    db #$28, " SHINE TUNE", #$FF
+    db #$28, "HORIZ SPEED", #$FF
+    db #$28, " VERT SPEED", #$FF
+    db #$28, " JUMP PRESS", #$FF
     db #$28, " SHOT TIMER", #$FF
+    db #$FF
+
+ih_room_strat:
+    dw !ACTION_CHOICE
+    dl #!sram_room_strat
+    dw #$0000
+    db #$28, "Room Strat", #$FF
+    db #$28, "      MB HP", #$FF
+    db #$28, "   MOAT CWJ", #$FF
+    db #$28, "SHINE TO PB", #$FF
     db #$FF
 
 ih_room_counter:
