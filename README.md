@@ -2,8 +2,6 @@
 
 This branch restores the minimap to the HUD for practicing the 100% Map Completion category.
 
-This project is in need of contributors. I would like to replace the segment timer with a room timer, preferably with the real/game time option functional. Another idea is to add an option for the map tile counter. Please make a pull request or message me directly if you'd like to help.
-
 ## Getting Started:
 
 1. Download asar from https://github.com/RPGHacker/asar and place it in the \tools\ folder.
@@ -17,5 +15,4 @@ The build script will create two IPS patch files for the practice hack. The patc
 
 ## Known Issues:
 
-* The "frames" digits of the segment timer are overwritten by the minimap.
 * A crash will occur upon completing the game and leaving Zebes.
