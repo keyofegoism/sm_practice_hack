@@ -165,18 +165,22 @@ preset_to_memory:
 
 preset_banks:
 {
-  dw preset_prkd_crateria_ship>>16
   dw preset_kpdr21_crateria_ship>>16
-  dw preset_hundo_bombs_ceres_elevator>>16
-  dw preset_100early_crateria_ceres_elevator>>16
-  dw preset_rbo_bombs_ceres_elevator>>16
+  dw preset_kpdr22_crateria_ship>>16
   dw preset_kpdr25_bombs_ceres_elevator>>16
+  dw preset_prkd_crateria_ship>>16
+  dw preset_prkdnox_crateria_ship>>16
+  dw preset_100early_crateria_ceres_elevator>>16
+  dw preset_hundo_bombs_ceres_elevator>>16
   dw preset_gtclassic_crateria_ship>>16
   dw preset_14ice_crateria_ceres_elevator>>16
   dw preset_14speed_crateria_ceres_elevator>>16
+  dw preset_rbo_bombs_ceres_elevator>>16
   dw preset_allbosskpdr_crateria_ceres_elevator>>16
   dw preset_allbosspkdr_crateria_ceres_elevator>>16
   dw preset_allbossprkd_crateria_ceres_elevator>>16
+  dw preset_nghyper_ceres_station_ceres_elevator>>16
+  dw preset_ngplasma_ceres_station_ceres_elevator>>16
 }
 
 print pc, " presets end"
@@ -319,3 +323,27 @@ org $E48000
   print pc, " kpdr25 data start"
   incsrc presets/kpdr25_data.asm
   print pc, " kpdr25 data end"
+
+org $E58000
+
+  ; 3024 (length in hex)
+  print pc, " kpdr22 data start"
+  incsrc presets/kpdr22_data.asm
+  print pc, " kpdr22 data end"
+
+  ; 2EAA (length in hex)
+  print pc, " prkdnox data start"
+  incsrc presets/prkdnox_data.asm
+  print pc, " prkdnox data end"
+
+org $E68000
+
+  ; 1B5A (length in hex)
+  print pc, " ngplasma data start"
+  incsrc presets/ngplasma_data.asm
+  print pc, " ngplasma data end"
+
+  ; 1B70 (length in hex)
+  print pc, " nghyper data start"
+  incsrc presets/nghyper_data.asm
+  print pc, " nghyper data end"

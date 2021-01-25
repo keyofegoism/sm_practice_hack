@@ -87,35 +87,43 @@ action_presets_submenu:
 
 preset_category_submenus:
 {
-    dw #PresetsMenuPrkd
     dw #PresetsMenuKpdr21
-    dw #PresetsMenuHundo
-    dw #PresetsMenu100early
-    dw #PresetsMenuRbo
+    dw #PresetsMenuKpdr22
     dw #PresetsMenuKpdr25
+    dw #PresetsMenuPrkd
+    dw #PresetsMenuPrkdnox
+    dw #PresetsMenu100early
+    dw #PresetsMenuHundo
     dw #PresetsMenuGtclassic
     dw #PresetsMenu14ice
     dw #PresetsMenu14speed
+    dw #PresetsMenuRbo
     dw #PresetsMenuAllbosskpdr
     dw #PresetsMenuAllbosspkdr
-    dw #PresetsMenuAllbossprkd    
+    dw #PresetsMenuAllbossprkd
+    dw #PresetsMenuNghyper
+    dw #PresetsMenuNgplasma
     dw #$0000
 }
 
 preset_category_banks:
 {
-    dw #PresetsMenuPrkd>>16
     dw #PresetsMenuKpdr21>>16
-    dw #PresetsMenuHundo>>16
-    dw #PresetsMenu100early>>16
-    dw #PresetsMenuRbo>>16
+    dw #PresetsMenuKpdr22>>16
     dw #PresetsMenuKpdr25>>16
+    dw #PresetsMenuPrkd>>16
+    dw #PresetsMenuPrkdnox>>16
+    dw #PresetsMenu100early>>16
+    dw #PresetsMenuHundo>>16
     dw #PresetsMenuGtclassic>>16
     dw #PresetsMenu14ice>>16
     dw #PresetsMenu14speed>>16
+    dw #PresetsMenuRbo>>16
     dw #PresetsMenuAllbosskpdr>>16
     dw #PresetsMenuAllbosspkdr>>16
     dw #PresetsMenuAllbossprkd>>16
+    dw #PresetsMenuNghyper>>16
+    dw #PresetsMenuNgplasma>>16
     dw #$0000
 
 }
@@ -171,20 +179,24 @@ mm_goto_ctrlsmenu:
 pushpc
 
 org $fe8000
-incsrc presets/prkd_menu.asm
 incsrc presets/kpdr21_menu.asm
-incsrc presets/hundo_menu.asm
-incsrc presets/100early_menu.asm
-incsrc presets/rbo_menu.asm
+incsrc presets/kpdr22_menu.asm
 incsrc presets/kpdr25_menu.asm
+incsrc presets/prkd_menu.asm
+incsrc presets/prkdnox_menu.asm
+incsrc presets/100early_menu.asm
+incsrc presets/hundo_menu.asm
 incsrc presets/gtclassic_menu.asm
 
 org $ff8000
 incsrc presets/14ice_menu.asm
 incsrc presets/14speed_menu.asm
+incsrc presets/rbo_menu.asm
 incsrc presets/allbosskpdr_menu.asm
 incsrc presets/allbosspkdr_menu.asm
 incsrc presets/allbossprkd_menu.asm
+incsrc presets/nghyper_menu.asm
+incsrc presets/ngplasma_menu.asm
 
 pullpc
 
@@ -631,18 +643,22 @@ misc_preset_cateory:
     dl #!sram_preset_category
     dw #$0000
     db #$28, "Preset Category", #$FF
-        db #$28, "y      PRKD", #$FF ; Note the "y" ;)
-        db #$28, "y      KPDR", #$FF
-        db #$28, "y  100 LATE", #$FF
-        db #$28, "y 100 EARLY", #$FF
-        db #$28, "y       RBO", #$FF
+        db #$28, "y    KPDR21", #$FF
+        db #$28, "y    KPDR22", #$FF
         db #$28, "y    KPDR25", #$FF
+        db #$28, "y      PRKD", #$FF ; Note the "y" ;)
+        db #$28, "y PRKD NO X", #$FF ; Note the "y" ;)
+        db #$28, "y 100 EARLY", #$FF
+        db #$28, "y  100 LATE", #$FF
         db #$28, "y GTCLASSIC", #$FF
         db #$28, "y    14 ICE", #$FF
         db #$28, "y  14 SPEED", #$FF
+        db #$28, "y       RBO", #$FF
         db #$28, "y  ALL KPDR", #$FF
         db #$28, "y  ALL PKDR", #$FF
         db #$28, "y  ALL PRKD", #$FF
+        db #$28, "y  NG HYPER", #$FF
+        db #$28, "y NG PLASMA", #$FF
     db #$FF
 
 
