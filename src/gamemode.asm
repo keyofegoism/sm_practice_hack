@@ -65,6 +65,10 @@ gamemode_shortcuts:
     AND !ram_ctrl1_filtered : BEQ +
     JMP .menu
 
+  + LDA !ram_ctrl1 : AND !sram_ctrl_resetmenu : CMP !sram_ctrl_resetmenu : BNE +
+    AND !ram_ctrl1_filtered : BEQ +
+    JMP .resetmenu
+
   + CLC : RTS
 
   .save_state
@@ -121,5 +125,9 @@ gamemode_shortcuts:
     PLA : STA $AB
 
     SEC : RTS
+
+  .resetmenu
+    LDA #$3000 : STA !sram_ctrl_menu  ; Reset menu shortcut to default Start+Select
+    CLC : RTS
 }
 print pc, " gamemode end"
