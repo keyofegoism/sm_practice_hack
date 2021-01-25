@@ -143,7 +143,7 @@ MainMenu:
     dw #mm_goto_rngmenu
     dw #mm_goto_ctrlsmenu
     dw #$0000
-    %cm_header("SM PRACTICE HACK 2.1.4")
+    %cm_header("INFOHUD CARTRIDGE 2.1.4")
 
 mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
@@ -152,19 +152,19 @@ mm_goto_presets:
     %cm_jsr("Category Presets", #action_presets_submenu, #$0000)
 
 mm_goto_teleport:
-    %cm_submenu("Teleport", #TeleportMenu)
+    %cm_submenu("Save Stations", #TeleportMenu)
 
 mm_goto_events:
-    %cm_submenu("Events", #EventsMenu)
+    %cm_submenu("Event Flags", #EventsMenu)
 
 mm_goto_misc:
-    %cm_submenu("Misc", #MiscMenu)
+    %cm_submenu("Misc Settings", #MiscMenu)
 
 mm_goto_infohud:
-    %cm_submenu("Infohud", #InfoHudMenu)
+    %cm_submenu("HUD Settings", #InfoHudMenu)
 
 mm_goto_gamemenu:
-    %cm_submenu("Game", #GameMenu)
+    %cm_submenu("Game Settings", #GameMenu)
 
 mm_goto_rngmenu:
     %cm_submenu("RNG Control", #RngMenu)
@@ -337,8 +337,11 @@ cat_rbo:
 cat_any_glitched:
     %cm_jsr("Any% glitched", action_category, #$0007)
 
+cat_cf_anywhere:
+    %cm_jsr("Crystal Flash", action_category, #$0008)
+
 cat_nothing:
-    %cm_jsr("Nothing", action_category, #$0008)
+    %cm_jsr("Nothing", action_category, #$0009)
 
 
 action_category:
@@ -386,6 +389,7 @@ action_category:
     dw #$F32F, #$100F, #$02BC, #$0064, #$0014, #$0014, #$012C, #$0000        ;   gt code
     dw #$710C, #$1001, #$031F, #$001E, #$0019, #$0014, #$0064, #$0000        ;   rbo
     dw #$9004, #$0000, #$00C7, #$0005, #$0005, #$0005, #$0000, #$0000        ;    any% glitched
+    dw #$F32F, #$100F, #$0031, #$01A4, #$005A, #$0063, #$0000, #$0000        ;   crystal flash
     dw #$0000, #$0000, #$0063, #$0000, #$0000, #$0000, #$0000, #$0000        ;   nothing
 }
 
@@ -499,7 +503,7 @@ TeleportMenu:
     dw #tel_tourianbbyskip
     dw #tel_tourianmb
     dw #$0000
-    %cm_header("TELEPORT")
+    %cm_header("TELEPORT TO SAVE STATION")
 
 tel_crateriaship:
     %cm_jsr("Crateria Ship", #action_teleport, #$0000)
@@ -597,7 +601,7 @@ MiscMenu:
     dw #misc_music_toggle
     dw #misc_preset_cateory
     dw #$0000
-    %cm_header("MISC")
+    %cm_header("MISC SETTINGS")
 
 misc_bluesuit:
     %cm_toggle("Blue Suit", $7E0B3F, #$0004, #0)
@@ -612,7 +616,7 @@ misc_babyslowdown:
     %cm_toggle("Baby Slowdown", $7E0A66, #$0002, #0)
 
 misc_fanfare_toggle:
-    %cm_toggle("Fanfare", !sram_fanfare_toggle, #$0001, #0)
+    %cm_toggle("Item Fanfares", !sram_fanfare_toggle, #$0001, #0)
 
 misc_music_toggle:
     %cm_toggle("Music", !sram_music_toggle, #$0001, .routine)
@@ -677,7 +681,7 @@ EventsMenu:
     dw #events_zebesexploding
     dw #events_animals
     dw #$0000
-    %cm_header("EVENTS")
+    %cm_header("EVENT FLAGS")
 
 events_goto_bosses:
     %cm_submenu("Bosses", #BossesMenu)
@@ -765,7 +769,7 @@ BossesMenu:
     dw #boss_gt
     dw #boss_ridley
     dw #$0000
-    %cm_header("BOSSES")
+    %cm_header("BOSS FLAGS")
 
 boss_bombtorizo:
     %cm_toggle_bit("Bomb Torizo", #$7ED828, #$0004, #0)
@@ -816,7 +820,7 @@ InfoHudMenu:
     dw #ih_lag
     dw #ih_magicpants
     dw #$0000
-    %cm_header("INFOHUD")
+    %cm_header("HUD SETTINGS")
 
 ih_display_mode:
     dw !ACTION_CHOICE
@@ -878,7 +882,7 @@ GameMenu:
     dw #game_iconcancel
     dw #game_debugmode
     dw #$0000
-    %cm_header("GAME")
+    %cm_header("GAME SETTINGS")
 
 game_japanesetext:
     %cm_toggle("Japanese Text", $7E09E2, #$0001, #0)
@@ -902,7 +906,7 @@ RngMenu:
     dw #rng_phan_second_phase
     dw #rng_botwoon_rng
     dw #$0000
-    %cm_header("RNG")
+    %cm_header("RNG CONTROL")
 
 rng_rerandomize:
     %cm_toggle("Rerandomize", !sram_rerandomize, #$0001, #0)

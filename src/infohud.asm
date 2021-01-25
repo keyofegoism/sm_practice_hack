@@ -1592,3 +1592,9 @@ org $9AB320  ; HUD graphics table
     dw $01FE, $01FE, $01FE, $01FE, $03FC, $0FF3, $3FCF, $FF3F
     dw $FFFC, $FCF3, $F0CF, $C03F, $807F, $807F, $807F, $807F
     dw $837C, $8F73, $BF4F, $FF3F, $FFFF, $FFFF, $FFFF, $FFFF
+
+; Editing Main Menu
+org $81B40A
+;		  	    P	   R      A      C      T      I      C      E
+    dw $200F, $200D, $000D, $200A, $200C, $002C, $2022, $200C, $200E, $200F, $FFFE
+    dw $200F, $2038, $003A, $201A, $201C, $0011, $2011, $201C, $201E, $200F, $FFFF
