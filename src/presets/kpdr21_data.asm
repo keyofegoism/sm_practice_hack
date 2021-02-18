@@ -448,6 +448,7 @@ preset_kpdr21_crateria_terminator:
     dl $7E0911 : db $02 : dw $0100 ; Screen X position in pixels
     dl $7E0913 : db $02 : dw $8800 ; Screen subpixel Y position
     dl $7E0AF6 : db $02 : dw $0115 ; Samus X
+    dl $7E0B3F : db $02 : dw $0104 ; Blue suit
     dw #$FFFF
 .after
 
@@ -466,6 +467,7 @@ preset_kpdr21_crateria_green_pirate_shaft:
     dl $7E09C4 : db $02 : dw $00C7 ; Max helath
     dl $7E0AF6 : db $02 : dw $0063 ; Samus X
     dl $7E0AFA : db $02 : dw $029B ; Samus Y
+    dl $7E0B3F : db $02 : dw $0000 ; Blue suit
     dl $7ED870 : db $02 : dw $0180 ; Events, Items, Doors
     dl $7ED91A : db $02 : dw $0006 ; Events, Items, Doors
     dw #$FFFF

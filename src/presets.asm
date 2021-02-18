@@ -262,7 +262,7 @@ org $E08000
   incsrc presets/hundo_data.asm
   print pc, " hundo data end"
 
-  ; 27B6 (length in hex)
+  ; 2EAA (length in hex)
   print pc, " prkd data start"
   incsrc presets/prkd_data.asm
   print pc, " prkd data end"
@@ -279,7 +279,7 @@ org $E18000
   print pc, " kpdr25 data end"
 
 org $E28000
-  ; 218A (length in hex)
+  ; 2B5E (length in hex)
   print pc, " gtclassic data start"
   incsrc presets/gtclassic_data.asm
   print pc, " gtclassic data end"
@@ -313,7 +313,7 @@ org $E38000
 
 org $E48000
   
-  ; 4266 (length in hex)
+  ; 423C (length in hex)
   print pc, " 100early data start"
   incsrc presets/100early_data.asm
   print pc, " 100early data end"
