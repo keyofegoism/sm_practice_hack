@@ -141,7 +141,7 @@ MainMenu:
     dw #mm_goto_rngmenu
     dw #mm_goto_ctrlsmenu
     dw #$0000
-    %cm_header("INSANEFIREBAT V2.1.4")
+    %cm_header("INSANEFIREBAT V2.1.5")
 
 mm_goto_equipment:
     %cm_submenu("Equipment", #EquipmentMenu)
